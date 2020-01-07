@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon  [routerLink]="['/admin-dashboard']" class="align" name="arrow-round-back"></ion-icon> <ion-title>Add-Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form  [formGroup]="forms">
+  <ion-item>
+    <ion-label>Name of Product </ion-label>
+    <ion-input formControlName="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Price of Product </ion-label>
+    <ion-input formControlName="price"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>Discount </ion-label>
+    <ion-input formControlName="discount"></ion-input>
+  </ion-item>
+
+<ion-item>
+  <ion-textarea formControlName="desc" rows="3" cols="15" placeholder="Please Enter the Desription of the ..."></ion-textarea>
+</ion-item>
+
+<ion-item>
+  <ion-label>Post In</ion-label>
+  <ion-select  formControlName="category" placeholder="Category">
+    <ion-select-option   value="Deal">Deal Of the Day</ion-select-option>
+    <ion-select-option   value="New">New Arrivals</ion-select-option>
+    <ion-select-option   value="Trending">Trending Products</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label for="time">Image *</ion-label>
+  <img [src]="imageUrl"   style="width:250px;height: 200px;">
+</ion-item>
+<ion-item>
+<ion-input type="file" formControlName="image" #image accept="image/*" name="image" (change)="handleFileInput($event.target.files)"> </ion-input>
+</ion-item>
+
+<!--
+<ion-button (click)="PickImage()" style="margin-top: 3em;
+margin-left:5em;">Choose An Image </ion-button>-->
+<ion-button  (click)="add()" color="danger">Post</ion-button>
+</form>
+</ion-content>

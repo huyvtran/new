@@ -1,0 +1,19 @@
+ion-content{
+    --background:linear-gradient(#8e44ad , #c0392b);
+    font-family: 'Open Sans', sans-serif;
+}
+ion-item{
+    --background:linear-gradient(#ffc3a0 , #ffafbd);
+    margin-top:3em;
+}
+ion-button{
+    margin-left: 9em;
+    margin-top: 3em;
+}
+
+.align{
+    color:#0b074d;
+    margin-left:7px;
+    font-size: 21px;
+    float: left;
+}

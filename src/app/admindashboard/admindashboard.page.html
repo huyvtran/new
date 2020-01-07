@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>admindashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="cash"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Total Revenues <p> Rs.1500.00</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="contacts"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Total Users <p> {{users }} </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-header>
+
+            <ion-card-title>
+              <ion-icon name="images"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>Total Products <p> {{products}}</p></ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col text-center>
+        <ion-card>
+          <ion-card-header>
+
+            <ion-card-title>
+              <ion-icon name="cart"></ion-icon>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>Total Orders <p> 10 </p></ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,51 @@
+
+<ion-content>
+  <ion-col>
+    <div class="ion-text-center ion-margin-top">
+      <img  src="assets/images/whitebg11.jpg">
+    </div>
+  </ion-col>
+ 
+<p class="ion-margin-top ion-margin-start login">Login to your Account</p>
+
+<form [formGroup]="modifyFormGroup" class="box">
+  <div class="row"  *ngIf="showMsg">
+    <div class="col-xs-12">
+      <p class="alert alert-danger">
+          <strong style="color:black;">Invalid User</strong>.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="row"  *ngIf="server">
+    <div class="col-xs-12">
+      <p  style="font-weight: bold;font-size:13px;"class="alert alert-success">
+Server  Side problem..
+         
+
+      </p>
+    </div>
+  </div>
+  <div *ngIf="valid">
+    <p *ngIf="modifyFormGroup.get('username').hasError('required')">Username Required</p>
+
+  </div>
+<ion-input formControlName="username" class="ion-margin-top ion-margin-start ion-padding-end" placeholder="UserName"></ion-input>
+
+
+<div *ngIf="valid">
+  <p *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required</p>
+</div>
+<ion-input  formControlName="password" class="ion-margin-top ion-margin-start spacing" placeholder="Password"></ion-input>
+
+<ion-col>
+<ion-button  (click)="login()"class="ion-text-center ion-margin-top ion-margin-start" >Sign in</ion-button>
+</ion-col>
+</form>
+<p class="ion-margin-top ion-text-center ion-margin-start signup">Don't have an account? 
+  <span [routerLink]="['/register']">Sign up</span></p>
+</ion-content> 
+
+
+

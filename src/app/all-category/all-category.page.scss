@@ -1,0 +1,36 @@
+#category_cart{
+    margin-right: 1em;
+    color:#23074d;
+    font-size:28px; 
+    margin-top: -5px;
+    border-radius:15px;
+    background:white;
+
+}
+ion-toolbar{
+    --background:#0b074d;
+   
+   }
+   p{
+       color:white;
+       font-size:18px;
+       font-family: 'Open Sans', sans-serif;
+   }
+   ion-icon{
+       color:white;
+       font-size:22px;
+       margin-left:10px;
+   }
+   ion-card{
+    height: 122px;
+     width: 141px;
+   }
+
+span{
+      
+        text-transform: uppercase;
+        font-size: 11px;
+      font-weight:bold;
+        color: navy;    
+        font-family: 'Open Sans', sans-serif;
+}

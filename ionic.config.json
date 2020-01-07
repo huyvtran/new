@@ -1,5 +1,7 @@
 {
   "name": "Electronics",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,24 +1,105 @@
+
+
+
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+  <ion-menu  contentId="main-content" type="overlay">
+  <ion-header>
+   
+  
+   <ion-toolbar style="margin-top: -4px;" >
+  <ion-title>
+  <ion-icon class="top" name="person"></ion-icon>
+  <ion-label>Hello User</ion-label>
+  </ion-title>
+  </ion-toolbar>
+  </ion-header>
+  
+  
+  
+  <ion-content>
+   <ion-list>
+  <ion-searchbar (ionInput)="FilterJSONData($event)" style=" font-family: 'Open Sans', sans-serif;" placeholder='SHOP BY CATEGORY'></ion-searchbar>
+  <ion-list style="margin-top: 1em;">
+  <button ion-item style="background: #eeeeee;">
+  <ion-icon name="tv" item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="presentPopover($event)"
+  >Electronics</span>
+  </button>
+  <ion-icon id="sidebar_right_icon" name="arrow-dropright" slot="end" (click)="presentPopover($event)">
+  </ion-icon>
+  </ion-list>
+  </ion-list>
+  
+  
+  <ion-list style="margin-top: -1em;">
+  <ion-list>
+  <button ion-item style="background: #eeeeee;">
+  <ion-icon name="home" item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="presentPopover($event)"
+  >Home Appliances</span>
+  </button>
+  <ion-icon id="sidebar_right_icon2"  name="arrow-dropright" slot="end" (click)="presentPopover($event)">
+  </ion-icon>
+  </ion-list>
+  </ion-list>
+  
+  
+  <ion-list style="margin-top:-3px;">
+  <button ion-item  style="background: #eeeeee;">
+  <ion-icon name="pricetags" item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Offer Zone</span>
+  </button>
+  </ion-list>
+  
+                                                                                                      
+  <ion-list>
+  <button ion-item  style="background: #eeeeee;">
+  <ion-icon name="briefcase"  item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Orders</span>
+  </button>
+  </ion-list>
+  
+  <ion-list>
+  <button ion-item  style="background: #eeeeee;">
+  <ion-icon name="cart" item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Cart</span>
+  </button>
+  </ion-list>
+  
+  <ion-menu-toggle>
+  <ion-list>
+  <button ion-item  style="background: #eeeeee;">
+  <ion-icon name="heart" item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Wishlist</span>
+  </button>
+  </ion-list>
+  </ion-menu-toggle>
+  
+  
+  
+  <ion-menu-toggle>
+  <ion-list>
+  <button ion-item  style="background: #eeeeee;">
+  <ion-icon name="microphone"   item-start></ion-icon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Choose Language</span>
+  </button>
+  </ion-list>
+  </ion-menu-toggle>
+  
+  
+  <hr>
+  <p text-center >Help Center</p>
+  <p text-center >Legal Policy</p>
+  <p text-center>Logout</p>
+  </ion-content> 
+  
+  
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
-</ion-app>
+  </ion-app>
+  
+  
+  
+  

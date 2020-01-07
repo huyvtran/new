@@ -1,0 +1,103 @@
+ion-toolbar{
+    --background:#031646;
+    height:130px;
+   }
+   ion-buttons{
+       color:#F37335;
+       margin-top:-53px;
+       }
+   img{
+       border-radius: 7px;
+       margin-top:10px;
+       margin-left:-13px;
+       background:transparent;
+   }
+   cart{
+      --margin-left:166px;
+   }
+   ion-icon{
+       margin-right: 1em;
+       color:navy;
+       font-size:21px; 
+       margin-top: -5px;
+       border-radius:15px;
+       background:white;
+   
+   }
+   
+   #home-search {
+       width: 144%;
+       margin-left:-59px;
+       padding:2px 33px 2px 18px;
+       font-family: 'Open Sans', sans-serif;
+      }
+   
+    i{
+          background:rgba(0, 119, 255, 0.678);
+          border-radius: 25px;
+         color:white;
+          font-size:28px;
+          margin-top:12px;
+      }
+      ion-grid{
+       padding: 0px 0px 0px 5px;
+      }
+   #category{
+       height: 30px;
+       width: 30px;
+   }
+   #android_phone{
+   width:22px;
+   height:31px;
+   
+   
+   }
+   div{
+       background: rgba(239, 236, 236, 0.473);
+   }
+   span{
+       font-family: 'Open Sans', sans-serif;
+       font-weight:bold;
+   }
+   
+      ion-card{
+          width:10em;
+          height:10em;
+      }
+   .deal{
+          background: linear-gradient(#8A2387,#E94057);
+          
+      }
+      .deal2{
+          background: linear-gradient(#E94057,#F27121);
+        
+      }
+      .deal3{
+       background: linear-gradient(#8A2387,#E94057);
+   
+      }
+   
+      #footer{
+   --background:#031646!important;
+   height:47px!important;
+      }
+   
+      ion-title{
+       font-family: 'Open Sans', sans-serif;
+      }
+      hr{
+       background:orange;
+      }
+      ion-card-title{
+          font-size:10px;
+          font-weight:bold;
+          color:black;
+          font-family: 'Open Sans', sans-serif;
+      }
+      p{
+       font-size: 11px;
+       color: purple;
+       font-weight: bolder;
+       font-family: 'Open Sans', sans-serif;
+       padding: 9px 2px 2px 6px;
+      }

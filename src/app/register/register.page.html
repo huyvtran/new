@@ -1,0 +1,175 @@
+<!-- 
+<ion-content class="background">
+   
+    <ion-grid style="margin-top:1.2em;">
+      <ion-row>
+        <ion-col col-2></ion-col>
+        <ion-col col-8>
+            
+        </ion-col>
+        <ion-col col-2>
+ 
+        </ion-col>
+
+      </ion-row>
+
+      <div class="content">
+          <p style="padding-left:0px;" ion-text-center> <img src="assets/images/user.png" height="90" width="90"></p> 
+          <div class="ion-padding" style="margin-top:36px;">
+            <div class="row"  *ngIf="showMsg">
+              <div class="col-xs-12">
+                <p  style="font-weight: bold;font-size:13px;"class="alert alert-success">
+                   You have Successfully Registered..<br><br>
+                    <strong style="color:black;font-size:16px;">Please Sign In..</strong>
+                   
+      
+                </p>
+              </div>
+            </div>
+            <div class="row"  *ngIf="server">
+              <div class="col-xs-12">
+                <p  style="font-weight: bold;font-size:13px;"class="alert alert-success">
+     Please try again Later
+                   
+      
+                </p>
+              </div>
+            </div>
+            <form  [formGroup]="modifyFormGroup" class="box">
+              <div>
+              </div>
+              <div *ngIf="valid">
+                <p *ngIf="modifyFormGroup.get('username').hasError('required')">Name Required</p>
+            
+              </div>
+              <ion-input   formControlName="username" style="color:black;" placeholder="User Name">
+                <ion-icon style="color:darkblue;font-size: 24px;" name="person"></ion-icon>
+              </ion-input> <br>
+    
+    
+              <div>
+              </div>
+              <div *ngIf="valid">
+                <p *ngIf="modifyFormGroup.get('email').hasError('required')">Email Required</p>
+            
+              </div>
+              <ion-input  formControlName="email" style="color:black;" placeholder="Email">
+                  <ion-icon style="color:darkblue;font-size:24px;"name="mail"></ion-icon>
+
+                </ion-input> <br>
+
+                    <div>
+                    </div>
+                    <div *ngIf="valid">
+                      <p *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required</p>
+                  
+                    </div>
+              <ion-input  formControlName="password" style="color:black;"  type="password" placeholder="Password">
+                <ion-icon style="color:darkblue;font-size:24px;" name="lock"></ion-icon>
+              </ion-input> <br>
+
+                      <div>
+                      </div>
+
+                      <div *ngIf="valid">
+                        <p *ngIf="modifyFormGroup.get('cpass').hasError('required')">Confirm Password Required</p>
+                    
+                      </div>
+                      <div *ngIf="valid">
+                        <p *ngIf="modifyFormGroup.hasError('notMatching')"> Passwords Not Matching </p>
+                      </div>
+                    <ion-input  formControlName="cpass" style="color:black;"  type="password" placeholder="Confirm Password">
+                          <ion-icon style="color:darkblue;font-size:24px;" name="lock"></ion-icon>
+                        </ion-input>
+
+                     
+
+
+                        <div></div>
+                        <p ion-text-center>Already have an account?&nbsp;<a [routerLink]="['/home']">SignIn</a></p>
+
+                        
+<br>
+<div ></div>
+<ion-input class="submit" (click)="Register()" style="background:darkblue;color:white;padding:5px;margin-top:7px;width:158px;padding:2px 2px;height:35px;" type="submit" value="Get Registered">
+    <ion-icon style="color:white;font-size:24px;" name="checkmark"></ion-icon>
+</ion-input>
+           
+              
+            </form>
+    
+          </div>
+    
+        
+    
+        
+              
+              
+         
+          </div>
+
+
+
+
+      </ion-grid>
+      </ion-content>
+       -->
+
+
+
+
+
+<ion-content>
+  <ion-row >
+    <ion-col>
+      <ion-icon [routerLink]="['/login']" class="ion-margin-top ion-margin-start" name="arrow-back"></ion-icon>
+    </ion-col >
+  </ion-row >
+  
+  <ion-col>
+    <div class="ion-text-center ion-margin-top">
+      <img  src="assets/images/whitebg11.jpg">
+    </div>
+  </ion-col>
+  
+  <p class="ion-margin-top ion-margin-start login">Create your Account</p>
+
+  <form [formGroup]="modifyFormGroup" >
+
+    <div *ngIf="valids">
+      <p>Congrats.. You have Retgisterd Successfully</p>
+    </div>
+ 
+    <div *ngIf="valid">
+      <p *ngIf="modifyFormGroup.get('username').hasError('required') ">Username required</p>
+    </div>
+    <ion-input formControlName="username" class="ion-margin-top ion-margin-start ion-padding-end" placeholder="username"></ion-input>
+    <div *ngIf="valid">
+      <p *ngIf="modifyFormGroup.get('email').hasError('required')">Email Required</p>
+    </div>
+  <ion-input formControlName="email" class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Email"></ion-input>
+
+  <div *ngIf="valid">
+    <p *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required</p>
+  </div>
+  <ion-input formControlName="password"  class="ion-margin-top ion-margin-start spacing" placeholder="Password"></ion-input>
+
+
+
+  <div *ngIf="valid">
+    <p *ngIf="modifyFormGroup.get('cpass').hasError('required')">Confirm Password Required </p>
+  </div>
+
+  <div *ngIf="valid">
+    <p *ngIf="modifyFormGroup.hasError('notMatching')"> Passwords Not Matching </p>
+  </div>
+  <ion-input  formControlName="cpass" class="ion-margin-top ion-margin-start spacing" placeholder="Confirm Password"></ion-input>
+  <ion-col>
+  <ion-button (click)="Register()" class="ion-text-center ion-margin-top ion-margin-start" >Sign up</ion-button>
+  </ion-col>
+  </form>
+  
+  
+  
+  </ion-content>
+  
