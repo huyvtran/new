@@ -1,14 +1,29 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <ion-header>
   <ion-toolbar>
-    <ion-title>admindashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGiVU5AazUo9Op4o_-hd-hCsPuTkO7VZN361mYnqhsXYALIi3-&s"
+      slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
+    <ion-title>
+      <img src="assets/images/whitebg.jpg" height="60" width="100">
+
+
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
+
 
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col text-center>
-        <ion-card>
+      <ion-col  text-center>
+        <ion-card  [routerLink]="['/chart']">
           <ion-card-header>
             <ion-card-title>
               <ion-icon name="cash"></ion-icon>
@@ -20,13 +35,13 @@
         </ion-card>
       </ion-col>
       <ion-col text-center>
-        <ion-card>
+        <ion-card  [routerLink]="['/admin']">
           <ion-card-header>
             <ion-card-title>
-              <ion-icon name="contacts"></ion-icon>
+              <ion-icon name="contacts"  [routerLink]="['/admin']"></ion-icon>
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content>
+          <ion-card-content  [routerLink]="['/admin']">
             Total Users <p> {{users }} </p>
           </ion-card-content>
         </ion-card>
@@ -36,19 +51,19 @@
     <ion-row>
 
       <ion-col text-center>
-        <ion-card>
+        <ion-card  [routerLink]="['/product-list']">
           <ion-card-header>
 
             <ion-card-title>
-              <ion-icon name="images"></ion-icon>
+              <ion-icon name="images"  [routerLink]="['/product-list']"> </ion-icon>
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content>Total Products <p> {{products}}</p></ion-card-content>
+          <ion-card-content  [routerLink]="['/product-list']" >Total Products <p> {{products}}</p></ion-card-content>
         </ion-card>
       </ion-col>
 
       <ion-col text-center>
-        <ion-card>
+        <ion-card [routerLink]="['/chart2']">
           <ion-card-header>
 
             <ion-card-title>
@@ -61,4 +76,25 @@
     </ion-row>
   </ion-grid>
 
+ 
+
 </ion-content>
+
+
+<!-- <ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon  id="brief" name="briefcase"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" name="notifications"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer> -->

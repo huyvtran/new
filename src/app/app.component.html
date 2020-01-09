@@ -5,18 +5,23 @@
   <ion-split-pane contentId="main-content">
   <ion-menu  contentId="main-content" type="overlay">
   <ion-header>
-   
+    <img src="../assets/images/bluesea.jpg">
   
-   <ion-toolbar style="margin-top: -4px;" >
+   <!--<ion-toolbar style="margin-top: -4px;" >
   <ion-title>
-  <ion-icon class="top" name="person"></ion-icon>
-  <ion-label>Hello User</ion-label>
+  
+    <img src="../assets/images/bluesea.jpg">
+  <p *ngIf="admin">
+  <ion-label>Hello Admin</ion-label></p>
+  <p *ngIf="Users">
+    <ion-label>Hello User</ion-label></p>
+    
   </ion-title>
-  </ion-toolbar>
+  </ion-toolbar>-->
   </ion-header>
+<h5 class="ion-text-center">Hello Admin</h5>
   
-  
-  
+  <!-- 
   <ion-content>
    <ion-list>
   <ion-searchbar (ionInput)="FilterJSONData($event)" style=" font-family: 'Open Sans', sans-serif;" placeholder='SHOP BY CATEGORY'></ion-searchbar>
@@ -93,8 +98,51 @@
   <p text-center >Legal Policy</p>
   <p text-center>Logout</p>
   </ion-content> 
+   -->
   
+
+   
+  <ion-content>
+ 
+    <ion-item lines="none">
+      <i class="material-icons">dashboard</i>
+   
+<ion-list  [routerLink]="['/admindashboard']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DashBoard</ion-list >
+      </ion-item>
+      
+    
+    <ion-item lines="none">
+    <ion-icon name="person-add"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <ion-list [routerLink]="['/register']" class="ion-text-center">Add Users</ion-list>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-icon name="eye"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-list class="ion-text-center" [routerLink]="['/admin']">View Users</ion-list>
+      </ion-item>
   
+      
+    <ion-item lines="none">
+      <ion-icon name="add-circle"></ion-icon>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <ion-list class="ion-text-center" [routerLink]="['/add-product']">Add Product</ion-list>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="people"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-list class="ion-text-center" [routerLink]="['/product-list']">All products</ion-list>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="power"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <ion-list class="ion-text-center" (click)="logOut()">LogOut</ion-list>
+          </ion-item>
+      
+    </ion-content>
   </ion-menu>
   <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>

@@ -1,8 +1,41 @@
+
+
+ion-card{
+//border-radius: 70px;
+height: 9em;
+    width: 10em;
+  --background: linear-gradient(#b24592 , #f15f79);
+  border-radius: 8px;
+    box-shadow: 0 0 10px #c8a8a8;
+}
 ion-icon{
+color:white;
     font-size: 43px;
 }
 
 ion-card-content{
     color:black;
     font-weight: 600;
+}
+
+
+// ion-icon {
+//     background: White;
+//     border-radius:20px;
+  
+//   }
+  ion-toolbar{
+    --background:#0b074d;
+  }
+  ion-menu-button{
+    color:#F37335;
+  }
+
+  #footer{
+    --background:#031646!important;
+    height:47px!important;
+       }
+#brief{
+  color: navy;
+  font-size: 21px;
 }

@@ -7,6 +7,7 @@ import { TestoComponent } from './testo/testo.component';
 import{ModalController} from '@ionic/angular';
 import { Register } from './Models/classModels';
 import { RestService } from './rest.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit{
   user:boolean;
   
 
-  constructor(private rest:RestService,
+  constructor(private rest:RestService,private route:Router,
     private platform: Platform,private mm:ModalController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,private toast:ToastController,public popoverController: PopoverController
@@ -88,9 +89,14 @@ this.admin=true;
     }
     
     }, (err) => {
-    console.log(err);
+    //console.log(err);
     
     });
+    }
+
+    logOut(){
+      this.rest.logout();
+      this.route.navigate(['/login']);
     }
 }
 

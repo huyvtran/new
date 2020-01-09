@@ -56,6 +56,18 @@ const routes: Routes = [
   {
     path: 'admindashboard',
     loadChildren: () => import('./admindashboard/admindashboard.module').then( m => m.AdmindashboardPageModule)
+  },
+  {
+    path: 'reseller',
+    loadChildren: () => import('./reseller/reseller.module').then( m => m.ResellerPageModule)
+  },
+  {
+    path: 'chart',
+    loadChildren: () => import('./chart/chart.module').then( m => m.ChartPageModule)
+  },
+  {
+    path: 'chart2',
+    loadChildren: () => import('./chart2/chart2.module').then( m => m.Chart2PageModule)
   }
  
 ];

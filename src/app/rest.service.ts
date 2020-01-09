@@ -50,7 +50,8 @@ export class RestService {
 
   logout() {
     localStorage.removeItem("LoggedInUser");
-  
+    localStorage.removeItem("LoggedInUserId");
+    localStorage.removeItem("LoggedInRole");
   }
 
 
@@ -81,7 +82,7 @@ export class RestService {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-       // x-access-token: 'access_token'+this.getToken()
+       'x-access-token': this.getToken()
           })          
     };
       return this.http.post<Product>(endpoint + 'api/product/admin' , data,this.httpOptions); 

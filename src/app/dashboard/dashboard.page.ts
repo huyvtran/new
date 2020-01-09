@@ -85,7 +85,7 @@ slideOptions = {
     
     /* Role Differntiation */
     if(this.rest.getRole()== "ADMIN"){
- this.route.navigate(['/admin']);
+ this.route.navigate(['/admindashboard']);
     //console.log('Success');
     }
     

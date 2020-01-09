@@ -4,6 +4,8 @@ import {  Router } from '@angular/router';
 import { FormGroup,FormBuilder, Validators ,FormArray  } from '@angular/forms';
 import { Register } from '../Models/classModels';
 import { Roles } from '../Models/classModels';
+import { ModalController, AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -20,7 +22,7 @@ export class RegisterPage implements OnInit {
   valid:boolean=false;
   valids:boolean=false;
   public data : Register = new Register();
-  constructor(private fb: FormBuilder, private myRoute: Router,public rest:RestService) {
+  constructor(private fb: FormBuilder, private modalCtrl: ModalController,private alertCtrl: AlertController, private myRoute: Router,public rest:RestService) {
     this.modifyFormGroup = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required],
@@ -40,7 +42,7 @@ this.valids=false;
     this.errmsg=false;
   }
 
-  Register(){  
+  async Register(){  
     this.modifyFormGroup.get("email").setValidators(Validators.required);
     this.modifyFormGroup.get("email").updateValueAndValidity();
     this.modifyFormGroup.get("username").setValidators(Validators.required);
@@ -77,16 +79,18 @@ this.valids=false;
         else
         {
           
-this.modifyFormGroup.reset();
-this.showMsg=true;
-          this.myRoute.navigate(['/home']);
+
+
+          this.myRoute.navigate(['/login']);
         }
         
       }, (err) => {
        // err.status(200).send("Error -> " + err);
-      // this.server=true;
+       this.showMsg=true;
+     
+     
         this.modifyFormGroup.reset();
-        //console.log(err);
+       // console.log(err);
       
       });
     }
@@ -94,7 +98,20 @@ this.showMsg=true;
     {
       // alert("false");
     }
+
+   //Dialog Box On SuccessFull Register
+   if(this.showMsg=true){
+      let alert = await this.alertCtrl.create({
+        header: 'Congratulations!',
+        message: 'You have Register Successfully',
+        buttons: ['OK']
+      });
+      alert.present().then(() => {
+        this.modalCtrl.dismiss();
+      });
+    
   }
+}
   passwordMatchValidator(group: FormGroup): any {
     if (group) {
       if (group.get("password").value !==group.get("cpass").value) {
@@ -104,6 +121,7 @@ this.showMsg=true;
    
     return null;
   }
+  
   
  
 }

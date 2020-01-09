@@ -13,8 +13,11 @@ import { TestoComponent } from './testo/testo.component';
 import { File } from '@ionic-native/file/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx'; 
 import { CartModalPage } from './pages/cart-modal/cart-modal.page';
+import { ChartPipe } from './chart.pipe';
+import 'chartjs-plugin-zoom';
+
 @NgModule({
-  declarations: [AppComponent,TestoComponent,CartModalPage],
+  declarations: [AppComponent,TestoComponent,CartModalPage, ChartPipe],
   entryComponents: [TestoComponent,CartModalPage],
   imports: [
     BrowserModule,HttpClientModule,NgxDatatableModule,

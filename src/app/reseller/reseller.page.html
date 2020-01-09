@@ -120,63 +120,30 @@
 
 
 <ion-content>
-  <ion-row >
+  <ion-row>
     <ion-col>
       <ion-icon [routerLink]="['/login']" class="ion-margin-top ion-margin-start" name="arrow-back"></ion-icon>
-    </ion-col >
-  </ion-row >
-  
+    </ion-col>
+  </ion-row>
+
   <ion-col>
     <div class="ion-text-center ion-margin-top">
-      <img  src="assets/images/whitebg11.jpg">
+      <img src="assets/images/whitebg11.jpg">
     </div>
-  </ion-col>  
-  
-  <p class="ion-margin-top ion-margin-start login">Create your Account</p>
-
- 
-  <form [formGroup]="modifyFormGroup" >
-
-    <!-- <div *ngIf="showMsg">
-      <p>Congrats.. You have Retgisterd Successfully <a [routerLink]="['/login']">SignIn</a></p>
-    </div> -->
-    <div *ngIf="valid">
-      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('username').hasError('required') ">Username required</p>
-    </div>
-    <ion-input formControlName="username" class="ion-margin-top ion-margin-start ion-justify-content-center" placeholder="UserName"></ion-input>
-    <div *ngIf="valid">
-      <p class="ion-margin-start"  *ngIf="modifyFormGroup.get('email').hasError('required')">Email Required</p>
-    </div>
-  <ion-input formControlName="email" class="ion-margin-top ion-margin-start " placeholder="Email"></ion-input>
-
-  <div *ngIf="valid">
-    <p class="ion-margin-start" *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required</p>
-  </div>
-  <ion-input formControlName="password" type="password" class="ion-margin-top ion-margin-start ion-justify-content-center spacing" placeholder="Password"></ion-input>
-
-
-
-  <div *ngIf="valid">
-    <p class="ion-margin-start"  *ngIf="modifyFormGroup.get('cpass').hasError('required')">Confirm Password Required </p>
-  </div>
-
-  <div *ngIf="valid">
-    <p class="ion-margin-start" *ngIf="modifyFormGroup.hasError('notMatching')"> Passwords Not Matching </p>
-  </div>
-
-  <ion-input  type="password" formControlName="cpass" class="ion-margin-top ion-margin-start  spacing" placeholder="Confirm Password"></ion-input>
-  <ion-col class="ion-justify-content-center">
- 
-  <ion-button (click)="Register()" class="ion-text-center ion-margin-top ion-margin-start" >Sign up</ion-button>
-  <p class="ion-margin-top ion-text-center ">
-    <span style="color: navy; font-size: 14px;" class="ion-margin-top ion-text-center ion-margin-start " [routerLink]="['/reseller']">Create Reseller Account</span></p>
   </ion-col>
 
-
+  <p class="ion-margin-top ion-margin-start login">Reseller Account</p>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Business Name"></ion-input>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Owner Name"></ion-input>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Contact NO"></ion-input>
+   
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Registration Certificate"></ion-input>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="GST Certificate"></ion-input>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="PAN Card"></ion-input>
+    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Product Category"></ion-input>
+   <ion-textarea  class="ion-margin-top ion-margin-start ion-padding-end"   placeholder="Complete Address"></ion-textarea>
  
-  </form>
-  
-  
-  
-  </ion-content>
-  
+    <ion-col>
+      <ion-button  class="ion-text-center ion-margin-top ion-margin-start">Sign up</ion-button>
+    </ion-col>
+</ion-content>

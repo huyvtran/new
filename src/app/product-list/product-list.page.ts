@@ -13,7 +13,7 @@ export class ProductListPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
 
-  displayedColumns: string[] = ['name','price','discount','desc', 'image'];
+  displayedColumns: string[] = ['name','price','discount','desc', 'category'];
 
 
 
