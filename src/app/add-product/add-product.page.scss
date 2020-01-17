@@ -1,14 +1,16 @@
 ion-content{
-    --background:linear-gradient(#8e44ad , #c0392b);
-    font-family: 'Open Sans', sans-serif;
+  //  --background:linear-gradient(#434343, #000000);
+  --background:#ddd6f3;
+  font-family: 'Abel', sans-serif!important;
 }
 ion-item{
-    --background:linear-gradient(#ffc3a0 , #ffafbd);
+   // --background:linear-gradient(#ffc3a0 , #ffafbd);
     margin-top:3em;
+    --background:#ffffffff;
+    font-family: 'Abel', sans-serif!important;
 }
 ion-button{
-    margin-left: 9em;
-    margin-top: 3em;
+  text-transform: uppercase;
 }
 
 .align{
@@ -29,7 +31,9 @@ ion-icon {
   ion-menu-button{
     color:#F37335;
   }
-
+p{
+  color:rgb(199, 34, 34);
+}
 
    
   #footer{

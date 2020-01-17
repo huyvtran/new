@@ -1,10 +1,12 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild,Input } from '@angular/core';
 import { PopoverController,NavController,IonSlides, ToastController } from '@ionic/angular';
 import { TestoComponent } from '../testo/testo.component';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../app/Models/classModels'
+import { AppComponent } from '../app.component';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -16,6 +18,10 @@ export class DashboardPage implements OnInit {
   ar;
   role;
   listData;
+  
+  showFile = false;
+  fileUploads: Observable<string[]>;
+  @Input() fileUpload: string;
   public modifyFormGroup : FormGroup;
 
   products: Product[] = [];
@@ -24,7 +30,7 @@ export class DashboardPage implements OnInit {
   student:boolean;
 
   @ViewChild(IonSlides,{static:false}) slides:IonSlides
-  constructor(private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
+  constructor(private test:AppComponent, private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
   
   SlideChanged(){
 
@@ -53,11 +59,22 @@ slideOptions = {
 
 
   ngOnInit() {
+  
     this.getuserprofile();
     this.retrieval();
+   this.showFiles(true);
   }
 
 
+  
+  showFiles(enable: boolean):void {
+    this.showFile = enable;
+
+    if (enable) {
+      this.fileUploads = this.rest.getFiles();
+      console.log(this.fileUploads);
+    }
+  }
     
   getuserprofile(){
     this.rest.getuserprofile().subscribe((result) => {
@@ -79,19 +96,22 @@ slideOptions = {
 
       this.ar = Object.entries(this.userid.roles).map(([type, value]) => ({ type, value }));
     this.role= this.ar[0].value;
-    console.log(this.role.name);
+   // console.log(this.role.name);
+
     this.rest.sendRole(this.role.name);
  
-    
+
     /* Role Differntiation */
     if(this.rest.getRole()== "ADMIN"){
  this.route.navigate(['/admindashboard']);
-    //console.log('Success');
+
+ 
     }
     
     else {
+    
       this.route.navigate(['/dashboard']);
-    //console.log('Fail');
+ 
     
     }
     }
@@ -108,14 +128,15 @@ slideOptions = {
     this.rest.getproduct().subscribe((Product) => {
 
       if (Product === undefined) {
-        console.log(Product);
+      //  console.log(Product);
 
 
       }
       else {
 
-     this.products=Product=[];
+     this.products=Product.product;
      
+    // console.log(this.products)
       //  this.listData = new MatTableDataSource(this.arr[1].value);
 
 

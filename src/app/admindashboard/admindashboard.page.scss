@@ -1,15 +1,41 @@
 
 
-ion-card{
+.card1{
 //border-radius: 70px;
 height: 9em;
-    width: 10em;
+    width: 9em;
   --background: linear-gradient(#b24592 , #f15f79);
   border-radius: 8px;
     box-shadow: 0 0 10px #c8a8a8;
 }
+
+.card2{
+  //border-radius: 70px;
+  height: 9em;
+      width: 9em;
+    --background: linear-gradient(#FFB75E  ,#ED8F03 );
+    border-radius: 8px;
+      box-shadow: 0 0 10px #c8a8a8;
+  }
+
+  .card3{
+    //border-radius: 70px;
+    height: 9em;
+        width: 9em;
+      --background: linear-gradient( #76b852 ,#8DC26F );
+      border-radius: 8px;
+        box-shadow: 0 0 10px #c8a8a8;
+    }
+    .card4{
+      //border-radius: 70px;
+      height: 9em;
+          width: 9em;
+        --background: linear-gradient( #7b4397 ,#dc2430 );
+        border-radius: 8px;
+          box-shadow: 0 0 10px #c8a8a8;
+      }
 ion-icon{
-color:white;
+color:white;  
     font-size: 43px;
 }
 

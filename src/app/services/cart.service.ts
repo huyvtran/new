@@ -46,6 +46,7 @@ export class CartService {
     }
     this.cartItemCount.next(this.cartItemCount.value + 1);
   }
+  /*
   decreaseProduct(product) {
     for (let [index, p] of this.cart.entries()) {
       if (p.id === product.id) {
@@ -65,6 +66,7 @@ export class CartService {
         this.cart.splice(index, 1);
       }
     }
+    */
   }
 
 
@@ -95,4 +97,4 @@ export class CartService {
 
 
 
-}
+

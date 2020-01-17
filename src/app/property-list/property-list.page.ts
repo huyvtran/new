@@ -4,17 +4,16 @@ import { RestService } from '../rest.service';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.page.html',
-  styleUrls: ['./product-list.page.scss'],
+  selector: 'app-property-list',
+  templateUrl: './property-list.page.html',
+  styleUrls: ['./property-list.page.scss'],
 })
-export class ProductListPage implements OnInit {
+export class PropertyListPage implements OnInit {
 
   listData: MatTableDataSource<any>;
   arr;
 
-  displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','options'];
-
+  displayedColumns: string[] = ['propertyname', 'propertyprice', 'propertyimage','userId','options'];
 
 
 
@@ -28,7 +27,7 @@ export class ProductListPage implements OnInit {
 
 
   retrieval() {
-    this.rest.getproduct().subscribe((result) => {
+    this.rest.getproperty().subscribe((result) => {
 
       if (result === undefined) {
         console.log(result);
@@ -53,7 +52,7 @@ export class ProductListPage implements OnInit {
 
   }
 
-
+  
   alert(){
     alert('df');
   }

@@ -132,18 +132,107 @@
     </div>
   </ion-col>
 
-  <p class="ion-margin-top ion-margin-start login">Reseller Account</p>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Business Name"></ion-input>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Owner Name"></ion-input>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Contact NO"></ion-input>
+  <h3 class="ion-margin-top ion-margin-start login">Partner Account</h3>
+  <form [formGroup]="modifyFormGroup">
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Business_name').hasError('required')">Business Name
+        Required </p>
+    </div>
+    <ion-input formControlName="Business_name" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Business Name *"></ion-input>
+
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('owner_name').hasError('required')">Owner Name Required
+      </p>
+    </div>
+
+    <ion-input formControlName="owner_name" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Owner Name *"></ion-input>
+
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('owneraddress').hasError('required')">Owner Address
+        Required </p>
+    </div>
+    <ion-textarea formControlName="owneraddress" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Owner Address *"></ion-textarea>
+
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Email_address').hasError('required')">Email Address
+        Required </p>
+    </div>
+    <div  *ngIf="modifyFormGroup.get('Gst_no').hasError('email')">Email must be a valid email address</div>
+    <ion-input formControlName="Email_address" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Email_address*"></ion-input>
+
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Gst_no').hasError('required')">Gst_no Required
+      </p>
+    </div>
+    <ion-input formControlName="Gst_no" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Gst_no *"></ion-input>
+
+      <div *ngIf="valid">
+        <p class="ion-margin-start" *ngIf="modifyFormGroup.get('phone_no').hasError('required')">Phone No Required </p>
+      </div>
+      <ion-input formControlName="phone_no" class="ion-margin-top ion-margin-start ion-padding-end"
+        placeholder="Phone  No *"></ion-input>
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required
+      </p>
+    </div>
+    <ion-input formControlName="password" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Password *"></ion-input>
+      <div *ngIf="valid">
+        <p *ngIf="modifyFormGroup.hasError('notMatching')"> Passwords Not Matching </p>
+      </div>
+
+      <div *ngIf="valid">
+        <p class="ion-margin-start" *ngIf="modifyFormGroup.get('cpass').hasError('required')">Confirm Password Required
+        </p>
+      </div>
+      <ion-input formControlName="cpass" class="ion-margin-top ion-margin-start ion-padding-end"
+        placeholder="Confirm Password *"></ion-input>
+  
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Registration_certificate').hasError('required')">
+        Registration certificate Required </p>
+    </div>
+    <h3  style="font-size: 18px;"  class="ion-margin-top ion-margin-start ion-padding-end">Submit your proof's</h3>
+    <ion-input type="file" (change)="selectFile($event)" formControlName="Registration_certificate"
+      class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Registration Certificate *"></ion-input>
+
    
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Registration Certificate"></ion-input>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="GST Certificate"></ion-input>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="PAN Card"></ion-input>
-    <ion-input class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Product Category"></ion-input>
-   <ion-textarea  class="ion-margin-top ion-margin-start ion-padding-end"   placeholder="Complete Address"></ion-textarea>
- 
+    <ion-input type="file" (change)="selectFile($event)" id="ii" formControlName="GST_Certificate"
+      class="ion-margin-top ion-margin-start ion-padding-end" placeholder="GST Certificate *"></ion-input>
+
+   
+    <ion-input type="file" (change)="selectFile($event)" value="dsfd" formControlName="Pan_card"
+      class="ion-margin-top ion-margin-start ion-padding-end" placeholder="PAN Card *"></ion-input>
+
+
+
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Product_category').hasError('required')">Product Name
+        Required </p>
+    </div>
+    <ion-input formControlName="Product_category" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Product Name *"> </ion-input>
+    <div *ngIf="valid">
+      <p class="ion-margin-start" *ngIf="modifyFormGroup.get('complete_address').hasError('required')">Complete Address
+        Required </p>
+    </div>
+
+    <ion-textarea formControlName="complete_address" class="ion-margin-top ion-margin-start ion-padding-end"
+      placeholder="Complete Address *"></ion-textarea>
+
     <ion-col>
-      <ion-button  class="ion-text-center ion-margin-top ion-margin-start">Sign up</ion-button>
+      <ion-button (click)="register()" class="ion-text-center ion-margin-top ion-margin-start">Sign up</ion-button>
     </ion-col>
+  </form>
 </ion-content>

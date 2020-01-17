@@ -18,36 +18,24 @@
 </ion-header>
 
 <ion-content>
-  <h3 style="text-align: center;"> Product List</h3>
+  <h3 style="text-align: center;"> Property List</h3>
   <table mat-table [dataSource]="listData" class="table">
 
 
-    <ng-container matColumnDef="name">
-      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Product Name </th>
-      <td mat-cell *matCellDef="let arr"> {{arr.name}}</td>
+    <ng-container matColumnDef="propertyname">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Property Name </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.propertyname}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="price">
-      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> price </th>
-      <td mat-cell *matCellDef="let arr"> {{arr.price}} </td>
+    <ng-container matColumnDef="propertyprice">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.propertyprice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="propertyimage">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let arr">  <img src="http://localhost:8080/property/{{arr.propertyimage?.split('\\')[2]}}" style="height:58px; width:109px;margin:-11px 2px 2px 2px;"> </td>
     </ng-container>
 
-    <ng-container matColumnDef="discount">
-      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Discount </th>
-      <td mat-cell *matCellDef="let arr"> {{arr.discount}} </td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="desc">
-      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let arr"> {{arr.desc}} </td>
-    </ng-container>
-    
-
-    <ng-container matColumnDef="category">
-      <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Category </th>
-      <td mat-cell *matCellDef="let arr"> {{arr.category}} </td>
-    </ng-container>
 
     <ng-container matColumnDef="userId">
       <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> UserId </th>
@@ -56,7 +44,7 @@
 
     <ng-container matColumnDef="options">
       <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Option </th>
-      <td mat-cell *matCellDef="let arr"><ion-button [routerLink]="['/recharge',arr.userId]">Recharge</ion-button> </td>
+      <td mat-cell *matCellDef="let arr"><ion-button [routerLink]="['/recharge',arr.userId]">send Money</ion-button> </td>
     </ng-container>
 
   

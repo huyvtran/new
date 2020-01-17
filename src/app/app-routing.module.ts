@@ -40,6 +40,10 @@ const routes: Routes = [
     path: 'all-category',
     loadChildren: () => import('./all-category/all-category.module').then( m => m.AllCategoryPageModule)
   },
+   {
+    path: 'user-profile',
+    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+  },
 
   {
     path: 'add-product',
@@ -68,6 +72,14 @@ const routes: Routes = [
   {
     path: 'chart2',
     loadChildren: () => import('./chart2/chart2.module').then( m => m.Chart2PageModule)
+  },
+  {
+    path: 'recharge/:id',
+    loadChildren: () => import('./recharge/recharge.module').then( m => m.RechargePageModule)
+  },
+  {
+    path: 'property-list',
+    loadChildren: () => import('./property-list/property-list.module').then( m => m.PropertyListPageModule)
   }
  
 ];

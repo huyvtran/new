@@ -18,49 +18,259 @@
 </ion-header>
 
 <ion-content padding>
-  <form  [formGroup]="forms">
-  <ion-item>
-    <ion-label>Name of Product </ion-label>
-    <ion-input formControlName="name"></ion-input>
-  </ion-item>
+  <div *ngIf="prod">
 
-  <ion-item>
-    <ion-label>Price of Product </ion-label>
-    <ion-input formControlName="price"></ion-input>
-  </ion-item>
+    <form [formGroup]="forms">
+
+      <ion-item lines="none">
+        <ion-label>category</ion-label>
+        <ion-select (ionChange)=" alert(signup)" [(ngModel)]="signup.state" placeholder="Please Select State"
+          formControlName="category">
+          <ion-select-option *ngFor="let state of statelist" [value]="state.state_id">{{state.state_name}}
+          </ion-select-option>
+        </ion-select>
+
+      </ion-item>
 
 
-  <ion-item>
-    <ion-label>Discount </ion-label>
-    <ion-input formControlName="discount"></ion-input>
-  </ion-item>
 
-<ion-item>
-  <ion-textarea formControlName="desc" rows="3" cols="15" placeholder="Please Enter the Desription of the ..."></ion-textarea>
-</ion-item>
 
-<ion-item>
-  <ion-label>Post In</ion-label>
-  <ion-select  formControlName="category" placeholder="Category">
-    <ion-select-option   value="Deal">Deal Of the Day</ion-select-option>
-    <ion-select-option   value="New">New Arrivals</ion-select-option>
-    <ion-select-option   value="Trending">Trending Products</ion-select-option>
-  </ion-select>
-</ion-item>
 
-<ion-item>
-  <ion-label for="time">Image *</ion-label>
-  <img [src]="imageUrl"   style="width:250px;height: 200px;">
-</ion-item>
-<ion-item>
-<ion-input type="file" formControlName="image" #image accept="image/*" name="image" (change)="handleFileInput($event.target.files)"> </ion-input>
-</ion-item>
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('category').hasError('required')">Category is Required </p>
+      </div>
 
-<!--
-<ion-button (click)="PickImage()" style="margin-top: 3em;
-margin-left:5em;">Choose An Image </ion-button>-->
-<ion-button  (click)="add()" color="danger">Post</ion-button>
-</form>
+
+      <ion-item>
+        <ion-label> Sub category</ion-label>
+        <ion-select formControlName="sub">
+          <ion-select-option value="deal">Deal Of the day</ion-select-option>
+          <ion-select-option value="new">New Arrivals</ion-select-option>
+          <ion-select-option value="trending">Trending</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('sub').hasError('required')">Sub category is Required </p>
+      </div>
+
+      <ion-item>
+        <ion-label>Name of Product </ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('name').hasError('required')">Name is Required </p>
+      </div>
+
+
+
+      <ion-item>
+        <ion-label>Price of Product </ion-label>
+        <ion-input formControlName="price"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('price').hasError('required')">Price is Required </p>
+      </div>
+
+
+      <ion-item>
+        <ion-label>Discount </ion-label>
+        <ion-input formControlName="discount"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('discount').hasError('required')">Discount is Required </p>
+      </div>
+
+
+      <ion-item>
+        <ion-textarea formControlName="desc" rows="3" cols="15" placeholder="Please Enter the Desription of the ...">
+        </ion-textarea>
+      </ion-item>
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('desc').hasError('required')">Description Required </p>
+      </div>
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="image"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('image').hasError('required')">Image Required </p>
+      </div>
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="image1"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('image').hasError('required')">Image Required </p>
+      </div>
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="image2"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('image').hasError('required')">Image Required </p>
+      </div>
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="image3"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('image').hasError('required')">Image Required </p>
+      </div>
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="image4"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="forms.get('image').hasError('required')">Image Required </p>
+      </div>
+
+      <div class="row">
+        <div class="col text-center ion-margin-top">
+          <ion-button (click)="add()" color="danger">
+            post
+          </ion-button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+  <!------------------Property Fileds ----------------------------->
+
+
+  <div *ngIf="property">
+
+    <form [formGroup]="propertyforms">
+
+
+
+      <ion-item lines="none">
+        <ion-label>Category</ion-label>
+        <ion-select (ionChange)=" alert(signup)" [(ngModel)]="signup.state" formControlName="category"
+          placeholder="Please Select State">
+          <ion-select-option *ngFor="let state of statelist" [value]="state.state_id">{{state.state_name}}
+          </ion-select-option>
+        </ion-select>
+
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Name of Property </ion-label>
+        <ion-input formControlName="propertyname"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyname').hasError('required')">PropertyName required
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-textarea formControlName="propertydesc" rows="3" cols="15"
+          placeholder="Enter the Desription of the property"></ion-textarea>
+      </ion-item>
+
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertydesc').hasError('required')">Property Description
+          required </p>
+      </div>
+
+      <ion-item>
+        <ion-label>Price of Property</ion-label>
+        <ion-input formControlName="propertyprice"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyprice').hasError('required')">Propertyprice required
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="propertyimage"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyimage').hasError('required')">PropertyImage required
+        </p>
+      </div>
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="propertyimage1"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyimage').hasError('required')">PropertyImage required
+        </p>
+      </div>
+
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="propertyimage2"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyimage').hasError('required')">PropertyImage required
+        </p>
+      </div>
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="propertyimage3"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyimage').hasError('required')">PropertyImage required
+        </p>
+      </div>
+
+
+      <ion-item>
+        <ion-input type="file" id="file" (change)="selectFiles($event)" formControlName="propertyimage4"
+          class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
+      </ion-item>
+
+      <div *ngIf="valid">
+        <p class="ion-no-margin" *ngIf="propertyforms.get('propertyimage').hasError('required')">PropertyImage required
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col text-center ion-margin-top">
+          <ion-button (click)="propertyAdd()" color="danger">
+            post property
+          </ion-button>
+        </div>
+      </div>
+
+
+
+    </form>
+  </div>
 </ion-content>
 
 
@@ -75,7 +285,7 @@ margin-left:5em;">Choose An Image </ion-button>-->
           <ion-icon id="brief" name="notifications"></ion-icon>
         </ion-col>
         <ion-col size="4">
-          <ion-icon id="brief" name="person"></ion-icon>
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

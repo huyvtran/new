@@ -32,12 +32,12 @@ export class Chart2Page implements OnInit {
     // Only Change 3 values
     let data = [
       Math.round(Math.random() * 100),
-      59,
+      59, 
       80,
       (Math.random() * 100),
       56,
       (Math.random() * 100),
-      40];
+      20];
     let clone = JSON.parse(JSON.stringify(this.barChartData));
     clone[0].data = data;
     this.barChartData = clone;

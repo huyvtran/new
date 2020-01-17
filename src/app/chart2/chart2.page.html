@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>chart2</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
   <div>
@@ -14,9 +10,9 @@
               [legend]="barChartLegend"
               [chartType]="barChartType"
               (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
+              (chartClick)="chartClicked($event)">
+            </canvas>
     </div>
-    <button (click)="randomize()">Update</button>
   </div>
 
 </ion-content>

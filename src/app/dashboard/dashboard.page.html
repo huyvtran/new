@@ -17,7 +17,12 @@
 </ion-header>
 
 <ion-content>
-  <div class="bar bar-header bar-positive">
+  <!--  <div *ngFor="let file of fileUploads | async">
+    <img [src]="file">
+  </div>
+  -->
+
+  <div id="head" class="bar bar-header bar-positive">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -100,216 +105,75 @@
   </ion-slides>
 
   <ion-title style="padding:8px 2px 12px 2px;" class="deal" text-center>Deal of the Day</ion-title>
-
-
   <ion-row>
-    <ion-col>
+    <div *ngFor="let product of products ">
+    <ion-col *ngIf="product.category !== 'Property' && product.sub =='deal'">
+
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Offers on Electronics </ion-card-title>
+          <ion-card-title>{{product.name}}</ion-card-title>
           <hr>
         </ion-card-header>
+
         <ion-card-content>
-          <img src="../../assets/images/image1.jpg" style="height:58px; width:109px;margin:-11px 2px 2px 2px;">
-          <p>Deal on Electronics</p>
+          <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+          <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
         </ion-card-content>
       </ion-card>
     </ion-col>
-
-
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Top Appliances</ion-card-title>
-          <hr>
-        </ion-card-header>
-        <ion-card-content>
-          <img src="../../assets/images/image3.jpg" style="height:70px; width:117px;margin:-11px 2px 2px -2px;">
-          <p style="padding: 0px 2px 2px 7px;">Deal on Appliances</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+    </div>
   </ion-row>
-
-  <ion-row>
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>Mobile Accessories</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image4.jpg" style="height:70px; width:109px;margin:-11px 2px 2px 2px;">
-          <p style="padding: 3px 2px 2px 17px;"> Mobile Smarter</p>
-        </ion-card-content>
-
-      </ion-card>
-    </ion-col>
+  
 
 
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Deal On Laptops</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image9.jpg" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
-          <p style=" padding: 1px 2px 2px 18px;">Smart Gaming</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-
-  <!------------------New Arrivals----------------->
-  <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
-
-  <ion-row>
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>New Arrivals</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image10.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p>Into Offer Zone</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+    <!------------------New Arrivals----------------->
+    <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
 
 
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>New Arrivals</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image11.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p>Upcoming to Way</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>New Arrivals</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image5.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p>Smart Wireless Chargers </p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>New Arrivals</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image2.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p>Home Appliances</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <div *ngFor="let product of products ">
+      <ion-col *ngIf="product.category !== 'Property' && product.sub =='new'">
+  
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{product.name}}</ion-card-title>
+            <hr>
+          </ion-card-header>
+  
+          <ion-card-content>
+            <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      </div>
+    </ion-row>
+    
   <!------------------------------Trending Products-------------------------------->
   <ion-title style="padding:8px 2px 12px 2px;" class="deal3" text-center>Trending Products </ion-title>
-  <ion-row>
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>New Trends</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image8.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p style="    padding: 9px 2px 2px 21px;">Trend Life </p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-
-
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-
-          <ion-card-title>New Trends</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-          <img src="../../assets/images/image5.jpg" style="height:61px; width:110px;margin:-11px 2px 2px -2px;">
-          <p>Arriving Soon</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-  </ion-row>
 
   <ion-row>
-    <ion-col>
+    <div *ngFor="let product of products ">
+    <ion-col *ngIf="product.category !== 'Property' && product.sub =='trending'">
 
       <ion-card>
         <ion-card-header>
-
-          <ion-card-title>New Trends</ion-card-title>
+          <ion-card-title>{{product.name}}</ion-card-title>
           <hr>
         </ion-card-header>
 
         <ion-card-content>
-          <img src="../../assets/images/image0.jpg" style="height:61px; width:61px;margin:-11px 2px 2px 21px;">
-          <p>Arriving Soon</p>
+          <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+          <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
         </ion-card-content>
       </ion-card>
     </ion-col>
-
-
-    <ion-col>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>New Trends</ion-card-title>
-          <hr>
-        </ion-card-header>
-
-        <ion-card-content>
-
-          <img src="../../assets/images/image3.jpg" style="height:70px; width:117px;margin:-11px 2px 2px -2px;">
-          <p style="padding: 2px 2px 2px 16px;">Arriving Soon</p>
-
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+    </div>
   </ion-row>
 </ion-content>
 
+
+<!---Footer-->
 <ion-footer style="text-align: center;">
   <ion-toolbar id="footer">
     <ion-grid>
@@ -321,7 +185,7 @@
           <ion-icon id="brief" name="notifications"></ion-icon>
         </ion-col>
         <ion-col size="4">
-          <ion-icon id="brief" name="person"></ion-icon>
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

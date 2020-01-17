@@ -1,0 +1,91 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGiVU5AazUo9Op4o_-hd-hCsPuTkO7VZN361mYnqhsXYALIi3-&s"
+      slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
+    <ion-title>
+      <img src="assets/images/whitebg.jpg" height="60" width="100">
+
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <h4 atyle="text-align: left;padding: 23px;">Money transferring  to : &nbsp;&nbsp;&nbsp;{{name}}</h4>
+  <form [formGroup]="modifyFormGroup">
+
+    <ion-list lines="none">
+<p *ngIf="err"> Please Enter Proper Amount</p>
+      <ion-item>
+        <ion-input slot="end" id="two" formControlName="two" [(ngModel)]="Wallet"
+          class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Amount"></ion-input>
+
+        <ion-label>Available </ion-label>
+      </ion-item>
+
+
+      <ion-item>
+   
+        <ion-input id="one" slot="end" formControlName="one" class="ion-margin-top ion-margin-start ion-padding-end"
+          placeholder="Enter The Amount"></ion-input>
+
+        <ion-label>Enter the Amount </ion-label>
+      </ion-item>
+
+
+
+      <ion-item>
+
+
+        <ion-input id="three" slot="end" formControlName="Wallet" [(ngModel)]="total"
+          class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Amount"></ion-input>
+
+        <ion-label>Total </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+
+
+
+
+    <ion-button *ngIf="checks"    (click)="check()">Check</ion-button>&nbsp;&nbsp;&nbsp;
+
+    <ion-button *ngIf="btn"  (click)="update(id)">Recharge</ion-button>
+
+
+
+
+  </form>
+
+
+
+</ion-content>
+
+
+
+<ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon id="brief" name="briefcase"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" name="notifications"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

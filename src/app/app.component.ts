@@ -18,11 +18,17 @@ export class AppComponent implements OnInit{
   arr;
   ar;
   role;
-
+name;
+owner_name;
+business_name;
+Email_address;
+phone_no;
+owneraddress;
+web_address;
   public data : Register = new Register();
   errmsg: boolean;
-  admin:boolean;
-  user:boolean;
+  admin:boolean=false;
+  user:boolean=false;
   
 
   constructor(private rest:RestService,private route:Router,
@@ -48,9 +54,60 @@ export class AppComponent implements OnInit{
     });
   }
 
+  goto(page){
+    this.route.navigate(['/add-product']);
+  }
+  topClick(){
+    this.route.navigate(['/login']);
+  }
    ngOnInit(){
+    this.getuserDetails();
     this.getuserprofile();
+   
    }
+
+   navigate(){
+    this.route.navigate(['/add-product']);
+   }
+
+
+
+   getuserDetails(){
+    this.rest.userprofile().subscribe((result) => {       
+       
+      if(result === undefined)
+      {
+        console.log(result);
+        this.errmsg=true;    
+      }
+      else
+      {
+   
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+      this.userid = this.arr[0].value;
+      console.log(this.userid);
+this.owner_name=this.userid.owner_name;
+this.business_name=this.userid.business_name;
+this.Email_address=this.userid.Email_address;
+this.phone_no=this.userid.phone_no;
+this.owneraddress=this.userid.owneraddress;
+ this.web_address=this.userid.web_address;
+    
+
+      /* to get role of user */
+
+   
+    
+      }
+      
+    }, (err) => {
+      console.log(err);
+    
+    });
+  }
+
+
+    
   getuserprofile(){
     this.rest.getuserprofile().subscribe((result) => {
     
@@ -64,6 +121,7 @@ export class AppComponent implements OnInit{
      /* to get userdetails */
       this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
       this.userid = this.arr[1].value;
+      this.name=this.userid.owner_name;
       this.rest.sendId(this.userid.id);
     
 
@@ -82,6 +140,7 @@ this.admin=true;
     }
     
     else {
+    
     this.user=true;
   
     
@@ -97,6 +156,9 @@ this.admin=true;
     logOut(){
       this.rest.logout();
       this.route.navigate(['/login']);
+      this.admin=false;
+      this.user=false;
     }
+
 }
 

@@ -1,153 +1,203 @@
-
-
-
 <ion-app>
-  <ion-split-pane contentId="main-content">
-  <ion-menu  contentId="main-content" type="overlay">
-  <ion-header>
-    <img src="../assets/images/bluesea.jpg">
-  
-   <!--<ion-toolbar style="margin-top: -4px;" >
-  <ion-title>
-  
-    <img src="../assets/images/bluesea.jpg">
-  <p *ngIf="admin">
-  <ion-label>Hello Admin</ion-label></p>
-  <p *ngIf="Users">
-    <ion-label>Hello User</ion-label></p>
-    
-  </ion-title>
-  </ion-toolbar>-->
-  </ion-header>
-<h5 class="ion-text-center">Hello Admin</h5>
-  
-  <!-- 
-  <ion-content>
-   <ion-list>
-  <ion-searchbar (ionInput)="FilterJSONData($event)" style=" font-family: 'Open Sans', sans-serif;" placeholder='SHOP BY CATEGORY'></ion-searchbar>
-  <ion-list style="margin-top: 1em;">
-  <button ion-item style="background: #eeeeee;">
-  <ion-icon name="tv" item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="presentPopover($event)"
-  >Electronics</span>
-  </button>
-  <ion-icon id="sidebar_right_icon" name="arrow-dropright" slot="end" (click)="presentPopover($event)">
-  </ion-icon>
-  </ion-list>
-  </ion-list>
-  
-  
-  <ion-list style="margin-top: -1em;">
-  <ion-list>
-  <button ion-item style="background: #eeeeee;">
-  <ion-icon name="home" item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span (click)="presentPopover($event)"
-  >Home Appliances</span>
-  </button>
-  <ion-icon id="sidebar_right_icon2"  name="arrow-dropright" slot="end" (click)="presentPopover($event)">
-  </ion-icon>
-  </ion-list>
-  </ion-list>
-  
-  
-  <ion-list style="margin-top:-3px;">
-  <button ion-item  style="background: #eeeeee;">
-  <ion-icon name="pricetags" item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Offer Zone</span>
-  </button>
-  </ion-list>
-  
-                                                                                                      
-  <ion-list>
-  <button ion-item  style="background: #eeeeee;">
-  <ion-icon name="briefcase"  item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Orders</span>
-  </button>
-  </ion-list>
-  
-  <ion-list>
-  <button ion-item  style="background: #eeeeee;">
-  <ion-icon name="cart" item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Cart</span>
-  </button>
-  </ion-list>
-  
-  <ion-menu-toggle>
-  <ion-list>
-  <button ion-item  style="background: #eeeeee;">
-  <ion-icon name="heart" item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Wishlist</span>
-  </button>
-  </ion-list>
-  </ion-menu-toggle>
-  
-  
-  
-  <ion-menu-toggle>
-  <ion-list>
-  <button ion-item  style="background: #eeeeee;">
-  <ion-icon name="microphone"   item-start></ion-icon>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Choose Language</span>
-  </button>
-  </ion-list>
-  </ion-menu-toggle>
-  
-  
-  <hr>
-  <p text-center >Help Center</p>
-  <p text-center >Legal Policy</p>
-  <p text-center>Logout</p>
-  </ion-content> 
-   -->
-  
+  <ion-menu side="start" menuId="first" contentId="content1">
 
-   
-  <ion-content>
- 
-    <ion-item lines="none">
-      <i class="material-icons">dashboard</i>
-   
-<ion-list  [routerLink]="['/admindashboard']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DashBoard</ion-list >
-      </ion-item>
-      
+
+    <!--------ADMIN DASHBOARD---------------->      
+<ion-header>
+
+</ion-header>
     
-    <ion-item lines="none">
-    <ion-icon name="person-add"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <ion-list [routerLink]="['/register']" class="ion-text-center">Add Users</ion-list>
+
+<ion-content>
+  <div *ngIf="admin">
+<h5 class="ion-text-center">Hello &nbsp;&nbsp;&nbsp;<ion-label>{{owner_name}}</ion-label></h5> 
+
+<ion-list  lines="none">
+  <ion-menu-toggle auto-hide="true">
+    <ion-item>
+        <i class="material-icons" [routerLink]="['/admindashboard']">dashboard</i>
+        <ion-label [routerLink]="['/admindashboard']" class="ion-margin-start">Dashboard</ion-label>
     </ion-item>
-    
-    <ion-item lines="none">
-      <ion-icon name="eye"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <ion-list class="ion-text-center" [routerLink]="['/admin']">View Users</ion-list>
-      </ion-item>
-  
-      
-    <ion-item lines="none">
-      <ion-icon name="add-circle"></ion-icon>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <ion-list class="ion-text-center" [routerLink]="['/add-product']">Add Product</ion-list>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-icon name="people"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <ion-list class="ion-text-center" [routerLink]="['/product-list']">All products</ion-list>
-        </ion-item>
+  </ion-menu-toggle>
+</ion-list>
 
-        <ion-item lines="none">
-          <ion-icon name="power"></ion-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <ion-list class="ion-text-center" (click)="logOut()">LogOut</ion-list>
+<ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item>
+          <ion-icon [routerLink]="['/reseller']" name="person-add"></ion-icon>
+          <ion-label [routerLink]="['/reseller']" class="ion-margin-start">Add Users</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+ 
+
+  <ion-list  lines="none">
+      <ion-menu-toggle auto-hide="true">
+        <ion-item>
+            <ion-icon [routerLink]="['/admin']" name="eye"></ion-icon>
+            <ion-label [routerLink]="['/admin']" class="ion-margin-start">View Users</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+   
+
+    <ion-list  lines="none">
+        <ion-menu-toggle auto-hide="true">
+          <ion-item>
+              <ion-icon [routerLink]="['/add-product']" name="add-circle"></ion-icon>
+              <ion-label  [routerLink]="['/add-product']" class="ion-margin-start">Add Product</ion-label>
           </ion-item>
-      
-    </ion-content>
-  </ion-menu>
-  <ion-router-outlet id="main-content"></ion-router-outlet>
-  </ion-split-pane>
-  </ion-app>
+        </ion-menu-toggle>
+      </ion-list>
+     
+
+      <ion-list  lines="none">
+          <ion-menu-toggle auto-hide="true">
+            <ion-item>
+                <ion-icon  [routerLink]="['/product-list']" name="people"></ion-icon>
+                <ion-label  [routerLink]="['/product-list']" class="ion-margin-start">All Products</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+
+        <ion-list  lines="none">
+            <ion-menu-toggle auto-hide="true">
+              <ion-item>
+                  <i  [routerLink]="['/property-list']" class="material-icons">landscape</i>
+                  <ion-label  [routerLink]="['/property-list']" class="ion-margin-start">All Property</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+
+
+          <ion-list  lines="none">
+              <ion-menu-toggle auto-hide="true">
+                <ion-item>
+                    <ion-icon (click)="logOut()" name="power"></ion-icon>
+                    <ion-label (click)="logOut()" class="ion-margin-start">Logout</ion-label>
+                </ion-item>
+              </ion-menu-toggle>
+            </ion-list>
+              
+          </div>
+          </ion-content>
+       
+
+
+
+
+
+  
+
   
   
+   <!--------USER DASHBOARD---------------->                                                                                                   
+<div *ngIf="user">
+<ion-toolbar>
+<ion-searchbar  placeholder='SHOP BY CATEGORY'></ion-searchbar>
+</ion-toolbar>
+</div>
+<ion-content>
+<div *ngIf="user">
+  <h5 class="ion-text-center">Hello &nbsp;&nbsp;&nbsp;<ion-label>{{owner_name}}</ion-label></h5> 
+  <ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item  (click)="topClick()">
+        <ion-icon id="tophone" name="home" slot="start"></ion-icon>
+        <ion-label>Home </ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+
+<ion-list lines="none">
+  <ion-item>
+      <ion-icon name="tv" slot="start"></ion-icon>
+      <ion-label>Electronics</ion-label>
+      <ion-icon name="arrow-dropright" id="electro" slot="end" (click)="presentPopover($event)"></ion-icon>
+    </ion-item>
+</ion-list>
+
+
+<ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item>
+        <ion-icon name="home" slot="start"></ion-icon>
+        <ion-label>Home Applainces</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+
+<ion-list  lines="none">
+  <ion-menu-toggle auto-hide="true">
+    <ion-item >
+      <ion-icon name="basket" slot="start"></ion-icon>
+      <ion-label>Add Product</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>
   
+<ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item (click)="goto(page)">
+        <ion-icon name="pricetags" slot="start"></ion-icon>
+        <ion-label>Offer Zone</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+    
+  <ion-list lines="none">
+      <ion-menu-toggle auto-hide="true">
+        <ion-item (click)="goto(page)">
+          <ion-icon name="briefcase" slot="start"></ion-icon>
+          <ion-label>My Orders</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
   
+<ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item (click)="goto(page)">
+        <ion-icon name="cart" slot="start"></ion-icon>
+        <ion-label>My Cart</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+        
+                    
+          
+  <ion-list  lines="none">
+      <ion-menu-toggle auto-hide="true">
+        <ion-item (click)="goto(page)">
+          <ion-icon name="heart" slot="start"></ion-icon>
+          <ion-label>My Wishlist</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+
+<ion-list  lines="none">
+    <ion-menu-toggle auto-hide="true">
+      <ion-item (click)="goto(page)">
+        <ion-icon name="microphone" slot="start"></ion-icon>
+        <ion-label>Choose Language</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+
+           
+    <hr>
+<p class="ion-text-center">Help Center</p>
+<p class="ion-text-center">Legal Policy</p>
+<p class="ion-text-center">Logout</p>
+</div>
+
+
+</ion-content> 
+
+    
+   
+     
+</ion-menu>
+<ion-router-outlet id="content1"></ion-router-outlet>
+</ion-app>

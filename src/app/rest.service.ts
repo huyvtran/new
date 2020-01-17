@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest,HttpEvent } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
-import { Register, Login, Product } from '../app/Models/classModels';
+import { Register,Property, Login, Product, Reseller, Wallet } from '../app/Models/classModels';
 
 //const endpoint = 'http://ec2-13-126-112-180.ap-south-1.compute.amazonaws.com:8080/';
 const endpoint = 'http://localhost:8080/';
@@ -67,6 +67,17 @@ export class RestService {
    }
 
 
+   
+  
+   Register(data: Reseller): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'     
+          })          
+    };
+      return this.http.post<Reseller>(endpoint + 'api/auth/signup' , data,this.httpOptions);
+   }
+
     login(data: Login): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -87,6 +98,76 @@ export class RestService {
     };
       return this.http.post<Product>(endpoint + 'api/product/admin' , data,this.httpOptions); 
    }
+
+
+   addProperty(data: Property): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.post<Product>(endpoint + 'api/property/admin' , data,this.httpOptions); 
+   }
+
+   
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+
+    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/upload', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/file/all');
+  }
+  
+  pushFileToStorages(file: File): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+  
+    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/product', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
+
+  property(file: File): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+  
+    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/property', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  }
+
+  userprofile(): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'x-access-token': this.getToken()
+          })
+    };
+    //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
+   // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
+  
+    return this.http.get<any>(endpoint + 'api/userview', this.httpOptions);
+  }
+   
+
 
  getuserdashboard(): Observable<any> {
   this.httpOptions = {
@@ -113,6 +194,19 @@ getproduct(): Observable<any> {
 
   return this.http.get<any>(endpoint + 'api/productList', this.httpOptions);
 }
+getproperty(): Observable<any> {
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
+ // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
+
+  return this.http.get<any>(endpoint + 'api/propertyList', this.httpOptions);
+}
+
 
 getuserprofile(): Observable<any> {
   this.httpOptions = {
@@ -145,7 +239,36 @@ getTotalProducts(): Observable<any> {
   return this.http.get<any>(endpoint + 'api/productCount', this.httpOptions);
 }
 
+updateuser(num,id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.get<any>(endpoint + 'api/updateuser/'+id+"/"+num, this.httpOptions);
+}
 
 
+updateWallet(id,data:Register){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
 
+  return this.http.put<any>(endpoint + 'api/updatwallet/'+id,data, this.httpOptions);
+}
+
+
+getwallet(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.get<any>(endpoint + 'api/get/'+id, this.httpOptions);
+}
 }

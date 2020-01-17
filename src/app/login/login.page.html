@@ -12,7 +12,7 @@
   <div class="row"  *ngIf="showMsg">
    
       <p class="alert alert-danger ion-text-center">
-          <strong class="ion-margin-start " style="color:black;">Invalid User</strong>.
+          <strong class="ion-margin-start " style="color:red;">Invalid User</strong>.
 
       </p>
     
@@ -21,17 +21,17 @@
   <div class="row"  *ngIf="server">
     <div class="col-xs-12">
       <p  style="font-weight: bold;font-size:13px;"class="alert alert-success">
-Server  Side problem..
+Something Went Wrong..!!
          
 
       </p>
     </div>
   </div>
   <div *ngIf="valid">
-    <p  class="ion-margin-start" *ngIf="modifyFormGroup.get('username').hasError('required')">Username Required</p>
+    <p  class="ion-margin-start" *ngIf="modifyFormGroup.get('Email_address').hasError('required')">Email Required</p>
 
   </div>
-<ion-input formControlName="username" class="ion-margin-top ion-margin-start ion-padding-end" placeholder="UserName"></ion-input>
+<ion-input formControlName="Email_address" class="ion-margin-top ion-margin-start ion-padding-end" placeholder="Email"></ion-input>
 
 
 <div *ngIf="valid">
@@ -44,7 +44,7 @@ Server  Side problem..
 </ion-col>
 </form>
 <p class="ion-margin-top ion-text-center ion-margin-start signup">Don't have an account? 
-  <span [routerLink]="['/register']">Sign up</span></p>
+  <span [routerLink]="['/reseller']">Sign up</span></p>
 
   
 </ion-content> 

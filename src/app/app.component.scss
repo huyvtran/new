@@ -1,74 +1,46 @@
-// ion-toolbar,background{
-//     --background:#23074d;
-// }hr{
-//     width:84%;
-//     background:#23074d;
-//    margin-left:18px;
-//     margin-top:0px;
-//     border: none;
-//    }
-// ion-list,ion-menu-toggle{
-//     background:#eeeeee;
-// }
-//    ion-content{
-//     font-family: 'Open Sans', sans-serif!important;
-//    --background:#eeeeee;
-//    }
-//    p{
-//   color:#23074d; 
-//   font-size:18px;
-//   margin-left:-4em;
-//   font-weight:500;
-//    }
-   
-// ion-icon{
-//     background:#23074d; 
-//      padding: 2px 2px 2px 2px;    
-//       font-size:18px;
-//     color:white;
-//     border-radius: 29px;
-//  }
 
-// span{
-//     color:#23074d; 
-//     font-size:17px;
-//     font-family: 'Open Sans', sans-serif;
-// }
-// #sidebar_right_icon{
-//     margin-left:0.90in;
-//     font-size:20px;
-//     color:#23074d;
-// }
-// #sidebar_right_icon2{
-//     font-size:20px;
-//     margin-left:0.4in;
-//     color:#23074d;
-// }
-
-    //  img{
-    //      background: white;
-    //      border-radius: 25px;
-    //      padding: 5px 5px 5px 5px;
-    //  }
-    img{
-        height: 151px;
-        
-        width: 304px;
-    }
-     ion-icon{
-         color: navy;
-     }
-     ion-list{
-         color:#23074d;;
-     }
-   
-    
-     ion-content{
-        //--background: linear-gradient(#b06ab3 , #4568dc);
-        --background:#ffff;
-        
-     }
-
-    .material-icons{
-        color:navy;
-    }
+ion-content{
+    font-family: 'Noto Sans KR', sans-serif!important;
+     
+   }
+//    ion-list,ion-item,ion-menu-toggle{
+//     font-family: 'Noto Sans KR', sans-serif!important;
+//     --background:#eeeeee;
+//     color:navy;
+ 
+//    }
+   ion-icon{
+    background: #031646;
+    color: white;
+    border-radius: 13px;
+    padding: 2px 2px 2px 2px;
+    font-size: 19px;
+   }
+ion-label,p{
+    font-family: 'Noto Sans KR', sans-serif!important;
+    font-size:13px!important;
+    color:#031646!important;
+    font-weight:600;
+}
+   hr{
+    background: grey;
+    width: 70%;
+   }
+  
+   i{
+    background: #031646;
+    color: white;
+    border-radius: 13px;
+    padding: 2px 2px 2px 2px;
+    font-size: 19px;
+   }
+   #electro{
+       color:#031646;
+       background:white!important;
+   }
+   #tophone{
+    color: grey !important;
+    background: white;
+    margin-left: 2em;
+    font-size: 25px;
+   }

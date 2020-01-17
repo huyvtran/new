@@ -3,7 +3,6 @@ import { RestService } from '../rest.service';
 import {  Router } from '@angular/router';
 import { FormGroup,FormBuilder, Validators ,FormArray  } from '@angular/forms';
 import { Register } from '../Models/classModels';
-import { Roles } from '../Models/classModels';
 import { ModalController, AlertController } from '@ionic/angular';
 
 @Component({
@@ -28,7 +27,7 @@ export class RegisterPage implements OnInit {
       password: ['', Validators.required],
       email: ['', Validators.required],
       cpass: ['', Validators.required],
-      roles: this.fb.array(['USER'])
+      roles: this.fb.array(['ADMIN'])
 
    
      
@@ -105,6 +104,10 @@ this.valids=false;
         header: 'Congratulations!',
         message: 'You have Register Successfully',
         buttons: ['OK']
+    
+      
+      
+     
       });
       alert.present().then(() => {
         this.modalCtrl.dismiss();

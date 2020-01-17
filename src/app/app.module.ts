@@ -14,6 +14,7 @@ import { File } from '@ionic-native/file/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx'; 
 import { CartModalPage } from './pages/cart-modal/cart-modal.page';
 import { ChartPipe } from './chart.pipe';
+import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-zoom';
 
 @NgModule({
@@ -22,7 +23,7 @@ import 'chartjs-plugin-zoom';
   imports: [
     BrowserModule,HttpClientModule,NgxDatatableModule,
     IonicModule.forRoot(),
-    AppRoutingModule,
+    AppRoutingModule,ChartsModule,
     BrowserAnimationsModule  
   ],
   providers: [

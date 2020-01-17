@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     
   
 this.modifyFormGroup = this.fb.group({
-        username: ["", []],
+  Email_address: ["", []],
         password:["", []]
       });
     
@@ -35,11 +35,11 @@ this.modifyFormGroup = this.fb.group({
   login(){
 
     
-  this.modifyFormGroup.get("username").setValidators(Validators.required);
-  this.modifyFormGroup.get("username").updateValueAndValidity();
- 
   this.modifyFormGroup.get("password").setValidators(Validators.required);
   this.modifyFormGroup.get("password").updateValueAndValidity();
+  this.modifyFormGroup.get("Email_address").setValidators(Validators.required);
+  this.modifyFormGroup.get("Email_address").updateValueAndValidity();
+
   if (this.modifyFormGroup.valid) {
     console.log("Form is valid");
   }

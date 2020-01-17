@@ -14,7 +14,7 @@ export class AdminPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
 
-  displayedColumns: string[] = ['username', 'email'];
+  displayedColumns: string[] = [ 'Email_address','phone_no','options'];
 
 
 
@@ -40,6 +40,7 @@ export class AdminPage implements OnInit {
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.listData = this.arr[0].value;
         console.log(this.listData);
+ 
         this.listData = new MatTableDataSource(this.arr[1].value);
 
 
@@ -49,6 +50,30 @@ export class AdminPage implements OnInit {
       console.log(err);
 
     });
+
+  }
+
+  approve(number,id){
+  
+    this.rest.updateuser(number,id).subscribe((result) => {
+
+      if (result === undefined) {
+        console.log(result);
+
+
+      }
+      else {
+        this.retrieval();
+       
+
+      }
+
+    }, (err) => {
+      console.log(err);
+
+    });
+
+
 
   }
 }

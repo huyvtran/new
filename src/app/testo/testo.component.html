@@ -3,57 +3,80 @@
 <ion-content style="--background: #eeeeee;">
 
 
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons" item-start>phone_android</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Mobile</span>
-    </button>
-  </ion-list>
 
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">tablet_android</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Tablet</span>
-    </button>
+    <ion-list lines="none">
+          <ion-item (click)="go()">
+          <i class="material-icons" item-start>phone_android</i>
+          <ion-label class="ion-margin-start">Mobiles</ion-label>
+          </ion-item>
   </ion-list>
 
 
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">laptop_windows</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Laptop</span>
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">desktop_windows</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>PC</span>
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">speaker</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Speaker</span>
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">watch</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Smart Watches</span>
-    </button>
-  </ion-list>
+  
+  <ion-list lines="none">
+      <ion-item>
+          <i class="material-icons">tablet_android</i>
+      <ion-label class="ion-margin-start">Tablets</ion-label>
+      </ion-item>
+</ion-list>
 
 
-  <ion-list>
-    <button ion-item style="background: #eeeeee;">
-      <i class="material-icons">mobile_friendly</i>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Mobile Accessories</span>
-      <ion-icon style="font-size:17px;" name="arrow-dropright" (click)="presentPopover($event)" slot="end"></ion-icon>
-    </button>
-  </ion-list>
+<ion-list lines="none">
+    <ion-item>
+    <i class="material-icons" item-start>phone_android</i>
+    <ion-label class="ion-margin-start">Mobiles</ion-label>
+    </ion-item>
+</ion-list>
+
+
+<ion-list lines="none">
+    <ion-item>
+        <i class="material-icons">laptop_windows</i>
+    <ion-label class="ion-margin-start">Laptops</ion-label>
+    </ion-item>
+</ion-list>
+
+
+<ion-list lines="none">
+    <ion-item>
+        <i class="material-icons">desktop_windows</i>
+    <ion-label class="ion-margin-start">PC</ion-label>
+    </ion-item>
+</ion-list>
+
+
+<ion-list lines="none">
+    <ion-item>
+        <i class="material-icons">speaker</i>
+    <ion-label class="ion-margin-start">Speakers</ion-label>
+    </ion-item>
+</ion-list>
+
+
+<ion-list lines="none">
+    <ion-item>
+        <i class="material-icons">watch</i>
+    <ion-label class="ion-margin-start">Smart Watches</ion-label>
+    </ion-item>
+</ion-list>
+
+
+
+<ion-list lines="none">
+    <ion-item>
+        <i class="material-icons">mobile_friendly</i>
+    <ion-label class="ion-margin-start">Mobile Accesories</ion-label>
+    <ion-icon name="arrow-dropright" id="mobo" slot="end"></ion-icon>
+    </ion-item>
+</ion-list>
+
+    
+
+
+
+
+
+
 
 
 
