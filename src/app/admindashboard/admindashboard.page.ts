@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-admindashboard',
@@ -39,9 +40,10 @@ public chartHovered(e:any):void {
 }
 
 
-  constructor(private rest:RestService) { }
+  constructor(private rest:RestService,private test:AppComponent) { }
 
   ngOnInit() {
+  
     this.totalUsers();
     this.totalProducts();
   }
@@ -54,6 +56,7 @@ totalUsers(){
     else{
       this.user = Object.entries(result).map(([type, value]) => ({ type, value }));
       this.users = this.user[0].value;
+     
       console.log(this.users)
     }
   },

@@ -271,4 +271,15 @@ getwallet(id){
   };
   return this.http.get<any>(endpoint + 'api/get/'+id, this.httpOptions);
 }
+
+
+getProduct(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.get<any>(endpoint + 'api/productdetails/'+id, this.httpOptions);
+}
 }

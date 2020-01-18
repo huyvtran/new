@@ -80,6 +80,10 @@ const routes: Routes = [
   {
     path: 'property-list',
     loadChildren: () => import('./property-list/property-list.module').then( m => m.PropertyListPageModule)
+  },
+  {
+    path: 'product-detail/:id',
+    loadChildren: () => import('./product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   }
  
 ];

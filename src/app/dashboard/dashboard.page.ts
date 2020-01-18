@@ -65,7 +65,9 @@ slideOptions = {
    this.showFiles(true);
   }
 
-
+aa(){
+  alert('dfd');
+}
   
   showFiles(enable: boolean):void {
     this.showFile = enable;

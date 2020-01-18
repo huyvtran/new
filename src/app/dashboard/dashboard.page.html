@@ -116,7 +116,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+          <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
           <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
         </ion-card-content>
       </ion-card>
@@ -134,15 +134,16 @@
       <div *ngFor="let product of products ">
       <ion-col *ngIf="product.category !== 'Property' && product.sub =='new'">
   
-        <ion-card>
+        <ion-card >
           <ion-card-header>
-            <ion-card-title>{{product.name}}</ion-card-title>
+            <ion-card-title>{{product.name}} </ion-card-title>
             <hr>
           </ion-card-header>
   
-          <ion-card-content>
-            <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+          <ion-card-content >
+            <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
             <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+           
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -163,7 +164,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <img src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-11px 2px 2px 2px;">
+          <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
           <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
         </ion-card-content>
       </ion-card>

@@ -53,7 +53,4 @@ export class PropertyListPage implements OnInit {
   }
 
   
-  alert(){
-    alert('df');
-  }
 }
