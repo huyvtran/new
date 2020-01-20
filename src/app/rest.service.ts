@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest,HttpEvent } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
-import { Register,Property, Login, Product, Reseller, Wallet } from '../app/Models/classModels';
+import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart } from '../app/Models/classModels';
 
 //const endpoint = 'http://ec2-13-126-112-180.ap-south-1.compute.amazonaws.com:8080/';
 const endpoint = 'http://localhost:8080/';
@@ -35,6 +35,14 @@ export class RestService {
   isLoggednIn() {  
     return this.getToken() !== null;
   }
+
+  sendProductId(id){
+    localStorage.setItem("ProductId", id)
+  }
+
+  getProductId(){
+    return localStorage.getItem("ProductId");
+  }
   sendRole(role){
     localStorage.setItem("LoggedInRole", role)
   }
@@ -43,6 +51,15 @@ export class RestService {
   }
   sendId(id){
     localStorage.setItem("LoggedInUserId", id)
+  }
+
+  sendImage(image){
+    return localStorage.setItem("ProductImage",image);
+
+  }
+  getImage(){
+    return localStorage.getItem("ProductImage");
+
   }
   getId(){
     return localStorage.getItem("LoggedInUserId");
@@ -67,7 +84,15 @@ export class RestService {
    }
 
 
-   
+   addtocart(data:AddtoCart): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'     
+          })          
+    };
+      return this.http.post<AddtoCart>(endpoint + 'api/addtocart' , data,this.httpOptions);
+   }
+
   
    Register(data: Reseller): Observable<any> {
     this.httpOptions = {
@@ -248,7 +273,15 @@ updateuser(num,id){
   };
   return this.http.get<any>(endpoint + 'api/updateuser/'+id+"/"+num, this.httpOptions);
 }
-
+updateProduct(num,id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.get<any>(endpoint + 'api/updateProduct/'+id+"/"+num, this.httpOptions);
+}
 
 updateWallet(id,data:Register){
   this.httpOptions = {
@@ -261,6 +294,20 @@ updateWallet(id,data:Register){
   return this.http.put<any>(endpoint + 'api/updatwallet/'+id,data, this.httpOptions);
 }
 
+
+
+
+
+cartDetails(){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'  ,
+      'x-access-token': this.getToken() 
+        })          
+  };
+    return this.http.get<any>(endpoint + 'api/cartCount', this.httpOptions);
+ 
+ }
 
 getwallet(id){
   this.httpOptions = {

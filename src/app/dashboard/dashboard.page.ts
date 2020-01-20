@@ -1,12 +1,13 @@
 import { Component, OnInit,ViewChild,Input } from '@angular/core';
 import { PopoverController,NavController,IonSlides, ToastController } from '@ionic/angular';
-import { TestoComponent } from '../testo/testo.component';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../app/Models/classModels'
 import { AppComponent } from '../app.component';
 import { Observable } from 'rxjs';
+import { TestoPage } from '../testo/testo.page';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -50,7 +51,7 @@ slideOptions = {
 
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
-      component: TestoComponent,
+      component: TestoPage,
       event: ev,
       translucent: true
     });

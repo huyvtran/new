@@ -17,75 +17,89 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule)
   },
   {
     path: 'userlist',
-    loadChildren: () => import('./userlist/userlist.module').then( m => m.UserlistPageModule)
+    loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistPageModule)
   },
-  
+
   {
     path: 'all-category',
-    loadChildren: () => import('./all-category/all-category.module').then( m => m.AllCategoryPageModule)
+    loadChildren: () => import('./all-category/all-category.module').then(m => m.AllCategoryPageModule)
   },
-   {
+  {
     path: 'user-profile',
-    loadChildren: () => import('./user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+    loadChildren: () => import('./user-profile/user-profile.module').then(m => m.UserProfilePageModule)
   },
 
   {
     path: 'add-product',
-    loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
+    loadChildren: () => import('./add-product/add-product.module').then(m => m.AddProductPageModule)
   },
   {
     path: 'cart',
-    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then( m => m.CartModalPageModule)
+    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then(m => m.CartModalPageModule)
   },
   {
     path: 'product-list',
-    loadChildren: () => import('./product-list/product-list.module').then( m => m.ProductListPageModule)
+    loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListPageModule)
   },
   {
     path: 'admindashboard',
-    loadChildren: () => import('./admindashboard/admindashboard.module').then( m => m.AdmindashboardPageModule)
+    loadChildren: () => import('./admindashboard/admindashboard.module').then(m => m.AdmindashboardPageModule)
   },
   {
     path: 'reseller',
-    loadChildren: () => import('./reseller/reseller.module').then( m => m.ResellerPageModule)
+    loadChildren: () => import('./reseller/reseller.module').then(m => m.ResellerPageModule)
   },
   {
     path: 'chart',
-    loadChildren: () => import('./chart/chart.module').then( m => m.ChartPageModule)
+    loadChildren: () => import('./chart/chart.module').then(m => m.ChartPageModule)
   },
   {
     path: 'chart2',
-    loadChildren: () => import('./chart2/chart2.module').then( m => m.Chart2PageModule)
+    loadChildren: () => import('./chart2/chart2.module').then(m => m.Chart2PageModule)
   },
   {
     path: 'recharge/:id',
-    loadChildren: () => import('./recharge/recharge.module').then( m => m.RechargePageModule)
+    loadChildren: () => import('./recharge/recharge.module').then(m => m.RechargePageModule)
   },
   {
     path: 'property-list',
-    loadChildren: () => import('./property-list/property-list.module').then( m => m.PropertyListPageModule)
+    loadChildren: () => import('./property-list/property-list.module').then(m => m.PropertyListPageModule)
   },
   {
     path: 'product-detail/:id',
-    loadChildren: () => import('./product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
+    loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
+  },
+  {
+    path: 'democart',
+    loadChildren: () => import('./democart/democart.module').then(m => m.DemocartPageModule)
+  },
+  {
+    path: 'democart2',
+    loadChildren: () => import('./democart2/democart2.module').then(m => m.Democart2PageModule)
+  },
+
+  {
+    path: 'testo',
+    loadChildren: () => import('./testo/testo.module').then(m => m.TestoPageModule)
   }
- 
+
+
 ];
 
 @NgModule({
@@ -94,4 +108,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

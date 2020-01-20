@@ -12,8 +12,9 @@ export class ProductListPage implements OnInit {
 
   listData: MatTableDataSource<any>;
   arr;
+  //displayedColumns: string[] = [ 'Email_address','phone_no','options'];
 
-  displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','options'];
+ displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','options'];
 
 
 
@@ -57,4 +58,33 @@ export class ProductListPage implements OnInit {
   alert(){
     alert('df');
   }
+
+
+  
+  approve(number,id){
+  
+    this.rest.updateProduct(number,id).subscribe((result) => {
+
+      if (result === undefined) {
+        console.log(result);
+
+
+      }
+      else {
+        this.retrieval();
+       
+
+      }
+
+    }, (err) => {
+      console.log(err);
+
+    });
+
+
+
+  }
+
+
+
 }

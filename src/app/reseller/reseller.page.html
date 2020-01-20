@@ -134,7 +134,6 @@
 
   <h3 class="ion-margin-top ion-margin-start login">Partner Account</h3>
   <form [formGroup]="modifyFormGroup">
-
     <div *ngIf="valid">
       <p class="ion-margin-start" *ngIf="modifyFormGroup.get('Business_name').hasError('required')">Business Name
         Required </p>
@@ -186,7 +185,7 @@
       <p class="ion-margin-start" *ngIf="modifyFormGroup.get('password').hasError('required')">Password Required
       </p>
     </div>
-    <ion-input formControlName="password" class="ion-margin-top ion-margin-start ion-padding-end"
+    <ion-input type="password"formControlName="password" class="ion-margin-top ion-margin-start ion-padding-end"
       placeholder="Password *"></ion-input>
       <div *ngIf="valid">
         <p *ngIf="modifyFormGroup.hasError('notMatching')"> Passwords Not Matching </p>
@@ -196,7 +195,7 @@
         <p class="ion-margin-start" *ngIf="modifyFormGroup.get('cpass').hasError('required')">Confirm Password Required
         </p>
       </div>
-      <ion-input formControlName="cpass" class="ion-margin-top ion-margin-start ion-padding-end"
+      <ion-input  type="password" formControlName="cpass" class="ion-margin-top ion-margin-start ion-padding-end"
         placeholder="Confirm Password *"></ion-input>
   
     <div *ngIf="valid">

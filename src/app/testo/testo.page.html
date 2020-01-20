@@ -1,13 +1,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<ion-content style="--background: #eeeeee;">
+<ion-content *ngFor="let item of products"style="--background: #eeeeee;">
 
 
 
     <ion-list lines="none">
-          <ion-item (click)="go()">
+          <ion-item >
           <i class="material-icons" item-start>phone_android</i>
-          <ion-label class="ion-margin-start">Mobiles</ion-label>
+          <ion-label class="ion-margin-start" ><button [routerLink]="['/testo',item.id]">Mobiles </button></ion-label>
           </ion-item>
   </ion-list>
 

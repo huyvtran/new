@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { RestService } from '../rest.service';
-
+import { AddtoCart } from '../Models/classModels';
+import { AlertController, ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.page.html',
@@ -18,13 +19,32 @@ export class ProductDetailPage implements OnInit {
   discount;
   desc;
   image;
-  
-  constructor(private route: ActivatedRoute,   public rest: RestService) {
+  productid:any;
+  Quantity:any;
+  count:any;
+  public data: AddtoCart = new AddtoCart();
+  public modifyFormGroup: FormGroup;
+
+  constructor(private route: ActivatedRoute,private fb: FormBuilder, public rest: RestService, private modalCtrl: ModalController,
+    private alertCtrl: AlertController, private myRoute: Router) {
     this.route.params.subscribe(params => this.doSearch(params));
+    this.modifyFormGroup = this.fb.group({
+   name:['', Validators.required],
+   price:['', Validators.required],
+   quantity:['', Validators.required],
+productId:this.rest.getProductId(),
+   userId:this.rest.getId(),
+   image:this.rest.getImage()
+   
+    });
   
   }
   ngOnInit() {
+    //console.log(this.rest.getProductId());
+    this.Quantity=0;
+   // this.userId=this.rest.getId();
     this.getProducts();
+    this.getcartdetails();
   }
 
   doSearch(param) {
@@ -32,6 +52,68 @@ export class ProductDetailPage implements OnInit {
     // console.log(this.id);
   }
 
+  plus(){
+    this.Quantity++;
+    console.log(this.Quantity);
+  }
+
+  minus(){
+    this.Quantity--;
+    if(this.Quantity<0){
+      alert('Please select minimum Quantity');
+      this.Quantity=0;
+    }
+  }
+cart(){
+  Object.assign(this.data, this.modifyFormGroup.value);
+    console.log(this.data);
+
+    if (this.modifyFormGroup.valid) {
+   
+
+      this.rest.addtocart(this.data).subscribe((result) => {
+        if (result == undefined) {
+          console.log(result);
+        }
+        else {
+          alert('success');
+          this.getcartdetails();
+         // this.rest.cartDetails();
+        }
+      }, (err) => {
+
+        console.log(err);
+
+      });
+    }
+}
+
+getcartdetails(){
+
+  Object.assign(this.data, this.modifyFormGroup.value);
+  // console.log(this.data);
+
+
+    this.rest.cartDetails().subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      //  console.log("success");
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+        this.count=this.arr[0].value;
+
+       
+      }
+    }, (err) => {
+
+      console.log(err);
+
+    });
+  
+}
   getProducts(){
     this.rest.getProduct(this.id).subscribe((result) => {
 
@@ -48,7 +130,9 @@ export class ProductDetailPage implements OnInit {
         this.discount=this.userid.discount;
         this.desc=this.userid.desc;
         this.image=this.userid.image;
-       console.log(this.userid);
+      
+        this.rest.sendProductId(this.userid.id); 
+        this.rest.sendImage(this.userid.image);
        
 
       }

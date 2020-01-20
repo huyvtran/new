@@ -1,0 +1,40 @@
+ion-content{
+    font-family: 'Noto Sans KR', sans-serif!important;
+    font-weight: 600;
+}
+img{
+    height:5em;
+}
+ion-toolbar{
+    --background:#031646;
+}
+
+#cart-icon{
+    background: white;
+    color: navy;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 2px 2px 2px 2px;
+}
+ #search_line{
+     border-bottom: 1px solid deeppink;
+//    width: 10em;
+  }
+ion-button{
+    --background:#d84192!important;
+}
+#addtocart{
+    font-size: 29px;
+    color: green;
+}
+ion-item-divider{
+    width: 77%;
+    margin-left: 3em;
+}
+ion-icon{
+    font-size:27px;
+    color:white;
+}
+span,ion-label{
+    font-size:12px;
+}

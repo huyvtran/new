@@ -3,11 +3,12 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { PopoverController,NavController,IonSlides, ToastController } from '@ionic/angular';
-import { TestoComponent } from './testo/testo.component';
+
 import{ModalController} from '@ionic/angular';
 import { Register } from './Models/classModels';
 import { RestService } from './rest.service';
 import { Router } from '@angular/router';
+import { TestoPage } from './testo/testo.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -41,7 +42,7 @@ web_address;
 
   async presentPopover() {
     const popover = await this.popoverController.create({
-      component: TestoComponent,
+      component: TestoPage,
      // event: ev,
       translucent: true
     });
@@ -85,7 +86,7 @@ web_address;
    
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
       this.userid = this.arr[0].value;
-      console.log(this.userid);
+      //console.log(this.userid);
 this.owner_name=this.userid.owner_name;
 this.business_name=this.userid.business_name;
 this.Email_address=this.userid.Email_address;
@@ -129,7 +130,7 @@ this.owneraddress=this.userid.owneraddress;
 
       this.ar = Object.entries(this.userid.roles).map(([type, value]) => ({ type, value }));
     this.role= this.ar[0].value;
-    console.log(this.role.name);
+    //console.log(this.role.name);
     this.rest.sendRole(this.role.name);
  
     

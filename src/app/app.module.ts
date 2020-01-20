@@ -9,17 +9,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TestoComponent } from './testo/testo.component';
+
 import { File } from '@ionic-native/file/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx'; 
 import { CartModalPage } from './pages/cart-modal/cart-modal.page';
 import { ChartPipe } from './chart.pipe';
 import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-zoom';
+import { TestoPage } from './testo/testo.page';
 
 @NgModule({
-  declarations: [AppComponent,TestoComponent,CartModalPage, ChartPipe],
-  entryComponents: [TestoComponent,CartModalPage],
+  declarations: [AppComponent,TestoPage,CartModalPage, ChartPipe],
+  entryComponents: [TestoPage,CartModalPage],
   imports: [
     BrowserModule,HttpClientModule,NgxDatatableModule,
     IonicModule.forRoot(),
