@@ -21,6 +21,7 @@ export class ProductDetailPage implements OnInit {
   image;
   productid:any;
   Quantity:any;
+  total;
   count:any;
   public data: AddtoCart = new AddtoCart();
   public modifyFormGroup: FormGroup;
@@ -29,8 +30,9 @@ export class ProductDetailPage implements OnInit {
     private alertCtrl: AlertController, private myRoute: Router) {
     this.route.params.subscribe(params => this.doSearch(params));
     this.modifyFormGroup = this.fb.group({
-   name:['', Validators.required],
-   price:['', Validators.required],
+   name:this.rest.getProductName(),
+   total:[''],
+   price:this.rest.getProductPrice(),
    quantity:['', Validators.required],
 productId:this.rest.getProductId(),
    userId:this.rest.getId(),
@@ -42,6 +44,7 @@ productId:this.rest.getProductId(),
   ngOnInit() {
     //console.log(this.rest.getProductId());
     this.Quantity=0;
+    this.total=0;
    // this.userId=this.rest.getId();
     this.getProducts();
     this.getcartdetails();
@@ -54,14 +57,18 @@ productId:this.rest.getProductId(),
 
   plus(){
     this.Quantity++;
+    this.total=this.Quantity*this.price;
     console.log(this.Quantity);
   }
 
   minus(){
     this.Quantity--;
+    this.total=this.Quantity*this.price;
+
     if(this.Quantity<0){
       alert('Please select minimum Quantity');
       this.Quantity=0;
+      this.total=0;
     }
   }
 cart(){
@@ -133,6 +140,13 @@ getcartdetails(){
       
         this.rest.sendProductId(this.userid.id); 
         this.rest.sendImage(this.userid.image);
+              
+        this.rest.sendProductId(this.userid.id); 
+              
+        this.rest.sendProductName(this.userid.name); 
+              
+        this.rest.sendProductPrice(this.userid.price); 
+
        
 
       }

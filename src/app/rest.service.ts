@@ -40,6 +40,24 @@ export class RestService {
     localStorage.setItem("ProductId", id)
   }
 
+  sendProductName(name){
+    localStorage.setItem("productname", name)
+  }
+
+  sendProductPrice(price){
+    localStorage.setItem("productprice", price)
+  }
+
+
+  getProductName(){
+    return localStorage.getItem("productname");
+  }
+
+  getProductPrice(){
+    return localStorage.getItem("productprice");
+  }
+
+
   getProductId(){
     return localStorage.getItem("ProductId");
   }

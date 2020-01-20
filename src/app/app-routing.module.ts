@@ -97,6 +97,10 @@ const routes: Routes = [
   {
     path: 'testo',
     loadChildren: () => import('./testo/testo.module').then(m => m.TestoPageModule)
+  },
+  {
+    path: 'order-now',
+    loadChildren: () => import('./order-now/order-now.module').then( m => m.OrderNowPageModule)
   }
 
 
