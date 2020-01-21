@@ -12,9 +12,9 @@ export class ProductListPage implements OnInit {
 
   listData: MatTableDataSource<any>;
   arr;
-  //displayedColumns: string[] = [ 'Email_address','phone_no','options'];
+  // displayedColumns: string[] = [ 'id','options'];
 
- displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','options'];
+  displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','permission','edit','options'];
 
 
 
@@ -28,8 +28,8 @@ export class ProductListPage implements OnInit {
   }
 
 
-  retrieval() {
-    this.rest.getproduct().subscribe((result) => {
+ retrieval() {
+    this.rest.getdashboardproduct().subscribe((result) => {
 
       if (result === undefined) {
         console.log(result);
@@ -60,10 +60,10 @@ export class ProductListPage implements OnInit {
   }
 
 
-  
+
   approve(number,id){
   
-    this.rest.updateProduct(number,id).subscribe((result) => {
+    this.rest.updateproductStatus(number,id).subscribe((result) => {
 
       if (result === undefined) {
         console.log(result);
@@ -84,7 +84,6 @@ export class ProductListPage implements OnInit {
 
 
   }
-
 
 
 }

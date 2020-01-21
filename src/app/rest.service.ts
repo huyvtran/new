@@ -235,7 +235,20 @@ getproduct(): Observable<any> {
   //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
  // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
 
+  return this.http.get<any>(endpoint + 'api/dashproductList', this.httpOptions);
+}
+getdashboardproduct(){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
+ // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
+
   return this.http.get<any>(endpoint + 'api/productList', this.httpOptions);
+
 }
 getproperty(): Observable<any> {
   this.httpOptions = {
@@ -291,7 +304,10 @@ updateuser(num,id){
   };
   return this.http.get<any>(endpoint + 'api/updateuser/'+id+"/"+num, this.httpOptions);
 }
-updateProduct(num,id){
+
+
+
+updateproductStatus(num,id){
   this.httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -312,7 +328,16 @@ updateWallet(id,data:Register){
   return this.http.put<any>(endpoint + 'api/updatwallet/'+id,data, this.httpOptions);
 }
 
+update(id,data:Product){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
 
+  return this.http.put<any>(endpoint + 'api/updatesProduct/'+id,data, this.httpOptions);
+}
 
 
 
@@ -327,6 +352,8 @@ cartDetails(){
  
  }
 
+
+
 getwallet(id){
   this.httpOptions = {
     headers: new HttpHeaders({
@@ -336,6 +363,16 @@ getwallet(id){
   };
   return this.http.get<any>(endpoint + 'api/get/'+id, this.httpOptions);
 }
+geteditprod(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.get<any>(endpoint + 'api/editprod/'+id, this.httpOptions);
+}
+
 
 
 getProduct(id){
@@ -347,4 +384,6 @@ getProduct(id){
   };
   return this.http.get<any>(endpoint + 'api/productdetails/'+id, this.httpOptions);
 }
+
+
 }

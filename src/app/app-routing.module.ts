@@ -101,6 +101,10 @@ const routes: Routes = [
   {
     path: 'order-now',
     loadChildren: () => import('./order-now/order-now.module').then( m => m.OrderNowPageModule)
+  },
+  {
+    path: 'editproduct/:id',
+    loadChildren: () => import('./editproduct/editproduct.module').then( m => m.EditproductPageModule)
   }
 
 

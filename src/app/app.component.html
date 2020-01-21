@@ -133,8 +133,8 @@
 <ion-list  lines="none">
   <ion-menu-toggle auto-hide="true">
     <ion-item >
-      <ion-icon name="basket" slot="start"></ion-icon>
-      <ion-label>Add Product</ion-label>
+      <ion-icon name="basket" [routerLink]="['/add-product']" slot="start"></ion-icon>
+      <ion-label [routerLink]="['/add-product']">Add Product</ion-label>
     </ion-item>
   </ion-menu-toggle>
 </ion-list>
