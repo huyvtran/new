@@ -95,6 +95,30 @@ cart(){
     }
 }
 
+order(){
+  Object.assign(this.data, this.modifyFormGroup.value);
+  console.log(this.data);
+
+  if (this.modifyFormGroup.valid) {
+ 
+
+    this.rest.order(this.data).subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+        alert('success');
+        this.getcartdetails();
+       // this.rest.cartDetails();
+      }
+    }, (err) => {
+
+      console.log(err);
+
+    });
+  }
+}
+
 getcartdetails(){
 
   Object.assign(this.data, this.modifyFormGroup.value);

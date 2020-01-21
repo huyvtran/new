@@ -98,6 +98,7 @@
 </ion-toolbar>
 </div>
 
+
 <div *ngIf="user">
   <h5 class="ion-text-center">Hello &nbsp;&nbsp;&nbsp;<ion-label>{{owner_name}}</ion-label></h5> 
 
@@ -107,15 +108,18 @@
 <ion-list lines="none">
   <ion-item>
       <ion-icon [routerLink]="['/dashboard']" name="home" slot="start"></ion-icon>
-      <ion-label [routerLink]="['/dashboard']">Home</ion-label>
+      <ion-label [routerLink]="['/dashboard']">DashBoard</ion-label>
       <ion-icon name="arrow-dropright" id="electro" slot="end" [routerLink]="['/dashboard']"></ion-icon>
     </ion-item>
 </ion-list>
 
-<ion-list lines="none">
+
+
+
+<ion-list lines="none" *ngFor=" let p of products">
   <ion-item>
       <ion-icon name="tv" slot="start"></ion-icon>
-      <ion-label>Electronics</ion-label>
+      <ion-label [routerLink]="['/testo',p.category]">{{p.category}}</ion-label>
       <ion-icon name="arrow-dropright" id="electro" slot="end" (click)="presentPopover($event)"></ion-icon>
     </ion-item>
 </ion-list>

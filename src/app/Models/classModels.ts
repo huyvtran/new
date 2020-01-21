@@ -35,9 +35,13 @@ export class AddtoCart{
     price:Number;
     quantity:Number;
     userId:Number;
+    total:Number;
     productId:Number;
     image:File[];
 }
+
+
+
 export class Property{
     propertyname:String;
     category:String;

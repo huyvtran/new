@@ -5,10 +5,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { PopoverController,NavController,IonSlides, ToastController } from '@ionic/angular';
 
 import{ModalController} from '@ionic/angular';
-import { Register } from './Models/classModels';
+import { Register, Product } from './Models/classModels';
 import { RestService } from './rest.service';
 import { Router } from '@angular/router';
-import { TestoPage } from './testo/testo.page';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,18 +20,21 @@ export class AppComponent implements OnInit{
   ar;
   role;
 name;
+cat;
 owner_name;
 business_name;
 Email_address;
 phone_no;
 owneraddress;
 web_address;
+products: Product[] = [];
+
+category;
   public data : Register = new Register();
   errmsg: boolean;
   admin:boolean=false;
   user:boolean=false;
   
-
   constructor(private rest:RestService,private route:Router,
     private platform: Platform,private mm:ModalController,
     private splashScreen: SplashScreen,
@@ -40,14 +43,7 @@ web_address;
     this.initializeApp();
   }
 
-  async presentPopover() {
-    const popover = await this.popoverController.create({
-      component: TestoPage,
-     // event: ev,
-      translucent: true
-    });
-    return await popover.present();
-  }
+ 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -62,6 +58,8 @@ web_address;
     this.route.navigate(['/login']);
   }
    ngOnInit(){
+     //this.proname();
+     this.retrieval();
     this.getuserDetails();
     this.getuserprofile();
    
@@ -152,6 +150,31 @@ this.admin=true;
     //console.log(err);
     
     });
+    }
+
+    retrieval() {
+      this.rest.getproduct().subscribe((Product) => {
+  
+        if (Product === undefined) {
+        //  console.log(Product);
+  
+  
+        }
+        else {
+  
+       this.products=Product.product;
+       
+      console.log(this.products)
+        //  this.listData = new MatTableDataSource(this.arr[1].value);
+  
+  
+        }
+  
+      }, (err) => {
+        console.log(err);
+  
+      });
+  
     }
 
     logOut(){

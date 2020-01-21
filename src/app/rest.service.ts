@@ -105,13 +105,24 @@ export class RestService {
    addtocart(data:AddtoCart): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'     
+        'Content-Type':  'application/json'   ,
+        'x-access-token': this.getToken()  
           })          
     };
       return this.http.post<AddtoCart>(endpoint + 'api/addtocart' , data,this.httpOptions);
    }
 
-  
+   order(data:AddtoCart): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'   ,
+        'x-access-token': this.getToken()  
+          })          
+    };
+      return this.http.post<AddtoCart>(endpoint + 'api/order' , data,this.httpOptions);
+   }
+
+
    Register(data: Reseller): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -153,6 +164,15 @@ export class RestService {
       return this.http.post<Product>(endpoint + 'api/property/admin' , data,this.httpOptions); 
    }
 
+   name(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.get<any>(endpoint + 'api/getprname' , this.httpOptions); 
+   }
    
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
@@ -339,6 +359,16 @@ update(id,data:Product){
   return this.http.put<any>(endpoint + 'api/updatesProduct/'+id,data, this.httpOptions);
 }
 
+getService(service){
+this.httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'x-access-token': this.getToken()
+      })
+};
+
+return this.http.get<any>(endpoint + 'api/service/'+service, this.httpOptions);
+}
 
 
 cartDetails(){

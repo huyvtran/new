@@ -1,84 +1,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<ion-content *ngFor="let item of products"style="--background: #eeeeee;">
+<ion-content *ngFor="let item of products" >
 
 
-
-    <ion-list lines="none">
+ <ion-list lines="none">
           <ion-item >
           <i class="material-icons" item-start>phone_android</i>
-          <ion-label class="ion-margin-start" ><button [routerLink]="['/testo',item.id]">Mobiles </button></ion-label>
+          <ion-label class="ion-margin-start" ><button [routerLink]="['/product-detail',item.id]">{{item.name}} </button></ion-label>
           </ion-item>
   </ion-list>
-
-
-  
-  <ion-list lines="none">
-      <ion-item>
-          <i class="material-icons">tablet_android</i>
-      <ion-label class="ion-margin-start">Tablets</ion-label>
-      </ion-item>
-</ion-list>
-
-
-<ion-list lines="none">
-    <ion-item>
-    <i class="material-icons" item-start>phone_android</i>
-    <ion-label class="ion-margin-start">Mobiles</ion-label>
-    </ion-item>
-</ion-list>
-
-
-<ion-list lines="none">
-    <ion-item>
-        <i class="material-icons">laptop_windows</i>
-    <ion-label class="ion-margin-start">Laptops</ion-label>
-    </ion-item>
-</ion-list>
-
-
-<ion-list lines="none">
-    <ion-item>
-        <i class="material-icons">desktop_windows</i>
-    <ion-label class="ion-margin-start">PC</ion-label>
-    </ion-item>
-</ion-list>
-
-
-<ion-list lines="none">
-    <ion-item>
-        <i class="material-icons">speaker</i>
-    <ion-label class="ion-margin-start">Speakers</ion-label>
-    </ion-item>
-</ion-list>
-
-
-<ion-list lines="none">
-    <ion-item>
-        <i class="material-icons">watch</i>
-    <ion-label class="ion-margin-start">Smart Watches</ion-label>
-    </ion-item>
-</ion-list>
-
-
-
-<ion-list lines="none">
-    <ion-item>
-        <i class="material-icons">mobile_friendly</i>
-    <ion-label class="ion-margin-start">Mobile Accesories</ion-label>
-    <ion-icon name="arrow-dropright" id="mobo" slot="end"></ion-icon>
-    </ion-item>
-</ion-list>
-
-    
-
-
-
-
-
-
-
-
-
 
 </ion-content>

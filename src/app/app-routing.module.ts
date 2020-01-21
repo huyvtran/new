@@ -95,7 +95,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'testo',
+    path: 'testo/:service',
     loadChildren: () => import('./testo/testo.module').then(m => m.TestoPageModule)
   },
   {
@@ -105,6 +105,10 @@ const routes: Routes = [
   {
     path: 'editproduct/:id',
     loadChildren: () => import('./editproduct/editproduct.module').then( m => m.EditproductPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   }
 
 
