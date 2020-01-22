@@ -29,7 +29,7 @@ export class DashboardPage implements OnInit {
   errmsg: boolean;
   admin:boolean;
   student:boolean;
-
+  count:any;
   @ViewChild(IonSlides,{static:false}) slides:IonSlides
   constructor(private test:AppComponent, private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
   
@@ -60,7 +60,7 @@ slideOptions = {
 
 
   ngOnInit() {
-  
+  this.getcartdetails();
     this.getuserprofile();
     this.retrieval();
    this.showFiles(true);
@@ -75,10 +75,36 @@ aa(){
 
     if (enable) {
       this.fileUploads = this.rest.getFiles();
-      console.log(this.fileUploads);
+     // console.log(this.fileUploads);
     }
   }
     
+getcartdetails(){
+
+ // Object.assign(this.data, this.modifyFormGroup.value);
+  // console.log(this.data);
+
+
+    this.rest.cartDetails().subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      //  console.log("success");
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+        this.count=this.arr[0].value;
+
+       
+      }
+    }, (err) => {
+
+      console.log(err);
+
+    });
+  
+}
   getuserprofile(){
     this.rest.getuserprofile().subscribe((result) => {
     

@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { Forgot, Reseller, Login } from '../Models/classModels';
+import { RestService } from '../rest.service';
+import { ModalController, AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.page.html',
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  public modifyFormGroup : FormGroup;
+  public forms : FormGroup;
   showMsg:any;
   formValid:any;
   errmsg:any;
   valid:boolean=false;
-  constructor(private fb: FormBuilder) { 
+  public data: Forgot = new Forgot();
 
-  this.modifyFormGroup = this.fb.group({
-    phone_no: ["", []],
-    password:["", []],
-    cpassword:["", []]
+  constructor(private fb: FormBuilder,private rest:RestService,private modalCtrl: ModalController,private alertCtrl:AlertController) { 
+
+  this.forms = this.fb.group({
+    phone_no: ["", [Validators.required]],
+    password:["", [Validators.required]],
+    cpass:["", [Validators.required]]
         });
       
       }
@@ -27,23 +33,67 @@ export class ForgotPasswordPage implements OnInit {
     this.valid=false;
     this.errmsg=false;
   }
-  
+  add(){
+ 
+    this.forms.get("password").setValidators(Validators.required);
+    this.forms.get("password").updateValueAndValidity();
 
-  resetpassword(){
-    this.modifyFormGroup.get("phone_no").setValidators(Validators.required);
-  this.modifyFormGroup.get("phone_no").updateValueAndValidity();
-  this.modifyFormGroup.get("password").setValidators(Validators.required);
-  this.modifyFormGroup.get("password").updateValueAndValidity();
-  this.modifyFormGroup.get("cpassword").setValidators(Validators.required);
-  this.modifyFormGroup.get("cpassword").updateValueAndValidity();
+    this.forms.get("phone_no").setValidators(Validators.required);
+    this.forms.get("phone_no").updateValueAndValidity();
 
-  if (this.modifyFormGroup.valid) {
-    console.log("Form is valid");
+    this.forms.get("cpass").setValidators(Validators.required);
+    this.forms.get("cpass").updateValueAndValidity();
+
+    this.forms.setValidators(this.passwordMatchValidator);
+    this.forms.updateValueAndValidity();
+
+    Object.assign(this.data, this.forms.value);
+    console.log(this.data);
+    if(this.forms.valid){
+    this.rest.forgot(this.data).subscribe((result)=>{
+      if(result == undefined){
+        console.log(result)
+      }
+      else{
+       this.confirm();
+       this.forms.reset();
+      }
+      (err)=>{
+        console.log(err);
+      }
+    });
   }
-  else {
+  else{
     this.valid=true;
-    console.log("There is still an error in the form");
+  }
   }
 
+  async confirm() {
+
+    let alert = await this.alertCtrl.create({
+      header: 'Congratulations!',
+      message: 'You have Upadated Successfully',
+      buttons: ['OK']
+
+
+
+
+    });
+    alert.present().then(() => {
+      this.modalCtrl.dismiss();
+    });
   }
+
+
+  passwordMatchValidator(group: FormGroup): any {
+    if (group) {
+      if (group.get("password").value !== group.get("cpass").value) {
+        return { notMatching: true };
+      }
+    }
+
+    return null;
+  }
+
+
 }

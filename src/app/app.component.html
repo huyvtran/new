@@ -116,33 +116,47 @@
 
 
 
-<ion-list lines="none" *ngFor=" let p of products">
+<ion-list lines="none" *ngFor=" let p of categorys">
+  <ion-menu-toggle auto-hide="true">
   <ion-item>
       <ion-icon name="tv" slot="start"></ion-icon>
-      <ion-label [routerLink]="['/testo',p.category]">{{p.category}}</ion-label>
-      <ion-icon name="arrow-dropright" id="electro" slot="end" (click)="presentPopover($event)"></ion-icon>
+      <ion-label [routerLink]="['/testo',p.name]">{{p.name}}</ion-label>
+      <ion-icon name="arrow-dropright"id="electro" slot="end" (click)="presentModal()"></ion-icon>
     </ion-item>
+    </ion-menu-toggle>
 </ion-list>
 
+    
+<ion-list lines="none">
+  <ion-menu-toggle auto-hide="true">
+    <ion-item >
+      <ion-icon name="basket" slot="start"></ion-icon>
+      <ion-label [routerLink]="['/add-product']" >Add Products</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>
 
-<ion-list  lines="none">
-    <ion-menu-toggle auto-hide="true">
-      <ion-item>
-        <ion-icon name="home" slot="start"></ion-icon>
-        <ion-label>Home Applainces</ion-label>
-      </ion-item>
-    </ion-menu-toggle>
-  </ion-list>
 
 <ion-list  lines="none">
   <ion-menu-toggle auto-hide="true">
     <ion-item >
-      <ion-icon name="basket" [routerLink]="['/add-product']" slot="start"></ion-icon>
-      <ion-label [routerLink]="['/add-product']">Add Product</ion-label>
+      <ion-icon name="briefcase"  slot="start"></ion-icon>
+      <ion-label [routerLink]="['/ordersummary']">Order History</ion-label>
     </ion-item>
   </ion-menu-toggle>
 </ion-list>
   
+<ion-list  lines="none">
+  <ion-menu-toggle auto-hide="true">
+    <ion-item >
+      <ion-icon name="cart" slot="start"></ion-icon>
+      <ion-label>My Cart</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>
+      
+            
+
 <ion-list  lines="none">
     <ion-menu-toggle auto-hide="true">
       <ion-item (click)="goto(page)">
@@ -151,26 +165,8 @@
       </ion-item>
     </ion-menu-toggle>
   </ion-list>
-    
-  <ion-list lines="none">
-      <ion-menu-toggle auto-hide="true">
-        <ion-item (click)="goto(page)">
-          <ion-icon name="briefcase" slot="start"></ion-icon>
-          <ion-label>My Orders</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-  
-<ion-list  lines="none">
-    <ion-menu-toggle auto-hide="true">
-      <ion-item (click)="goto(page)">
-        <ion-icon name="cart" slot="start"></ion-icon>
-        <ion-label>My Cart</ion-label>
-      </ion-item>
-    </ion-menu-toggle>
-  </ion-list>
-        
-                    
+
+      
           
   <ion-list  lines="none">
       <ion-menu-toggle auto-hide="true">
@@ -193,7 +189,7 @@
 
            
     <hr>
-<p class="ion-text-center">Help Center</p>
+<p class="ion-text-center" (click)="presentModal()" >Help Center</p>
 <p class="ion-text-center">Legal Policy</p>
 <p class="ion-text-center" (click)="logOut()">Logout</p>
 </div>

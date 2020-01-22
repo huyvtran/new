@@ -5,7 +5,6 @@ export class Register{
     cpass:string;
     roles:String[];
 }
-
 export class Login{
     email:string;
     password:string;
@@ -29,6 +28,9 @@ export class Product{
 
 }
 
+export class Category{
+name:String;
+}
 
 export class AddtoCart{
     name:String;
@@ -66,3 +68,10 @@ export class Reseller{
     Product_category:String;
     complete_address:String;
 }
+
+export class Forgot{
+    email:String;
+    phone_no:String;
+    password:String;
+    cpass:String;
+    }

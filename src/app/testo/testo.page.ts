@@ -18,21 +18,6 @@ export class TestoPage implements OnInit {
   products: Product[] = [];
   service: any;
 
-  public items = [
-    { name: "ipad" },
-    { name: "ipad" },
-    { name: "ipad" },
-    { name: "ipod" },
-    { name: "iMac" },
-    { name: "iMac" },
-    { name: "iMac" },
-    { name: "iPhone" },
-    { name: "iWatch" },
-    { name: "iWatch" },
-    { name: "iWatch" },
-    { name: "iPeed" }
-  ];
-
   constructor(private rest: RestService, private popoverController: PopoverController, private route: ActivatedRoute) { this.route.params.subscribe(params => this.doSearch(params)); }
 
 

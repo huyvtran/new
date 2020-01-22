@@ -21,20 +21,20 @@ ion-toolbar{
 }
 
 ion-button{
-   --background:#d84192!important;
+   --background:#2b3e86f2!important;
   height:2em;
 //    padding: 2px 2px 2px 2px;
  }
 
 ion-item-divider{
     width: 77%;
-    margin-left: 3em;
+    margin-left: 3em;   
 }
 ion-icon{
     font-size:27px;
     color:white;
 }
-span,ion-label{
+ion-label{
     font-size:12px;
 }
 
@@ -46,6 +46,7 @@ img{
 
 #banner{
     background: #bfbdbd3d!important;
+    margin-top: 1em;
 }
 
 #valued_image{
@@ -63,6 +64,19 @@ img{
     border-radius: 20px;
  }
 
- ion-input{
-    border: 2px solid black;
- }
+//  ion-input{
+//     border: 1px solid #a59d9dba;
+//  }
+ ion-textarea{
+    border: 1px solid #f5d76e;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px #f9dd7d;
+}
+span{
+    font-size:15px;
+    font-weight:normal;
+}
+ion-input{
+    margin-left:7px;
+}
+

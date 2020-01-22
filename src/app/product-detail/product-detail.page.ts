@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { AddtoCart } from '../Models/classModels';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController,ToastController } from '@ionic/angular';
+import {OrderNowPage} from '../order-now/order-now.page';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.page.html',
@@ -26,7 +27,7 @@ export class ProductDetailPage implements OnInit {
   public data: AddtoCart = new AddtoCart();
   public modifyFormGroup: FormGroup;
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder, public rest: RestService, private modalCtrl: ModalController,
+  constructor(public toastCtrl: ToastController,private route: ActivatedRoute,private fb: FormBuilder, public rest: RestService, private modalCtrl: ModalController,
     private alertCtrl: AlertController, private myRoute: Router) {
     this.route.params.subscribe(params => this.doSearch(params));
     this.modifyFormGroup = this.fb.group({
@@ -41,6 +42,16 @@ productId:this.rest.getProductId(),
     });
   
   }
+
+
+  async presentModal() {
+    const modal = await this.modalCtrl.create({
+      component:OrderNowPage
+    });
+    return await modal.present();
+  }
+
+
   ngOnInit() {
     //console.log(this.rest.getProductId());
     this.Quantity=0;
@@ -61,12 +72,20 @@ productId:this.rest.getProductId(),
     console.log(this.Quantity);
   }
 
-  minus(){
+  async minus(){
+    
     this.Quantity--;
     this.total=this.Quantity*this.price;
 
     if(this.Quantity<0){
-      alert('Please select minimum Quantity');
+    let toast = await this.toastCtrl.create({
+        message: 'Please select minimum quantity',
+        duration: 3000,
+        position: 'bottom'
+      });
+
+      
+    toast.present();
       this.Quantity=0;
       this.total=0;
     }
@@ -74,7 +93,7 @@ productId:this.rest.getProductId(),
 cart(){
   Object.assign(this.data, this.modifyFormGroup.value);
     console.log(this.data);
-
+if(this.total>1){
     if (this.modifyFormGroup.valid) {
    
 
@@ -93,12 +112,16 @@ cart(){
 
       });
     }
+  }
+  else{
+    alert('Empty Value');
+  }
 }
 
 order(){
   Object.assign(this.data, this.modifyFormGroup.value);
   console.log(this.data);
-
+  if(this.total>1){
   if (this.modifyFormGroup.valid) {
  
 
@@ -117,6 +140,11 @@ order(){
 
     });
   }
+}
+else{
+  alert('Empty Value');
+
+}
 }
 
 getcartdetails(){

@@ -6,7 +6,11 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon style=" margin-top: -53px;" slot="end" name="cart"></ion-icon>
+    <ion-icon [routerLink]="['/democart2']" style="background: transparent;margin-right:0.5em;color: white;font-size: 28px;margin-top: -45px;"
+      class="ion-margin-end" slot="end" id="cart-icon" name="cart">
+
+    </ion-icon>
+    <ion-badge id="cart-badge" [routerLink]="['/democart2']">{{count}}</ion-badge>
     <ion-title>
       <img src="assets/images/whitebg.jpg" height="60" width="100">
 
@@ -107,68 +111,74 @@
   <ion-title style="padding:8px 2px 12px 2px;" class="deal" text-center>Deal of the Day</ion-title>
   <ion-row>
     <div *ngFor="let product of products ">
-    <ion-col *ngIf="product.category !== 'Property' && product.sub =='deal'">
+      <ion-col *ngIf="product.category !== 'Property' && product.sub =='deal'">
 
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{product.name}}</ion-card-title>
-          <hr>
-        </ion-card-header>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{product.name}}</ion-card-title>
+            <hr>
+          </ion-card-header>
 
-        <ion-card-content>
-          <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
-          <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+          <ion-card-content>
+            <img [routerLink]="['/product-detail',product.id]"
+              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </div>
   </ion-row>
-  
 
 
-    <!------------------New Arrivals----------------->
-    <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
+
+  <!------------------New Arrivals----------------->
+  <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
 
 
-    <ion-row>
-      <div *ngFor="let product of products ">
+  <ion-row>
+    <div *ngFor="let product of products ">
       <ion-col *ngIf="product.category !== 'Property' && product.sub =='new'">
-  
-        <ion-card >
+
+        <ion-card>
           <ion-card-header>
             <ion-card-title>{{product.name}} </ion-card-title>
             <hr>
           </ion-card-header>
-  
-          <ion-card-content >
-            <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+
+          <ion-card-content>
+            <img [routerLink]="['/product-detail',product.id]"
+              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
             <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
-           
+
           </ion-card-content>
         </ion-card>
       </ion-col>
-      </div>
-    </ion-row>
-    
+    </div>
+  </ion-row>
+
   <!------------------------------Trending Products-------------------------------->
   <ion-title style="padding:8px 2px 12px 2px;" class="deal3" text-center>Trending Products </ion-title>
 
   <ion-row>
     <div *ngFor="let product of products ">
-    <ion-col *ngIf="product.category !== 'Property' && product.sub =='trending'">
+      <ion-col *ngIf="product.category !== 'Property' && product.sub =='trending'">
 
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{product.name}}</ion-card-title>
-          <hr>
-        </ion-card-header>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{product.name}}</ion-card-title>
+            <hr>
+          </ion-card-header>
 
-        <ion-card-content>
-          <img  [routerLink]="['/product-detail',product.id]" src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}" style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
-          <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
+          <ion-card-content>
+            <img [routerLink]="['/product-detail',product.id]"
+              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </div>
   </ion-row>
 </ion-content>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest,HttpEvent } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
-import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart } from '../app/Models/classModels';
+import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot } from '../app/Models/classModels';
 
 //const endpoint = 'http://ec2-13-126-112-180.ap-south-1.compute.amazonaws.com:8080/';
 const endpoint = 'http://localhost:8080/';
@@ -70,7 +70,6 @@ export class RestService {
   sendId(id){
     localStorage.setItem("LoggedInUserId", id)
   }
-
   sendImage(image){
     return localStorage.setItem("ProductImage",image);
 
@@ -154,6 +153,17 @@ export class RestService {
    }
 
 
+   
+forgot(data:Forgot): Observable<any>{
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+     
+        })
+  };
+  return this.http.put<any>(endpoint + 'api/updatepass/',data, this.httpOptions);
+}
+
    addProperty(data: Property): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -174,6 +184,16 @@ export class RestService {
       return this.http.get<any>(endpoint + 'api/getprname' , this.httpOptions); 
    }
    
+
+   getOrder(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.get<any>(endpoint + 'api/getorder' , this.httpOptions); 
+   }
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
 
@@ -229,8 +249,18 @@ export class RestService {
   
     return this.http.get<any>(endpoint + 'api/userview', this.httpOptions);
   }
-   
-
+  getCartList(): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'x-access-token': this.getToken()
+          })
+    };
+    //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
+   // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
+  
+    return this.http.get<any>(endpoint + 'api/getcart', this.httpOptions);
+  }
 
  getuserdashboard(): Observable<any> {
   this.httpOptions = {
@@ -256,6 +286,19 @@ getproduct(): Observable<any> {
  // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
 
   return this.http.get<any>(endpoint + 'api/dashproductList', this.httpOptions);
+}
+
+getCategory(): Observable<any> {
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
+ // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
+
+  return this.http.get<any>(endpoint + 'api/category', this.httpOptions);
 }
 getdashboardproduct(){
   this.httpOptions = {
@@ -347,6 +390,8 @@ updateWallet(id,data:Register){
 
   return this.http.put<any>(endpoint + 'api/updatwallet/'+id,data, this.httpOptions);
 }
+
+
 
 update(id,data:Product){
   this.httpOptions = {
