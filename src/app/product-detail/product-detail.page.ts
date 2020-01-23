@@ -53,10 +53,8 @@ productId:this.rest.getProductId(),
 
 
   ngOnInit() {
-    //console.log(this.rest.getProductId());
     this.Quantity=0;
     this.total=0;
-   // this.userId=this.rest.getId();
     this.getProducts();
     this.getcartdetails();
   }
@@ -73,30 +71,26 @@ productId:this.rest.getProductId(),
   }
 
   async minus(){
-    
     this.Quantity--;
     this.total=this.Quantity*this.price;
-
     if(this.Quantity<0){
     let toast = await this.toastCtrl.create({
         message: 'Please select minimum quantity',
         duration: 3000,
         position: 'bottom'
       });
-
-      
     toast.present();
       this.Quantity=0;
       this.total=0;
     }
   }
+
+
 cart(){
   Object.assign(this.data, this.modifyFormGroup.value);
     console.log(this.data);
 if(this.total>1){
     if (this.modifyFormGroup.valid) {
-   
-
       this.rest.addtocart(this.data).subscribe((result) => {
         if (result == undefined) {
           console.log(result);
@@ -107,9 +101,7 @@ if(this.total>1){
          // this.rest.cartDetails();
         }
       }, (err) => {
-
         console.log(err);
-
       });
     }
   }
@@ -119,12 +111,11 @@ if(this.total>1){
 }
 
 order(){
+ 
   Object.assign(this.data, this.modifyFormGroup.value);
   console.log(this.data);
   if(this.total>1){
   if (this.modifyFormGroup.valid) {
- 
-
     this.rest.order(this.data).subscribe((result) => {
       if (result == undefined) {
         console.log(result);

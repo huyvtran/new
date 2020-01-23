@@ -4,6 +4,7 @@ ion-content{
 }
 img{
     height:5em;
+    width:7em;
 }
 ion-toolbar{
     --background:#031646;
@@ -45,4 +46,11 @@ span,ion-label{
     --background:#d84192!important;
    color:black;
     height:2em;
+}
+
+hr{
+    height: 4px;
+    border-width: 0;
+    box-sizing: content-box;
+    background: black;
 }

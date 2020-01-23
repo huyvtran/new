@@ -7,6 +7,7 @@ import { Product } from '../../app/Models/classModels'
 import { AppComponent } from '../app.component';
 import { Observable } from 'rxjs';
 import { TestoPage } from '../testo/testo.page';
+import { ProductDetailPage } from '../product-detail/product-detail.page';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +32,7 @@ export class DashboardPage implements OnInit {
   student:boolean;
   count:any;
   @ViewChild(IonSlides,{static:false}) slides:IonSlides
-  constructor(private test:AppComponent, private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
+  constructor(private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
   
   SlideChanged(){
 
@@ -60,6 +61,7 @@ slideOptions = {
 
 
   ngOnInit() {
+
   this.getcartdetails();
     this.getuserprofile();
     this.retrieval();
@@ -81,10 +83,6 @@ aa(){
     
 getcartdetails(){
 
- // Object.assign(this.data, this.modifyFormGroup.value);
-  // console.log(this.data);
-
-
     this.rest.cartDetails().subscribe((result) => {
       if (result == undefined) {
         console.log(result);
@@ -93,8 +91,9 @@ getcartdetails(){
       //  console.log("success");
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
-        console.log(this.userid);
+    //    console.log(this.userid);
         this.count=this.arr[0].value;
+     //  console.log(this.count=this.arr[0].value);
 
        
       }

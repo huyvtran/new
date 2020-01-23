@@ -30,7 +30,7 @@
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-             Revenues <p> Rs.1500.00</p>
+             Revenues <p> Rs.{{amts}}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -65,18 +65,21 @@
         </ion-card>
       </ion-col>
 
+    
       <ion-col text-center>
-        <ion-card class="card4" [routerLink]="['/chart2']">
+        <ion-card class="card4" [routerLink]="['/adminorders']">
           <ion-card-header>
-
             <ion-card-title>
-              <ion-icon name="cart"></ion-icon>
+              <ion-icon name="cart" [routerLink]="['/adminorders']"></ion-icon>
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content> Orders </ion-card-content>
+          <ion-card-content [routerLink]="['/adminorders']">
+             Orders <p> {{orders }} </p>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
+
   </ion-grid>
 
 

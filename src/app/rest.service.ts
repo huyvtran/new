@@ -49,6 +49,13 @@ export class RestService {
   }
 
 
+  out(){
+    localStorage.removeItem("ProductId");
+    localStorage.removeItem("productname");
+    localStorage.removeItem("productprice");
+    localStorage.removeItem("ProductImage");
+    
+  }
   getProductName(){
     return localStorage.getItem("productname");
   }
@@ -81,7 +88,6 @@ export class RestService {
   getId(){
     return localStorage.getItem("LoggedInUserId");
   }
-
   logout() {
     localStorage.removeItem("LoggedInUser");
     localStorage.removeItem("LoggedInUserId");
@@ -120,8 +126,17 @@ export class RestService {
     };
       return this.http.post<AddtoCart>(endpoint + 'api/order' , data,this.httpOptions);
    }
+   AddtoOrder(data:AddtoCart): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'   ,
+        'x-access-token': this.getToken()  
+          })          
+    };
+      return this.http.post<AddtoCart>(endpoint + 'api/AddtoOrder' , data,this.httpOptions);
+   }
 
-
+   
    Register(data: Reseller): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -193,6 +208,37 @@ forgot(data:Forgot): Observable<any>{
           })          
     };
       return this.http.get<any>(endpoint + 'api/getorder' , this.httpOptions); 
+   }
+
+   revenue(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.get<any>(endpoint + 'api/revenue' , this.httpOptions); 
+   }
+   
+   getOrdercount(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.get<any>(endpoint + 'api/orderCount' , this.httpOptions); 
+   }
+
+
+   getAllOrder(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+       'x-access-token': this.getToken()
+          })          
+    };
+      return this.http.get<any>(endpoint + 'api/AdminorderList' , this.httpOptions); 
    }
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
@@ -424,6 +470,16 @@ cartDetails(){
         })          
   };
     return this.http.get<any>(endpoint + 'api/cartCount', this.httpOptions);
+ 
+ }
+ total(){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'  ,
+      'x-access-token': this.getToken() 
+        })          
+  };
+    return this.http.get<any>(endpoint + 'api/total', this.httpOptions);
  
  }
 

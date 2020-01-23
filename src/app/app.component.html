@@ -69,7 +69,14 @@
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
-
+          <ion-list  lines="none">
+            <ion-menu-toggle auto-hide="true">
+              <ion-item>
+                  <i  [routerLink]="['/adminorders']" class="material-icons" name="cart">cart</i>
+                  <ion-label  [routerLink]="['/adminorders']" class="ion-margin-start">All Orders</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
 
           <ion-list  lines="none">
               <ion-menu-toggle auto-hide="true">

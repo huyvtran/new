@@ -1,0 +1,73 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGiVU5AazUo9Op4o_-hd-hCsPuTkO7VZN361mYnqhsXYALIi3-&s"
+      slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
+    <ion-title>
+      <img src="assets/images/whitebg.jpg" height="60" width="100">
+
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 style="text-align: center;"> Order History</h3>
+  <table mat-table [dataSource]="listData" class="table">
+
+
+
+    <ng-container matColumnDef="name">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Product </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="price">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.price}} </td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Quantity </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.quantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Total Amt</th>
+      <td mat-cell *matCellDef="let arr"> {{arr.total}} </td>
+    </ng-container>
+
+
+
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</ion-content>
+
+
+<ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon id="brief" name="briefcase"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" name="notifications"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief"  [routerLink] = "['/user-profile']" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

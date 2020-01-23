@@ -19,6 +19,7 @@ import 'chartjs-plugin-zoom';
 import { TestoPage } from './testo/testo.page';
 import { TestoPageModule } from './testo/testo.module';
 import { OrderNowPage } from './order-now/order-now.page';
+import { ProductDetailPage } from './product-detail/product-detail.page';
 
 
 @NgModule({

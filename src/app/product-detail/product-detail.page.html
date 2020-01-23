@@ -143,12 +143,6 @@
   </ion-col>
     </ion-row>
   </ion-grid>
-  
-  
-
-
- 
-
   <form [formGroup]="modifyFormGroup">
   <ion-grid>
     <ion-row>
@@ -156,7 +150,6 @@
         <div class="ion-text-center">
     
           <span> &#8377;. {{price}}</span>
-          <p>{{desc}}</p>
         </div >
         </ion-col>
   
@@ -170,52 +163,33 @@
       
           <ion-label position="stacked">Product Description</ion-label>
           <ion-textarea disabled readonly maxLength="500"
-            value="This text area is a will be a readonly Format.">
+            value="{{desc}}">
           </ion-textarea>
-        
-        
       </ion-col>
     </ion-row>
   </ion-grid>
-  
-  
   <ion-grid class="ion-margin-start">
     <ion-row center>
-    
       <ion-col size="1">
       <ion-button (click)="minus()" >-</ion-button>
      </ion-col> 
-     
-     
-
       <ion-col size="1">
      <ion-input class="ion-text-center" formControlName="quantity" [(ngModel)]= "Quantity"></ion-input>
       </ion-col>
-
-
       <ion-col  size="4" >
         <ion-button (click)="plus()">+</ion-button>
       </ion-col>
-
-
       <ion-col>
         <ion-label class=" ion-float-right">Total</ion-label>
       </ion-col>
-
-
       <ion-col>
         <ion-input  formControlName="total"[(ngModel)]= "total"></ion-input>
       </ion-col>
     </ion-row >
   </ion-grid>
-
-
-
-  
   <ion-grid>
     <ion-row>
       <ion-col>
-  
         <ion-button expand="block" class="ion-margin-top" (click)="cart()">Add to Cart</ion-button> <br>
 
         <div class="bar bar-header bar-positive" id="banner">
@@ -245,7 +219,7 @@
             </ion-row>
           </ion-grid>
         </div>
-        <ion-button style="margin-top:4em;"  (click)="order()" expand="block">Order Now</ion-button>
+        <ion-button style="margin-top:1em;"  (click)="order()" expand="block">Order Now</ion-button>
       </ion-col>
     </ion-row>
   

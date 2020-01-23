@@ -12,6 +12,10 @@ user:any;
 users;
 product;
 products;
+order;
+orders;
+amt;amts;
+
 public barChartOptions:any = {
   scaleShowVerticalLines: false,
   responsive: true
@@ -43,7 +47,8 @@ public chartHovered(e:any):void {
   constructor(private rest:RestService,private test:AppComponent) { }
 
   ngOnInit() {
-  
+    this.totalrevenue();
+  this.totalOrders();
     this.totalUsers();
     this.totalProducts();
   }
@@ -57,11 +62,50 @@ totalUsers(){
       this.user = Object.entries(result).map(([type, value]) => ({ type, value }));
       this.users = this.user[0].value;
      
-      console.log(this.users)
+      // console.log(this.users)
     }
   },
   (err) => {
     console.log(err);
+
+  });
+}
+
+totalOrders(){
+  this.rest.getOrdercount().subscribe((result)=>{
+    if(result==undefined){
+      console.log(result);
+    }
+    else{
+      this.order = Object.entries(result).map(([type, value]) => ({ type, value }));
+      this.orders = this.order[0].value;
+      // console.log(this.orders)
+    }
+  },
+  (err) => {
+    console.log(err);
+
+  });
+}
+ 
+
+
+
+totalrevenue(){
+
+  this.rest.revenue().subscribe((result)=>{
+    if(result==undefined){
+      console.log(result);
+    }
+    else{
+      console.log(result)
+      this.amt = Object.entries(result).map(([type, value]) => ({ type, value }));
+      this.amts = this.amt[0].value;
+     // console.log(this.amts)
+    }
+  },
+  (err) => {
+    // console.log(err);
 
   });
 }
@@ -77,7 +121,7 @@ totalProducts(){
     else{
       this.product = Object.entries(result).map(([type, value]) => ({ type, value }));
       this.products = this.product[0].value;
-      console.log(this.products)
+     // console.log(this.products)
     }
   },
   (err) => {
