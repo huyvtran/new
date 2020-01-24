@@ -15,6 +15,7 @@ export class ForgotPasswordPage implements OnInit {
   formValid:any;
   errmsg:any;
   valid:boolean=false;
+  user:boolean=false;
   public data: Forgot = new Forgot();
 
   constructor(private fb: FormBuilder,private rest:RestService,private modalCtrl: ModalController,private alertCtrl:AlertController) { 
@@ -28,13 +29,24 @@ export class ForgotPasswordPage implements OnInit {
       }
   
   
+      keyPress(event: any) {
+        const pattern = /[0-9]/;
+    
+        let inputChar = String.fromCharCode(event.charCode);
+        if (event.keyCode != 8 && !pattern.test(inputChar)) {
+          event.preventDefault();
+        }
+      }
 
   ngOnInit() {
     this.valid=false;
     this.errmsg=false;
   }
+
+  
   add(){
- 
+    Object.assign(this.data, this.forms.value);
+    console.log(this.data);
     this.forms.get("password").setValidators(Validators.required);
     this.forms.get("password").updateValueAndValidity();
 
@@ -47,26 +59,30 @@ export class ForgotPasswordPage implements OnInit {
     this.forms.setValidators(this.passwordMatchValidator);
     this.forms.updateValueAndValidity();
 
-    Object.assign(this.data, this.forms.value);
-    console.log(this.data);
     if(this.forms.valid){
     this.rest.forgot(this.data).subscribe((result)=>{
       if(result == undefined){
         console.log(result)
+        this.user=true;
       }
       else{
        this.confirm();
        this.forms.reset();
       }
-      (err)=>{
-        console.log(err);
-      }
+    }, (err) => {
+this.user=true;
+      console.log(err);
+
     });
+  
   }
   else{
     this.valid=true;
+    
   }
-  }
+}
+
+
 
   async confirm() {
 

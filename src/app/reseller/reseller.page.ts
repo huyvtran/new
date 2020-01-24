@@ -25,6 +25,7 @@ export class ResellerPage implements OnInit {
   showMsg: boolean = false;
   errmsg: any;
   server: any;
+
   valid: boolean = false;
   valids: boolean = false;
   public data: Reseller = new Reseller();
@@ -37,7 +38,7 @@ export class ResellerPage implements OnInit {
       owneraddress: ['', Validators.required],
       Email_address: ['',[Validators.required, Validators.email]],
       Gst_no: ['', Validators.required],
-      phone_no: ['', [Validators.required, Validators.min(1)]],
+      phone_no: ['', [Validators.required, Validators.min(1),Validators.max(10)]],
 
       Registration_certificate: ['', Validators.required],
       GST_Certificate: [''],
@@ -55,6 +56,15 @@ export class ResellerPage implements OnInit {
     });
   }
 
+
+  keyPress(event: any) {
+    const pattern = /[0-9]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 
   ngOnInit() {
     console.log(this.currentFileUpload);
@@ -175,7 +185,7 @@ export class ResellerPage implements OnInit {
           owneraddress: ['', Validators.required],
           Email_address: ['', [Validators.required, Validators.email]],
           Gst_no: ['', Validators.required],
-          phone_no: ['', [Validators.required, Validators.min(1)]],
+          phone_no: ['', [Validators.required, Validators.min(1),Validators.max(10)]],
           Registration_certificate: ['', Validators.required],
           GST_Certificate: [''],
           Pan_card: [''],

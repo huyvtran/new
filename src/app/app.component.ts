@@ -132,11 +132,10 @@ export class AppComponent implements OnInit {
         this.role = this.ar[0].value;
         //console.log(this.role.name);
         this.rest.sendRole(this.role.name);
+      //  localStorage.setItem("ii",this.role.name);
 
-
-        /* Role Differntiation */
+      /* Role Differntiation */
         if (this.rest.getRole() == "ADMIN") {
-
           this.admin = true;
         }
 
@@ -149,7 +148,7 @@ export class AppComponent implements OnInit {
       }
 
     }, (err) => {
-      //console.log(err);
+      console.log(err);
 
     });
   }
@@ -173,6 +172,7 @@ export class AppComponent implements OnInit {
   }
 
   logOut() {
+  
     this.rest.logout();
     this.route.navigate(['/login']);
     this.admin = false;

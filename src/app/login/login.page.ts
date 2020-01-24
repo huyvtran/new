@@ -1,105 +1,125 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute, Router ,Params} from '@angular/router';
-import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { Login } from '../Models/classModels';
+import { AlertController, ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  public modifyFormGroup : FormGroup;
-  public data : Login = new Login();
-  showMsg:any;
-  formValid:any;
-  errmsg:any;
-  valid:boolean=false;
+  public modifyFormGroup: FormGroup;
+  public data: Login = new Login();
+  showMsg: any;
+  formValid: any;
+  errmsg: any;
+  valid: boolean = false;
   server: any;
-  constructor( private fb: FormBuilder,private myRoute: Router,public rest:RestService) {
-    
-  
-this.modifyFormGroup = this.fb.group({
-  Email_address: ["", []],
-        password:["", []]
-      });
-    
-    }
+  suu:boolean=true;
+
+  constructor(private fb: FormBuilder, private myRoute: Router, public rest: RestService, private modalCtrl: ModalController,
+    private alertCtrl: AlertController) {
+
+
+    this.modifyFormGroup = this.fb.group({
+      Email_address: ["", []],
+      password: ["", []]
+    });
+
+  }
 
   ngOnInit() {
-    this.valid=false;
-    this.errmsg=false;
+    this.valid = false;
+    this.errmsg = false;
   }
+
   
-  login(){
+  async confirm() {
 
-    
-  this.modifyFormGroup.get("password").setValidators(Validators.required);
-  this.modifyFormGroup.get("password").updateValueAndValidity();
-  this.modifyFormGroup.get("Email_address").setValidators(Validators.required);
-  this.modifyFormGroup.get("Email_address").updateValueAndValidity();
-
-  if (this.modifyFormGroup.valid) {
-    console.log("Form is valid");
-  }
-  else {
-    this.valid=true;
-    console.log("There is still an error in the form");
-  }
-
-  /*this.rest.getuserdata(this.data).subscribe(
-    (result) => {
-      console.log(result);
-    }
-  ); 
-
-}*/
-
-
-Object.assign(this.data, this.modifyFormGroup.value);
-console.log(this.data);
-
-this.formValid=true;
-this.formValid=true;
-
-
-
-   if (this.formValid) {
-    this.rest.login(this.data).subscribe((result) => {       
-     console.log(result);
-      if(result === undefined)
-      {
-        this.showMsg=true;
-        console.log(result);
-        this.errmsg=true;
-      
-      }
-    else 
-      {        
-        this.rest.sendToken(result.accessToken);
-      //this.rest.sendRole(result.role);
-    
-       // this.myRoute.navigateByUrl(this.returnUrl);
-        this.myRoute.navigate(['/dashboard']);
-       
-      }
+    let alert = await this.alertCtrl.create({
      
-      
-    }, (err) => {
-     this.showMsg=true;
-     
-      console.log(err);
-    
+      message: 'Successfully Logged In',
+      buttons: ['OK']
+
+
+
+
+    });
+    alert.present().then(() => {
+      this.modalCtrl.dismiss();
     });
   }
-  else
-  {
-    alert("something Went Wrong");
+
+
+  login() {
+
+
+    this.modifyFormGroup.get("password").setValidators(Validators.required);
+    this.modifyFormGroup.get("password").updateValueAndValidity();
+    this.modifyFormGroup.get("Email_address").setValidators(Validators.required);
+    this.modifyFormGroup.get("Email_address").updateValueAndValidity();
+
+    if (this.modifyFormGroup.valid) {
+      console.log("Form is valid");
+    }
+    else {
+      this.valid = true;
+      console.log("There is still an error in the form");
+    }
+
+    /*this.rest.getuserdata(this.data).subscribe(
+      (result) => {
+        console.log(result);
+      }
+    ); 
+  
+  }*/
+
+
+    Object.assign(this.data, this.modifyFormGroup.value);
+    console.log(this.data);
+
+    this.formValid = true;
+    this.formValid = true;
+
+
+
+    if (this.formValid) {
+      this.rest.login(this.data).subscribe((result) => {
+        console.log(result);
+        if (result === undefined) {
+          this.showMsg = true;
+          console.log(result);
+          this.errmsg = true;
+
+        }
+        else {
+         this.confirm();
+          this.rest.sendToken(result.accessToken);
+          this.myRoute.navigate(['/dashboard']);
+          this.modifyFormGroup.reset();
+       
+
+
+        }
+
+
+      }, (err) => {
+        this.showMsg = true;
+
+        console.log(err);
+
+      });
+    }
+    else {
+      alert("something Went Wrong");
+    }
   }
+
+
+
 }
-
-
-
-  }
 

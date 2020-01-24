@@ -178,7 +178,7 @@
       <div *ngIf="valid">
         <p class="ion-margin-start" *ngIf="modifyFormGroup.get('phone_no').hasError('required')">Phone No Required </p>
       </div>
-      <ion-input formControlName="phone_no" class="ion-margin-top ion-margin-start ion-padding-end"
+      <ion-input type="text" (keypress)="keyPress($event)" minlength=10 maxlength=10  formControlName="phone_no" class="ion-margin-top ion-margin-start ion-padding-end"
         placeholder="Phone  No *"></ion-input>
 
     <div *ngIf="valid">

@@ -51,6 +51,8 @@ export class RestService {
     localStorage.removeItem("LoggedInUser");
     localStorage.removeItem("LoggedInUserId");
     localStorage.removeItem("LoggedInRole");
+    localStorage.removeItem("ii");
+
   }
 
 
@@ -85,16 +87,19 @@ export class RestService {
     };
       return this.http.post<AddtoCart>(endpoint + 'api/order' , data,this.httpOptions);
    }
-   AddtoOrder(data:AddtoCart): Observable<any> {
+ 
+   AddtoOrder(data:AddtoCart ): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'   ,
-        'x-access-token': this.getToken()  
-          })          
+        'Content-Type':  'application/json',
+        'x-access-token': this.getToken()
+          }) 
     };
-      return this.http.post<AddtoCart>(endpoint + 'api/AddtoOrder' , data,this.httpOptions);
+    
+    
+    return this.http.post<AddtoCart>(endpoint + 'api/AddtoOrder',data ,this.httpOptions);
    }
-
+ 
    
    Register(data: Reseller): Observable<any> {
     this.httpOptions = {
@@ -211,6 +216,28 @@ forgot(data:Forgot): Observable<any>{
 
     return this.http.request(req);
   }
+
+/* 
+  
+  AddtoOrder(name: string,image:string,price:string,userId:string,quantity:string,total:string,productId:string): Observable<HttpEvent<{}>> {
+    const formdata: FormData = new FormData();
+
+    formdata.append('name', name);
+    formdata.append('price', price);
+    formdata.append('image', image);
+    formdata.append('total', total);
+    formdata.append('userid', userId);
+    formdata.append('quantity', quantity);
+    formdata.append('productId', productId);
+
+    const req = new HttpRequest('POST', 'http://localhost:8080/api/AddtoOrder', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
+  } */
+
 
   getFiles(): Observable<any> {
     return this.http.get('http://localhost:8080/api/file/all');

@@ -17,8 +17,9 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-icon class="ion-margin-start" slot="start" name="arrow-back"></ion-icon>
+    <ion-icon (click)="backClicked()" class="ion-margin-start" slot="start" name="arrow-back"></ion-icon>
     <ion-icon id="cart-icon" class="ion-margin-end" slot="end" name="cart"></ion-icon>
+    <ion-badge id="cart-badge" [routerLink]="['/democart2']">{{count}}</ion-badge>
   </ion-toolbar>
 </ion-header>
 

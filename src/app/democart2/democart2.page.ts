@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { AddtoCart, Category } from '../Models/classModels';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-democart2',
@@ -11,20 +12,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class Democart2Page implements OnInit {
   public data: AddtoCart = new AddtoCart();
   public form: FormGroup;
-
   cart;
   Quantity: any;
-
   carts;
   total: any;
-  constructor(private rest: RestService, private fb: FormBuilder) { }
+  constructor(private rest: RestService, private fb: FormBuilder,private _location: Location) {
+   
+   }
 
 
   ngOnInit() {
     this.getCarList();
     this.getCarLists();
     this.Quantity = 0;
-    // this.total=0;
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 
@@ -37,12 +41,13 @@ export class Democart2Page implements OnInit {
       else {
         this.cart = Object.entries(AddtoCart).map(([type, value]) => ({ type, value }));
         this.carts = this.cart[0].value;
-        this.data=this.carts;
+       
       }
     }, (err) => {
       console.log(err);
     });
   }
+
 
   getCarLists() {
     this.rest.total().subscribe((AddtoCart) => {
@@ -61,12 +66,8 @@ export class Democart2Page implements OnInit {
 
 
 
-
-
-
   add() {
-    Object.assign(this.data,this.carts);
-    console.log(this.data);
+    Object.assign(this.data)
     if(this.total>1){
     this.rest.AddtoOrder(this.data).subscribe((result) => {
       if (result == undefined) {

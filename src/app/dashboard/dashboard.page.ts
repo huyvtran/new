@@ -32,7 +32,7 @@ export class DashboardPage implements OnInit {
   student:boolean;
   count:any;
   @ViewChild(IonSlides,{static:false}) slides:IonSlides
-  constructor(private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
+  constructor(private test:AppComponent,private route:Router,private rest:RestService, private toast:ToastController,public navCtrl:NavController,public popoverController: PopoverController) {}
   
   SlideChanged(){
 
@@ -126,18 +126,24 @@ getcartdetails(){
     this.role= this.ar[0].value;
    // console.log(this.role.name);
 
+
     this.rest.sendRole(this.role.name);
  
 
     /* Role Differntiation */
     if(this.rest.getRole()== "ADMIN"){
+      this.test.getuserprofile();
+      this.test.getuserDetails();
  this.route.navigate(['/admindashboard']);
 
  
     }
     
     else {
-    
+
+      this.test.getuserprofile();
+      this.test.getuserDetails();
+
       this.route.navigate(['/dashboard']);
  
     

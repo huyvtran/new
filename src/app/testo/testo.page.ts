@@ -4,6 +4,7 @@ import { MobileAccesoriesComponent } from '../mobile-accesories/mobile-accesorie
 import { Router, ActivatedRoute } from '@angular/router';
 import { RestService } from '../rest.service';
 import { Product } from '../Models/classModels';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -17,21 +18,48 @@ export class TestoPage implements OnInit {
   listData: any;
   products: Product[] = [];
   service: any;
-
-  constructor(private rest: RestService, private popoverController: PopoverController, private route: ActivatedRoute) { this.route.params.subscribe(params => this.doSearch(params)); }
+  count:any;
+  userid:any;
+  constructor(private rest: RestService, private popoverController: PopoverController,private _location: Location, private route: ActivatedRoute) { this.route.params.subscribe(params => this.doSearch(params)); }
 
 
   ngOnInit() {
-
+this.getcartdetails();
     this.retrieval();
   }
 
-
+  backClicked() {
+    this._location.back();
+  }
   doSearch(param) {
     this.service = param.service;
     // console.log(this.id);
   }
 
+
+  getcartdetails(){
+
+    this.rest.cartDetails().subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      //  console.log("success");
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+    //    console.log(this.userid);
+        this.count=this.arr[0].value;
+     //  console.log(this.count=this.arr[0].value);
+
+       
+      }
+    }, (err) => {
+
+      console.log(err);
+
+    });
+  
+}
 
 
   retrieval() {
@@ -46,7 +74,7 @@ export class TestoPage implements OnInit {
         this.listData = Object.entries(Product).map(([type, value]) => ({ type, value }));
         this.products = this.listData[0].value;
 
-        console.log(this.products);
+        // console.log(this.products);
 
 
 

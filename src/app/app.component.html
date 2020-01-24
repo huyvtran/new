@@ -72,7 +72,7 @@
           <ion-list  lines="none">
             <ion-menu-toggle auto-hide="true">
               <ion-item>
-                  <i  [routerLink]="['/adminorders']" class="material-icons" name="cart">cart</i>
+                  <ion-icon  [routerLink]="['/product-list']" name="cart"></ion-icon>
                   <ion-label  [routerLink]="['/adminorders']" class="ion-margin-start">All Orders</ion-label>
               </ion-item>
             </ion-menu-toggle>
@@ -196,9 +196,16 @@
 
            
     <hr>
-<p class="ion-text-center" (click)="presentModal()" >Help Center</p>
+    <ion-list  lines="none">
+      <ion-menu-toggle auto-hide="true">
+        
+          <p class="ion-text-center" (click)="presentModal()" >Help Center</p>
 <p class="ion-text-center">Legal Policy</p>
 <p class="ion-text-center" (click)="logOut()">Logout</p>
+       
+      </ion-menu-toggle>
+    </ion-list>
+
 </div>
 
 
