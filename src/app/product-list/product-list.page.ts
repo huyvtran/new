@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
-
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -8,82 +7,43 @@ import { MatTableDataSource } from '@angular/material';
   templateUrl: './product-list.page.html',
   styleUrls: ['./product-list.page.scss'],
 })
-export class ProductListPage implements OnInit {
 
+export class ProductListPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
-  // displayedColumns: string[] = [ 'id','options'];
-
-  displayedColumns: string[] = ['name','price','discount','desc', 'category','userId','permission','edit','options'];
-
-
-
-
+  displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit', 'options'];
 
   constructor(public rest: RestService) { }
 
   ngOnInit() {
-
     this.retrieval();
   }
 
-
- retrieval() {
+  retrieval() {
     this.rest.getdashboardproduct().subscribe((result) => {
-
       if (result === undefined) {
         console.log(result);
-
-
       }
       else {
-
-        // this.listData = new MatTableDataSource(result);
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.listData = this.arr[0].value;
-        console.log(this.listData);
         this.listData = new MatTableDataSource(this.arr[1].value);
-
-
       }
-
     }, (err) => {
       console.log(err);
-
     });
-
   }
 
-
-  alert(){
-    alert('df');
-  }
-
-
-
-  approve(number,id){
-  
-    this.rest.updateproductStatus(number,id).subscribe((result) => {
-
+  approve(number, id) {
+    this.rest.updateproductStatus(number, id).subscribe((result) => {
       if (result === undefined) {
         console.log(result);
-
-
       }
       else {
         this.retrieval();
-       
-
       }
-
     }, (err) => {
       console.log(err);
-
     });
-
-
-
   }
-
-
 }

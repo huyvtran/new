@@ -52,9 +52,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  goto(page) {
-    this.route.navigate(['/add-product']);
-  }
+
   topClick() {
     this.route.navigate(['/login']);
   }

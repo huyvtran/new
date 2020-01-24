@@ -7,10 +7,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
+  
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
@@ -19,10 +16,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
-  },
+ 
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
@@ -31,10 +25,7 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule)
   },
-  {
-    path: 'userlist',
-    loadChildren: () => import('./userlist/userlist.module').then(m => m.UserlistPageModule)
-  },
+  
 
   {
     path: 'all-category',
@@ -49,10 +40,7 @@ const routes: Routes = [
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then(m => m.AddProductPageModule)
   },
-  {
-    path: 'cart',
-    loadChildren: () => import('./pages/cart-modal/cart-modal.module').then(m => m.CartModalPageModule)
-  },
+  
   {
     path: 'product-list',
     loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListPageModule)
@@ -85,10 +73,7 @@ const routes: Routes = [
     path: 'product-detail/:id',
     loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailPageModule)
   },
-  {
-    path: 'democart',
-    loadChildren: () => import('./democart/democart.module').then(m => m.DemocartPageModule)
-  },
+
   {
     path: 'democart2',
     loadChildren: () => import('./democart2/democart2.module').then(m => m.Democart2PageModule)
@@ -98,10 +83,7 @@ const routes: Routes = [
     path: 'testo/:service',
     loadChildren: () => import('./testo/testo.module').then(m => m.TestoPageModule)
   },
-  {
-    path: 'order-now',
-    loadChildren: () => import('./order-now/order-now.module').then( m => m.OrderNowPageModule)
-  },
+  
   {
     path: 'editproduct/:id',
     loadChildren: () => import('./editproduct/editproduct.module').then( m => m.EditproductPageModule)

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { Product, Property } from '../Models/classModels';
@@ -12,10 +11,11 @@ import { Product, Property } from '../Models/classModels';
   templateUrl: './add-product.page.html',
   styleUrls: ['./add-product.page.scss'],
 })
+
 export class AddProductPage implements OnInit {
   public forms: FormGroup;
   public data: Product = new Product();
-  public data1:Property =new Property();
+  public data1: Property = new Property();
   valid: boolean = false;
   selectedFiles: FileList;
   currentFileUpload: File;
@@ -28,27 +28,26 @@ export class AddProductPage implements OnInit {
     state: 0
   }
   statelist = [
-  {
-    state_id: 'Electronics',
-    state_name: 'Electronics'
-  },
-  {
-    state_id: 'Mobile&Tablets',
-    state_name: 'Mobile&Tablets'
-  },
-  {
-    state_id: 'Home_Appliances',
-    state_name: 'Home_Appliances'
-  },
-  {
-    state_id: ' Mobile_Accessory',
-    state_name: 'Mobile_Accessory'
-  },
-  {
-    state_id: 'Property',
-    state_name: 'Property'
-  }]
-
+    {
+      state_id: 'Electronics',
+      state_name: 'Electronics'
+    },
+    {
+      state_id: 'Mobile&Tablets',
+      state_name: 'Mobile&Tablets'
+    },
+    {
+      state_id: 'Home_Appliances',
+      state_name: 'Home_Appliances'
+    },
+    {
+      state_id: ' Mobile_Accessory',
+      state_name: 'Mobile_Accessory'
+    },
+    {
+      state_id: 'Property',
+      state_name: 'Property'
+    }]
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public alertController: AlertController, public imagepicker: ImagePicker, private rest: RestService) {
     this.forms = this.fb.group({
@@ -64,8 +63,6 @@ export class AddProductPage implements OnInit {
       image3: [''],
       image4: [''],
       userId: this.rest.getId()
-
-
     });
 
     this.propertyforms = this.fb.group({
@@ -82,7 +79,6 @@ export class AddProductPage implements OnInit {
     });
   }
 
-
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Confirm',
@@ -90,70 +86,58 @@ export class AddProductPage implements OnInit {
       message: 'Please Confirm Before Posting.',
       buttons: ['OK']
     });
-
     await alert.present();
   }
+
   ngOnInit() {
     this.prod = true;
-    //console.log(document.getElementById('file').nodeValue);
-
   }
+
   alert(signup) {
-if(signup.state == 'Property'){
-  this.property=true;
-  this.prod=false;
-}
-else{
-  this.prod=true;
-  this.property=false;
-}
+    if (signup.state == 'Property') {
+      this.property = true;
+      this.prod = false;
+    }
+    else {
+      this.prod = true;
+      this.property = false;
+    }
   }
+
   selectFiles(event) {
-
     this.selectedFiles = event.target.files;
-
   }
 
   upload() {
     this.progress.percentage = 0;
-
-
     this.currentFileUpload = this.selectedFiles.item(0);
     this.image = this.currentFileUpload.name;
     console.log(this.currentFileUpload.name);
     this.rest.pushFileToStorages(this.currentFileUpload).subscribe(event => {
-
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         console.log('File is completely uploadedss!');
       }
     });
-
     this.selectedFiles = undefined;
-
   }
 
-  
   uploadpro() {
     this.progress.percentage = 0;
-
-
     this.currentFileUpload = this.selectedFiles.item(0);
     this.image = this.currentFileUpload.name;
     console.log(this.currentFileUpload.name);
     this.rest.property(this.currentFileUpload).subscribe(event => {
-
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         console.log('File is completely uploadedss!');
       }
     });
-
     this.selectedFiles = undefined;
-
   }
+
   propertyAdd() {
     this.propertyforms.get("propertyname").setValidators(Validators.required);
     this.propertyforms.get("propertyname").updateValueAndValidity();
@@ -172,61 +156,43 @@ else{
     }
     Object.assign(this.data1, this.propertyforms.value);
     console.log(this.data1);
-
     if (this.propertyforms.valid) {
       this.rest.addProperty(this.data1).subscribe((result) => {
         this.uploadpro();
         console.log(result);
         if (result === undefined) {
-          // this.showMsg=true;
           console.log(result);
-          //this.errmsg=true;
-
         }
         else {
-
           this.presentAlert();
           this.propertyforms.reset();
-       
-        
-            this.propertyforms = this.fb.group({
-              propertyname: ['', [Validators.required]],
-              category: ['', [Validators.required]],
-              propertydesc: ['', [Validators.required]],
-              propertyprice: ['', [Validators.required]],
-              propertyimage: ['', [Validators.required]],
-              propertyimage1: [''],
-              propertyimage2: [''],
-              propertyimage3: [''],
-              propertyimage4: [''],
-              userId: this.rest.getId()
-        
-            });
+          this.propertyforms = this.fb.group({
+            propertyname: ['', [Validators.required]],
+            category: ['', [Validators.required]],
+            propertydesc: ['', [Validators.required]],
+            propertyprice: ['', [Validators.required]],
+            propertyimage: ['', [Validators.required]],
+            propertyimage1: [''],
+            propertyimage2: [''],
+            propertyimage3: [''],
+            propertyimage4: [''],
+            userId: this.rest.getId()
+          });
         }
-
-
       }, (err) => {
-
-
         console.log(err);
-
       });
     }
     else {
       alert("something Went Wrong");
     }
-  
-
   }
 
-
   add() {
-
     this.forms.get("name").setValidators(Validators.required);
     this.forms.get("name").updateValueAndValidity();
     this.forms.get("price").setValidators(Validators.required);
     this.forms.get("price").updateValueAndValidity();
-
     this.forms.get("image").setValidators(Validators.required);
     this.forms.get("image").updateValueAndValidity();
     this.forms.get("sub").setValidators(Validators.required);
@@ -244,23 +210,17 @@ else{
     }
     Object.assign(this.data, this.forms.value);
     console.log(this.data);
-
     if (this.forms.valid) {
       this.rest.addProduct(this.data).subscribe((result) => {
         this.upload();
         console.log(result);
         if (result === undefined) {
-          // this.showMsg=true;
           console.log(result);
-          //this.errmsg=true;
-
         }
         else {
-
           this.presentAlert();
           this.forms.reset();
           this.forms = this.fb.group({
-        
             name: ['', [Validators.required]],
             category: ['', Validators.required],
             sub: ['', Validators.required],
@@ -275,18 +235,12 @@ else{
             userId: this.rest.getId()
           });
         }
-
-
       }, (err) => {
-
-
         console.log(err);
-
       });
     }
     else {
       alert("something Went Wrong");
     }
   }
-
 }
