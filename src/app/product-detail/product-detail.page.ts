@@ -30,17 +30,7 @@ export class ProductDetailPage implements OnInit {
   constructor(public toastCtrl: ToastController,private route: ActivatedRoute,private fb: FormBuilder, public rest: RestService, private modalCtrl: ModalController,
     private alertCtrl: AlertController, private myRoute: Router) {
     this.route.params.subscribe(params => this.doSearch(params));
-    this.modifyFormGroup = this.fb.group({
-   name:this.rest.getProductName(),
-   total:[''],
-   price:this.rest.getProductPrice(),
-   quantity:['', Validators.required],
-productId:this.rest.getProductId(),
-   userId:this.rest.getId(),
-   image:this.rest.getImage()
    
-    });
-  
   }
 
 
@@ -53,6 +43,8 @@ productId:this.rest.getProductId(),
 
 
   ngOnInit() {
+this.validation();
+
     this.Quantity=0;
     this.total=0;
     this.getProducts();
@@ -67,7 +59,6 @@ productId:this.rest.getProductId(),
   plus(){
     this.Quantity++;
     this.total=this.Quantity*this.price;
-    console.log(this.Quantity);
   }
 
   async minus(){
@@ -141,38 +132,29 @@ else{
 getcartdetails(){
 
   Object.assign(this.data, this.modifyFormGroup.value);
-  // console.log(this.data);
-
-
     this.rest.cartDetails().subscribe((result) => {
       if (result == undefined) {
         console.log(result);
       }
       else {
-      //  console.log("success");
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
         console.log(this.userid);
         this.count=this.arr[0].value;
-
-       
       }
     }, (err) => {
 
       console.log(err);
-
     });
-  
 }
+
   getProducts(){
     this.rest.getProduct(this.id).subscribe((result) => {
-
       if (result === undefined) {
         console.log(result);
         this.errmsg = true;
       }
       else {
-
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
         this.name=this.userid.name;
@@ -180,24 +162,30 @@ getcartdetails(){
         this.discount=this.userid.discount;
         this.desc=this.userid.desc;
         this.image=this.userid.image;
-      
-        this.rest.sendProductId(this.userid.id); 
-        this.rest.sendImage(this.userid.image);
-              
-        this.rest.sendProductId(this.userid.id); 
-              
-        this.rest.sendProductName(this.userid.name); 
-              
-        this.rest.sendProductPrice(this.userid.price); 
-
-       
-
+        localStorage.setItem("productId",this.userid.id);
+        localStorage.setItem("name",this.userid.name);
+        localStorage.setItem("price",this.userid.price);
+        localStorage.setItem("image",this.userid.image);
+     
+     this.validation();
       }
-
     }, (err) => {
-    
       console.log(err);
-
     });
   }
+ 
+ 
+ validation(){
+
+this.modifyFormGroup = this.fb.group({
+    name:localStorage.getItem("name"),
+    price:localStorage.getItem("price"),
+     productId:localStorage.getItem("productId"),
+    image:localStorage.getItem("image"),
+    quantity:['', Validators.required],
+ total:[''],
+ userId:this.rest.getId(),
+
+  });
+} 
 }

@@ -35,39 +35,6 @@ export class RestService {
   isLoggednIn() {  
     return this.getToken() !== null;
   }
-
-  sendProductId(id){
-    localStorage.setItem("ProductId", id)
-  }
-
-  sendProductName(name){
-    localStorage.setItem("productname", name)
-  }
-
-  sendProductPrice(price){
-    localStorage.setItem("productprice", price)
-  }
-
-
-  out(){
-    localStorage.removeItem("ProductId");
-    localStorage.removeItem("productname");
-    localStorage.removeItem("productprice");
-    localStorage.removeItem("ProductImage");
-    
-  }
-  getProductName(){
-    return localStorage.getItem("productname");
-  }
-
-  getProductPrice(){
-    return localStorage.getItem("productprice");
-  }
-
-
-  getProductId(){
-    return localStorage.getItem("ProductId");
-  }
   sendRole(role){
     localStorage.setItem("LoggedInRole", role)
   }
@@ -76,14 +43,6 @@ export class RestService {
   }
   sendId(id){
     localStorage.setItem("LoggedInUserId", id)
-  }
-  sendImage(image){
-    return localStorage.setItem("ProductImage",image);
-
-  }
-  getImage(){
-    return localStorage.getItem("ProductImage");
-
   }
   getId(){
     return localStorage.getItem("LoggedInUserId");
