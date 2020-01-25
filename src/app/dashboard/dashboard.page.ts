@@ -58,6 +58,7 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
+    this.test.retrieval();
     this.getcartdetails();
     this.getuserprofile();
     this.retrieval();

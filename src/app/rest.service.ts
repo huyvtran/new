@@ -51,8 +51,12 @@ export class RestService {
     localStorage.removeItem("LoggedInUser");
     localStorage.removeItem("LoggedInUserId");
     localStorage.removeItem("LoggedInRole");
+    localStorage.removeItem("productId");
+    localStorage.removeItem("name");
+    localStorage.removeItem("price");
+    localStorage.removeItem("image");
     localStorage.removeItem("ii");
-
+  
   }
 
 
@@ -401,7 +405,15 @@ updateuser(num,id){
 }
 
 
-
+delete(){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.delete<any>(endpoint + 'api/destroy', this.httpOptions);
+}
 updateproductStatus(num,id){
   this.httpOptions = {
     headers: new HttpHeaders({

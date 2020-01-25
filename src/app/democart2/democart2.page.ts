@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { AddtoCart, Category } from '../Models/classModels';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-democart2',
@@ -16,15 +16,16 @@ export class Democart2Page implements OnInit {
   Quantity: any;
   carts;
   total: any;
-  constructor(private rest: RestService, private fb: FormBuilder,private _location: Location) {
-   
-   }
+  constructor(private rest: RestService, private fb: FormBuilder, private _location: Location) {
+
+  }
 
 
   ngOnInit() {
     this.getCarList();
     this.getCarLists();
     this.Quantity = 0;
+
   }
 
   backClicked() {
@@ -41,12 +42,13 @@ export class Democart2Page implements OnInit {
       else {
         this.cart = Object.entries(AddtoCart).map(([type, value]) => ({ type, value }));
         this.carts = this.cart[0].value;
-       
+
       }
     }, (err) => {
       console.log(err);
     });
   }
+
 
 
   getCarLists() {
@@ -57,7 +59,7 @@ export class Democart2Page implements OnInit {
       else {
         this.cart = Object.entries(AddtoCart).map(([type, value]) => ({ type, value }));
         this.total = this.cart[0].value;;
-     
+
       }
     }, (err) => {
       console.log(err);
@@ -67,23 +69,42 @@ export class Democart2Page implements OnInit {
 
 
   add() {
-    Object.assign(this.data)
-    if(this.total>1){
-    this.rest.AddtoOrder(this.data).subscribe((result) => {
+    Object.assign(this.carts)
+    console.log(this.carts);
+    if (this.total > 1) {
+      this.rest.AddtoOrder(this.carts).subscribe((result) => {
+        if (result == undefined) {
+          console.log(result);
+        }
+        else {
+
+          //this.delete();
+          console.log(result);
+
+        }
+      }, (err) => {
+        console.log(err);
+      });
+    }
+    else {
+      alert('No Products');
+    }
+  }
+
+
+  delete() {
+    this.rest.delete().subscribe((result) => {
       if (result == undefined) {
         console.log(result);
       }
       else {
-        console.log(result);
+        this.getCarList();
+        this.getCarLists();
+        //console.log(result);
       }
     }, (err) => {
       console.log(err);
     });
   }
-  else{
-    alert('No Products');
-  }
-  }
-
 }
 

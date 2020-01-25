@@ -80,3 +80,21 @@
 
 
 </ion-content>
+
+<ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon id="brief"  [routerLink]="['/ordersummary']"name="cash"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

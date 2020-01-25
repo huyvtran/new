@@ -148,7 +148,7 @@ export class ProductDetailPage implements OnInit {
         localStorage.setItem("name", this.userid.name);
         localStorage.setItem("price", this.userid.price);
         localStorage.setItem("image", this.userid.image);
-
+       
         this.validation();
       }
     }, (err) => {

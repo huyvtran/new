@@ -161,6 +161,7 @@ export class AppComponent implements OnInit {
       else {
 
         this.categorys = Category.category;
+        console.log(this.categorys);
       }
     }, (err) => {
        console.log(err);
