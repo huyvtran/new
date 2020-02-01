@@ -24,7 +24,8 @@ export class UserProfilePage implements OnInit {
   web_address;
   wallet;
   balance;
-
+  dashboard:boolean=false;
+  admindashboard:boolean=false;
   public modifyFormGroup: FormGroup;
   public data: Register = new Register();
   constructor(private fb: FormBuilder, public rest: RestService) {
@@ -34,9 +35,18 @@ export class UserProfilePage implements OnInit {
   }
 
   ngOnInit() {
+    this.roles();
     this.getuserDetails();
   }
 
+  roles(){
+    if(this.rest.getRole()=="USER"){
+      this.dashboard=true;
+    }
+    else{
+      this.admindashboard=true;
+    }
+  }
   getuserDetails() {
     this.rest.userprofile().subscribe((result) => {
       if (result === undefined) {

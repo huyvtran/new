@@ -1,18 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <!-- <ion-menu-button ></ion-menu-button> -->
-      <ion-icon style="color:white;" [routerLink]="['/dashboard']" name="arrow-round-back"></ion-icon>
-    </ion-buttons>
-    <ion-icon id="category_cart" slot="end" name="cart"></ion-icon>
-    <ion-title>
 
-      <p ion-text-center>All Category</p>
-    </ion-title>
-    <!-- <ion-searchbar placeholder="Search for Products,Brand and More" id="home-search" ></ion-searchbar>  -->
 
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-icon (click)="backClicked()" class="ion-margin-start" slot="start" name="arrow-back"></ion-icon>
+     
+    
+        <ion-icon  [routerLink]="['/democart2']"  class="ion-margin-end" slot="end" id="cart-icon" name="cart">
+          
+        </ion-icon>
+        <ion-badge [routerLink]="['/democart2']" id="cart-badge">{{count}}</ion-badge>
+  
+    </ion-toolbar>
+  </ion-header>
+  
 <ion-content>
 
 
@@ -28,9 +28,9 @@
 
           <ion-card-header>
 
-            <img src="assets/images/monitor.png" style="padding: 0px 12px 5px 10px;" height="87px" width="99px">
+            <img  [routerLink]="['/testo/Electronics']" src="assets/images/monitor.png" style="padding: 0px 12px 5px 10px;" height="87px" width="99px">
 
-            <span style="margin-left: 17px;">Electronics</span>
+            <span  [routerLink]="['/testo/Electronics']" style="margin-left: 17px;">Electronics</span>
 
           </ion-card-header>
         </ion-card>
@@ -42,9 +42,9 @@
 
           <ion-card-header>
 
-            <img src="assets/images/Smartphone_4.jpg" style="padding: 1px 28px 5px 21px;" height="87px" width="99px">
+            <img [routerLink]="['/testo/Mobile&Tablets']" src="assets/images/Smartphone_4.jpg" style="padding: 1px 28px 5px 21px;" height="87px" width="99px">
 
-            <span>Mobiles&nbsp;&&nbsp;Tablets</span>
+            <span [routerLink]="['/testo/Mobile&Tablets']" >Mobiles&nbsp;&&nbsp;Tablets</span>
 
           </ion-card-header>
         </ion-card>
@@ -59,9 +59,9 @@
 
           <ion-card-header>
 
-            <img src="assets/images/home_tv.png" style="padding: 1px 14px 5px 1px;" height="87px" width="99px">
+            <img [routerLink]="['/testo/Home_Appliances']" src="assets/images/home_tv.png" style="padding: 1px 14px 5px 1px;" height="87px" width="99px">
 
-            <span >Home&nbsp;Appliances</span>
+            <span [routerLink]="['/testo/Home_Appliances']" >Home&nbsp;Appliances</span>
 
           </ion-card-header>
         </ion-card>
@@ -74,9 +74,9 @@
 
           <ion-card-header>
 
-            <img src="assets/images/Headphones.png" style="padding: 0px 14px 18px 13px;" height="87px" width="99px">
+            <img [routerLink]="['/testo/Mobile_Accessory']" src="assets/images/Headphones.png" style="padding: 0px 14px 18px 13px;" height="87px" width="99px">
 
-            <span>Mobile&nbsp;Accesories</span>
+            <span [routerLink]="['/testo/Mobile_Accessory']">Mobile&nbsp;Accesories</span>
 
           </ion-card-header>
         </ion-card>
@@ -85,5 +85,8 @@
     </ion-row>
   </ion-grid>
 
+
+
+ 
 
 </ion-content>

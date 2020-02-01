@@ -16,6 +16,7 @@ export class Democart2Page implements OnInit {
   Quantity: any;
   carts;
   total: any;
+  id:number;
   constructor(private rest: RestService, private fb: FormBuilder, private _location: Location) {
 
   }
@@ -92,8 +93,8 @@ export class Democart2Page implements OnInit {
   }
 
 
-  delete() {
-    this.rest.delete().subscribe((result) => {
+  delete(id) {
+    this.rest.delete(id).subscribe((result) => {
       if (result == undefined) {
         console.log(result);
       }

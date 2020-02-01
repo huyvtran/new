@@ -36,29 +36,24 @@
 
 
 
-        <ion-col>
-          <img id="category" style="margin-left: 3px;" src="assets/images/giftbox.png">
-          <span style="font-size: 9px; margin-left: -1px;">Offer&nbsp;Zone </span>
-        </ion-col>
 
-
-        <ion-col>
-          <img id="category" style="margin-left: 1px;" src="assets/images/monitor.png">
-          <span style="font-size: 9px;margin-left:-6px;">Electronics</span>
+        <ion-col >
+          <img id="category"  [routerLink]="['/testo/Electronics']" style="margin-left: 1px;" src="assets/images/monitor.png">
+          <span style="font-size: 9px;margin-left:-6px;" [routerLink]="['/testo/Electronics']">Electronics</span>
         </ion-col>
         <ion-col>
-          <img id="android_phone" style="margin-left: 5px;" src="assets/images/Smartphone_4.jpg">
-          <span style="font-size: 9px;">Mobiles&nbsp;&<br> Tablets</span>
+          <img id="android_phone" [routerLink]="['/testo/Mobile&Tablets']" style="margin-left: 5px;" src="assets/images/Smartphone_4.jpg">
+          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile&Tablets']">Mobiles&nbsp;&<br> Tablets</span>
         </ion-col>
 
         <ion-col>
-          <img id="category" style="margin-left: 1px;" src="assets/images/home_tv.png">
-          <span style="font-size: 9px;">Home&nbsp;&<br> Appliances</span>
+          <img id="category" [routerLink]="['/testo/Home_Appliances']" style="margin-left: 1px;" src="assets/images/home_tv.png">
+          <span style="font-size: 9px;" [routerLink]="['/testo/Home_Appliances']" >Home&nbsp;&<br> Appliances</span>
         </ion-col>
 
         <ion-col>
-          <img id="category" style="margin-left: -3px;" src="assets/images/Headphones.png">
-          <span style="font-size: 9px;">Mobiles&nbsp;&<br> Accessories</span>
+          <img id="category" [routerLink]="['/testo/Mobile_Accessory']" style="margin-left: -3px;" src="assets/images/Headphones.png">
+          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile_Accessory']">Mobiles&nbsp;&<br> Accessories</span>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -121,7 +116,7 @@
 
           <ion-card-content>
             <img [routerLink]="['/product-detail',product.id]" 
-              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
               style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
             <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
           </ion-card-content>
@@ -148,7 +143,7 @@
 
           <ion-card-content>
             <img [routerLink]="['/product-detail',product.id]"
-              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
               style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
             <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
 
@@ -173,7 +168,7 @@
 
           <ion-card-content>
             <img [routerLink]="['/product-detail',product.id]"
-              src="http://localhost:8080/products/{{product.image?.split('\\')[2]}}"
+              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
               style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
             <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
           </ion-card-content>
@@ -190,7 +185,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <ion-icon id="brief"  [routerLink]="['/ordersummary']"name="cash"></ion-icon>
+          <ion-icon id="brief"  [routerLink]="['/dashboard']"name="home"></ion-icon>
         </ion-col>
         <ion-col size="4">
           <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>

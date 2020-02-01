@@ -33,7 +33,7 @@
     </ng-container>
     <ng-container matColumnDef="propertyimage">
       <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
-      <td mat-cell *matCellDef="let arr">  <img src="http://localhost:8080/property/{{arr.propertyimage?.split('\\')[2]}}" style="height:58px; width:109px;margin:-11px 2px 2px 2px;"> </td>
+      <td mat-cell *matCellDef="let arr">  <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/property/{{arr.propertyimage?.split('\\')[2]}}" style="height:58px; width:109px;margin:-11px 2px 2px 2px;"> </td>
     </ng-container>
 
 

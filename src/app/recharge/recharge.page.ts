@@ -64,14 +64,16 @@ export class RechargePage implements OnInit {
   }
 
   check() {
-    this.first = parseInt(this.modifyFormGroup.get('one').value);
-    this.sec = parseInt(this.modifyFormGroup.get('two').value);
-    if (this.modifyFormGroup.get('one').value == "") {
+
+    if (this.modifyFormGroup.get('one').value == "NaN" || this.modifyFormGroup.get('one').value == "") {
       alert('Please Enter Amount');
       this.valid = true;
       this.btn = false;
     }
     else {
+
+      this.first = parseInt(this.modifyFormGroup.get('one').value);
+      this.sec = parseInt(this.modifyFormGroup.get('two').value);
       this.total = this.first + this.sec;
       console.log(this.total = this.first + this.sec);
       this.checks = false;
@@ -98,6 +100,9 @@ export class RechargePage implements OnInit {
       this.err = true;
       this.getuserDetails();
       console.log(err);
+      this.modifyFormGroup.reset();
+      this.btn = false;
+      this.checks = true;
     });
   }
 }

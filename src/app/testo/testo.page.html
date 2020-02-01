@@ -48,7 +48,7 @@
     
     <ion-col col-5   >
       <div class="ion-margin-top ion-margin-start">
-        <img [routerLink]="['/product-detail',item.id]" src="http://localhost:8080/products/{{item.image?.split('\\')[2]}}">
+        <img [routerLink]="['/product-detail',item.id]" src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{item.image?.split('\\')[2]}}">
     </div>
     </ion-col>
    
@@ -93,7 +93,9 @@
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <ion-icon id="brief"  [routerLink]="['/ordersummary']"name="cash"></ion-icon>
+       
+          <ion-icon  id="brief" id="brief" name="home" [routerLink]="['/dashboard']"></ion-icon>
+
         </ion-col>
         <ion-col size="4">
           <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>

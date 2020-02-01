@@ -99,6 +99,10 @@ const routes: Routes = [
   {
     path: 'adminorders',
     loadChildren: () => import('./adminorders/adminorders.module').then( m => m.AdminordersPageModule)
+  },
+  {
+    path: 'editprofile',
+    loadChildren: () => import('./editprofile/editprofile.module').then( m => m.EditprofilePageModule)
   }
 
 

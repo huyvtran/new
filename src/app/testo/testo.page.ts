@@ -58,6 +58,7 @@ export class TestoPage implements OnInit {
       else {
         this.listData = Object.entries(Product).map(([type, value]) => ({ type, value }));
         this.products = this.listData[0].value;
+        console.log(this.products);
       }
     }, (err) => {
       console.log(err);

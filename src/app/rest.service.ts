@@ -4,9 +4,13 @@ import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
 import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot } from '../app/Models/classModels';
 
-//const endpoint = 'http://ec2-13-126-112-180.ap-south-1.compute.amazonaws.com:8080/';
-const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
-// const endpoint = 'http://localhost:8080/'
+
+
+
+
+
+//const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
+  const endpoint = 'http://localhost:8080/'
 const agentid=1;
 
 @Injectable({
@@ -56,7 +60,6 @@ export class RestService {
     localStorage.removeItem("name");
     localStorage.removeItem("price");
     localStorage.removeItem("image");
-    localStorage.removeItem("ii");
   
   }
 
@@ -114,6 +117,17 @@ export class RestService {
     };
       return this.http.post<Reseller>(endpoint + 'api/auth/signup' , data,this.httpOptions);
    }
+
+   UpdateRegister(data: Reseller): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json' ,
+          'x-access-token': this.getToken()    
+          })          
+    };
+      return this.http.put<Reseller>(endpoint + 'api/file/profileupdate' , data,this.httpOptions);
+   }
+
 
     login(data: Login): Observable<any> {
     this.httpOptions = {
@@ -214,7 +228,7 @@ forgot(data:Forgot): Observable<any>{
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/upload', formdata, {
+    const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/upload', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -235,7 +249,7 @@ forgot(data:Forgot): Observable<any>{
     formdata.append('quantity', quantity);
     formdata.append('productId', productId);
 
-    const req = new HttpRequest('POST', 'http://localhost:8080/api/AddtoOrder', formdata, {
+    const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/AddtoOrder', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -245,7 +259,7 @@ forgot(data:Forgot): Observable<any>{
 
 
   getFiles(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/file/all');
+    return this.http.get('http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/all');
   }
   
   pushFileToStorages(file: File): Observable<HttpEvent<{}>> {
@@ -253,7 +267,7 @@ forgot(data:Forgot): Observable<any>{
 
     formdata.append('file', file);
   
-    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/product', formdata, {
+    const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/product', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -266,7 +280,7 @@ forgot(data:Forgot): Observable<any>{
 
     formdata.append('file', file);
   
-    const req = new HttpRequest('POST', 'http://localhost:8080/api/file/property', formdata, {
+    const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/property', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -406,14 +420,14 @@ updateuser(num,id){
 }
 
 
-delete(){
+delete(id){
   this.httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
       'x-access-token': this.getToken()
         })
   };
-  return this.http.delete<any>(endpoint + 'api/destroy', this.httpOptions);
+  return this.http.delete<AddtoCart>(endpoint + 'api/destroyOne/'+id, this.httpOptions);
 }
 updateproductStatus(num,id){
   this.httpOptions = {

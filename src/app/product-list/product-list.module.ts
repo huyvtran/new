@@ -17,6 +17,7 @@ import { ProductListPage } from './product-list.page';
     IonicModule,MatTableModule,
     ProductListPageRoutingModule
   ],
-  declarations: [ProductListPage]
+  declarations: [ProductListPage],
+  
 })
 export class ProductListPageModule {}

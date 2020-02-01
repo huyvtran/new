@@ -5,6 +5,7 @@ import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { Product, Property } from '../Models/classModels';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-add-product',
@@ -22,6 +23,8 @@ export class AddProductPage implements OnInit {
   image: any;
   public propertyforms: FormGroup;
   property: boolean = false;
+  dashboard:boolean=false;
+  admindashboard:boolean=false;
   prod: boolean = false;
   progress: { percentage: number } = { percentage: 0 };
   signup = {
@@ -41,7 +44,7 @@ export class AddProductPage implements OnInit {
       state_name: 'Home_Appliances'
     },
     {
-      state_id: ' Mobile_Accessory',
+      state_id: 'Mobile_Accessory',
       state_name: 'Mobile_Accessory'
     },
     {
@@ -97,9 +100,19 @@ export class AddProductPage implements OnInit {
   }
 
   ngOnInit() {
+  this.role();
     this.prod = true;
   }
 
+
+  role(){
+    if(this.rest.getRole()=="USER"){
+      this.dashboard=true;
+    }
+    else{
+      this.admindashboard=true;
+    }
+  }
   alert(signup) {
     if (signup.state == 'Property') {
       this.property = true;

@@ -3,7 +3,7 @@ import { PopoverController, NavController, IonSlides, ToastController } from '@i
 import { RestService } from '../rest.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { Product } from '../../app/Models/classModels'
+import { Product, Category } from '../../app/Models/classModels'
 import { AppComponent } from '../app.component';
 import { Observable } from 'rxjs';
 import { TestoPage } from '../testo/testo.page';
@@ -24,6 +24,7 @@ export class DashboardPage implements OnInit {
   @Input() fileUpload: string;
   public modifyFormGroup: FormGroup;
   products: Product[] = [];
+    categorys: Category[] = [];
   errmsg: boolean;
   admin: boolean;
   student: boolean;
@@ -59,6 +60,7 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
     this.test.retrieval();
+    this.retrievals();
     this.getcartdetails();
     this.getuserprofile();
     this.retrieval();
@@ -85,6 +87,24 @@ export class DashboardPage implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+  retrievals() {
+    this.rest.getCategory().subscribe((Category) => {
+
+      if (Category === undefined) {
+     console.log(Category);
+
+      }
+      else {
+
+        this.categorys = Category.category;
+        console.log(this.categorys);
+      }
+    }, (err) => {
+       console.log(err);
+
+    });
+
   }
   getuserprofile() {
     this.rest.getuserprofile().subscribe((result) => {

@@ -70,7 +70,7 @@ export class Reseller {
 
 export class Forgot {
     email: String;
-    phone_no: String;
+    Email_address: String;
     password: String;
     cpass: String;
 }

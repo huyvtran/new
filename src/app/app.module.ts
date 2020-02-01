@@ -9,16 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { File } from '@ionic-native/file/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx'; 
-
 import { ChartPipe } from './chart.pipe';
 import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-zoom';
 import { TestoPage } from './testo/testo.page';
 import { TestoPageModule } from './testo/testo.module';
-
 import { ProductDetailPage } from './product-detail/product-detail.page';
 
 

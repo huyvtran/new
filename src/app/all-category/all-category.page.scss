@@ -8,9 +8,26 @@
 
 }
 ion-toolbar{
-    --background:#0b074d;
+    --background:#031646;
+}
+
+#cart-icon{
    
-   }
+    color: white;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 2px 2px 2px 2px;
+}
+
+ 
+#cart-badge {
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    background: red;
+    color:white;
+    border-radius: 20px;
+ }
    p{
        color:white;
        font-size:18px;

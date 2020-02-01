@@ -113,11 +113,13 @@
 
   
 <ion-list lines="none">
+  <ion-menu-toggle auto-hide="true">
   <ion-item>
       <ion-icon [routerLink]="['/dashboard']" name="home" slot="start"></ion-icon>
       <ion-label [routerLink]="['/dashboard']">DashBoard</ion-label>
       <ion-icon name="arrow-dropright" id="electro" slot="end" [routerLink]="['/dashboard']"></ion-icon>
     </ion-item>
+    </ion-menu-toggle>
 </ion-list>
 
 
@@ -157,7 +159,7 @@
   <ion-menu-toggle auto-hide="true">
     <ion-item >
       <ion-icon name="cart" slot="start"></ion-icon>
-      <ion-label>My Cart</ion-label>
+      <ion-label [routerLink]="['/democart2']">My Cart</ion-label>
     </ion-item>
   </ion-menu-toggle>
 </ion-list>
@@ -185,14 +187,6 @@
     </ion-list>
 
 
-<ion-list  lines="none">
-    <ion-menu-toggle auto-hide="true">
-      <ion-item >
-        <ion-icon name="microphone" slot="start"></ion-icon>
-        <ion-label>Choose Language</ion-label>
-      </ion-item>
-    </ion-menu-toggle>
-  </ion-list>
 
            
     <hr>

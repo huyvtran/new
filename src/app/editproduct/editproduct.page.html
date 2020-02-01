@@ -18,15 +18,15 @@
 </ion-header>
 
 <ion-content>
+   
+  <!-- 
 <h3 style="text-align: center;">Edit Prodcut</h3>
 
-<h3>
-  <p *ngIf="success"></p> Successfully updated</h3>
 <form [formGroup]="forms">
 
   <ion-item lines="none">
     <ion-label>category</ion-label>
-    <ion-select  [(ngModel)]="category"  (ionChange)=" alert(signup)" [(ngModel)]="signup.state" placeholder="Please Select State"
+    <ion-select  [(ngModel)]="category"  (ionChange)=" alerts(signup)" [(ngModel)]="signup.state" placeholder="Please Select State"
       formControlName="category">
       <ion-select-option *ngFor="let state of statelist" [value]="state.state_id">{{state.state_name}}
       </ion-select-option>
@@ -108,7 +108,7 @@
     </ion-input>
   </ion-item>
   <ion-item>
- <img src="http://localhost:8080/products/{{images?.split('\\')[2]}}"  style="height:70px; width:80px;">
+ <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{images?.split('\\')[2]}}"  style="height:70px; width:80px;">
     <ion-input type="file" id="file" (change)="selectFiles($event)" [(ngModel)]="images" formControlName="image"
       class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
   </ion-item>
@@ -118,7 +118,7 @@
 
 
   <ion-item>
-    <img src="http://localhost:8080/products/{{images1?.split('\\')[2]}}"  style="height:70px; width:80px;">
+    <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{images1?.split('\\')[2]}}"  style="height:70px; width:80px;">
     <ion-input type="file" id="file" (change)="selectFiles($event)" [(ngModel)]="images1" formControlName="image1"
       class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
   </ion-item>
@@ -128,7 +128,7 @@
   </div>
 
   <ion-item>
-    <img src="http://localhost:8080/products/{{images2?.split('\\')[2]}}"  style="height:70px; width:80px;">
+    <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{images2?.split('\\')[2]}}"  style="height:70px; width:80px;">
     <ion-input type="file" id="file" (change)="selectFiles($event)" [(ngModel)]="images2" formControlName="image2"
       class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
   </ion-item>
@@ -138,7 +138,7 @@
   </div>
 
   <ion-item>
-    <img src="http://localhost:8080/products/{{images3?.split('\\')[2]}}"  style="height:70px; width:80px;">
+    <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{images3?.split('\\')[2]}}"  style="height:70px; width:80px;">
     <ion-input type="file" id="file" (change)="selectFiles($event)"[(ngModel)]="images3"   formControlName="image3"
       class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
   </ion-item>
@@ -148,7 +148,7 @@
   </div>
 
   <ion-item>
-    <img src="http://localhost:8080/products/{{images4?.split('\\')[2]}}"  style="height:70px; width:80px;">
+    <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{images4?.split('\\')[2]}}"  style="height:70px; width:80px;">
     <ion-input type="file" id="file" (change)="selectFiles($event)" [(ngModel)]="images4" formControlName="image4"
       class="ion-margin-top ion-margin-start ion-padding-end"></ion-input>
   </ion-item>
@@ -166,7 +166,7 @@
     </div>
   </div>
 
-</form>
+</form> -->
 
 </ion-content>
 
@@ -176,7 +176,8 @@
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <i class="material-icons" id="brief"  [routerLink]="['/admindashboard']">dashboard</i>
+          <ion-icon id="brief" id="brief" name="home" [routerLink]="['/admindashboard']"></ion-icon>
+
         </ion-col>
         <ion-col size="4">
           <ion-icon id="brief" [routerLink]="['/adminorders']" name="cart"></ion-icon>

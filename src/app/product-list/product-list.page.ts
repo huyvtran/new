@@ -11,11 +11,12 @@ import { MatTableDataSource } from '@angular/material';
 export class ProductListPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
-  displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit', 'options'];
+  displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit'];
 
   constructor(public rest: RestService) { }
 
   ngOnInit() {
+  
     this.retrieval();
   }
 
@@ -25,6 +26,7 @@ export class ProductListPage implements OnInit {
         console.log(result);
       }
       else {
+      
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.listData = this.arr[0].value;
         this.listData = new MatTableDataSource(this.arr[1].value);
@@ -34,6 +36,10 @@ export class ProductListPage implements OnInit {
     });
   }
 
+  load(){
+    window.location.reload();
+  }
+  
   approve(number, id) {
     this.rest.updateproductStatus(number, id).subscribe((result) => {
       if (result === undefined) {

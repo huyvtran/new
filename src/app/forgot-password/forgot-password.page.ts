@@ -21,7 +21,7 @@ export class ForgotPasswordPage implements OnInit {
 
   constructor(private fb: FormBuilder, private rest: RestService, private modalCtrl: ModalController, private alertCtrl: AlertController) {
     this.forms = this.fb.group({
-      phone_no: ["", [Validators.required]],
+      Email_address: ["", [Validators.required]],
       password: ["", [Validators.required]],
       cpass: ["", [Validators.required]]
     });
@@ -46,8 +46,8 @@ export class ForgotPasswordPage implements OnInit {
     console.log(this.data);
     this.forms.get("password").setValidators(Validators.required);
     this.forms.get("password").updateValueAndValidity();
-    this.forms.get("phone_no").setValidators(Validators.required);
-    this.forms.get("phone_no").updateValueAndValidity();
+    this.forms.get("Email_address").setValidators(Validators.required);
+    this.forms.get("Email_address").updateValueAndValidity();
     this.forms.get("cpass").setValidators(Validators.required);
     this.forms.get("cpass").updateValueAndValidity();
     this.forms.setValidators(this.passwordMatchValidator);
