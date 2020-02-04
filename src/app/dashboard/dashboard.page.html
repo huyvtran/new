@@ -21,10 +21,18 @@
 </ion-header>
 
 <ion-content>
-  <!--  <div *ngFor="let file of fileUploads | async">
-    <img [src]="file">
-  </div>
-  -->
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
 
   <div id="head" class="bar bar-header bar-positive">
     <ion-grid>

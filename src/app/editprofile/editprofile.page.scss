@@ -1,11 +1,16 @@
 ion-icon{
     font-size:22px;
-    color:navy;
+    color:white;
 }
 ion-content,p{
     font-family: 'Noto Sans KR', sans-serif!important;
     font-size:13px;
   
+}
+ion-toolbar{
+    --background:#23074d;
+    color:white;
+    font-family: Abel,'sans-serif';
 }
 img{
     width:183px;
@@ -21,13 +26,26 @@ ion-input {
     border-radius: 1px;
     width: 22em;
      box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
-   
      box-shadow: 0 0 10px #d7d7dd;
-     
-   
-    
   }
   
+#brief{
+    margin-right: 1em;
+    color:navy;
+    font-size:21px; 
+    margin-top: -5px;
+    border-radius:15px;
+    background:white;
+
+}
+
+
+#footer{
+    --background:#031646!important;
+    height:47px!important;
+       }
+
+
 ion-textarea {
     
     width:22em;
@@ -47,7 +65,7 @@ ion-textarea {
 
   ion-button{
     --background: #031646;
-    text-transform:lowercase;
+   
     height:40px;
    box-shadow: 0 0 10px #d7d7dd;
     border:0;

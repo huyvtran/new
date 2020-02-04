@@ -1,14 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-title class="ion-text-center">My Profile</ion-title>
-    <ion-icon [routerLink]="['/dashboard']" class="ion-margin-start" name="arrow-back" slot="start"></ion-icon>
+    <ion-icon (click)="backClicked()"  class="ion-margin-start" name="arrow-back" slot="start"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="ion-text-justify">
-    <img class=" ion-margin-start ion-margin-top" src="../../assets/images/user-profile-f.png">
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
+
+  <ion-card class="ion-text-justify">
+   
+    <ion-avatar>
+     <img class=" ion-margin-start ion-margin-top" src="http://localhost:8080/profile/{{photo?.split('\\')[2]}}">
+    </ion-avatar>
+    <a style="margin: 37px 0px 0px 219px;"class="ion-margin-start ion-margin-top"  [routerLink]="['/editprofile']">Edit Profile</a>
 
     <ion-card-content>
       <ion-card-title text-center>
@@ -77,7 +93,6 @@
 
 
   </ion-card>
-
 
 </ion-content>
 

@@ -120,6 +120,19 @@
 
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
+
   <ion-row>
     <ion-col>
       <ion-icon [routerLink]="['/login']" class="ion-margin-top ion-margin-start" name="arrow-back"></ion-icon>

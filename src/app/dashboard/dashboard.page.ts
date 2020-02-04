@@ -39,7 +39,6 @@ export class DashboardPage implements OnInit {
     setTimeout(() =>
       this.slides.slideTo(5, 10000), 1000);
   }
-
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
   }
@@ -67,6 +66,22 @@ export class DashboardPage implements OnInit {
     this.showFiles(true);
   }
 
+
+
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.test.retrieval();
+    this.retrievals();
+    this.getcartdetails();
+    this.getuserprofile();
+    this.retrieval();
+    this.showFiles(true);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   showFiles(enable: boolean): void {
     this.showFile = enable;
     if (enable) {

@@ -40,6 +40,14 @@ export class ProductListPage implements OnInit {
     window.location.reload();
   }
   
+  doRefresh(event) {
+    console.log('Begin async operation');
+  this.retrieval();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   approve(number, id) {
     this.rest.updateproductStatus(number, id).subscribe((result) => {
       if (result === undefined) {

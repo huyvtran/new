@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Register } from '../Models/classModels';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Location } from '@angular/common';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
@@ -24,11 +25,12 @@ export class UserProfilePage implements OnInit {
   web_address;
   wallet;
   balance;
+  photo;
   dashboard:boolean=false;
   admindashboard:boolean=false;
   public modifyFormGroup: FormGroup;
   public data: Register = new Register();
-  constructor(private fb: FormBuilder, public rest: RestService) {
+  constructor(private fb: FormBuilder, public rest: RestService,private _location: Location) {
     this.modifyFormGroup = this.fb.group({
       owner_name: ['', Validators.required],
     });
@@ -38,7 +40,22 @@ export class UserProfilePage implements OnInit {
     this.roles();
     this.getuserDetails();
   }
+  
 
+  doRefresh(event) {
+    this.getuserDetails()
+    this.roles();
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
+  backClicked() {
+    this._location.back();
+  }
   roles(){
     if(this.rest.getRole()=="USER"){
       this.dashboard=true;
@@ -63,6 +80,7 @@ export class UserProfilePage implements OnInit {
         this.phone_no = this.userid.phone_no;
         this.owneraddress = this.userid.owneraddress;
         this.wallet = this.userid.Wallet;
+        this.photo = this.userid.photo;
       }
     }, (err) => {
       console.log(err);

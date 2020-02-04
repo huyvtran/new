@@ -9,6 +9,19 @@
     
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
+
   <div *ngIf="admin">
 <h5 class="ion-text-center">Hello &nbsp;&nbsp;&nbsp;<ion-label>{{owner_name}}</ion-label></h5> 
 

@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { UserProfilePageRoutingModule } from './user-profile-routing.module';
-
 import { UserProfilePage } from './user-profile.page';
 
 @NgModule({
@@ -15,6 +12,7 @@ import { UserProfilePage } from './user-profile.page';
     IonicModule,
     UserProfilePageRoutingModule
   ],
-  declarations: [UserProfilePage]
+  declarations: [UserProfilePage],
+  providers:[UserProfilePage]
 })
 export class UserProfilePageModule {}

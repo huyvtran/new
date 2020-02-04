@@ -4,6 +4,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { Reseller } from '../Models/classModels';
+import { UserProfilePage } from '../user-profile/user-profile.page';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -19,10 +21,6 @@ currentFileUpload: File;
 image: any;
 imageUrl:File;
 public data: Reseller = new Reseller();
-
-
-
-
 userid;
 arr;
 ar;
@@ -32,34 +30,42 @@ owner_name;
 business_name:string ='';
 Email_address;
 phone_no;
-owneraddress;
 web_address;
 wallet;
 balance;
-
-
-
-
+owner_address;
+photo;
+dashboard:boolean=false;
+admindashboard:boolean=false;
 progress: { percentage: number } = { percentage: 0 };
 
-  constructor( private _location: Location,private fb:FormBuilder,private rest:RestService,) {
-   
-   }
+  constructor(private alertController:AlertController,private test:UserProfilePage, private _location: Location,private fb:FormBuilder,private rest:RestService){ }
 
   ngOnInit() {
+    this.roles();
     this.vali();
     this.getuserDetails();
   }
 
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+  this.getuserDetails();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
   vali(){
     this.forms = this.fb.group({
-      Email_address: localStorage.getItem("email"),
-      phone_no: localStorage.getItem("pho"),
-      owner_name:  localStorage.getItem("ownnamw"),
-      owner_address: localStorage.getItem("ownadd"),
-      business_name: localStorage.getItem("businame"),
-       photo: ["", [Validators.required]],
+      Email_address: ['', [Validators.required]],
+      phone_no: ['', [Validators.required]],
+      owner_name:  ['', [Validators.required]],
+      owner_address: ['', [Validators.required]],
+      business_name: ['', [Validators.required]],
+       photo:['', [Validators.required]]
     });
   }
   keyPress(event: any) {
@@ -85,7 +91,7 @@ progress: { percentage: number } = { percentage: 0 };
     this.currentFileUpload = this.selectedFiles.item(0);
     this.image = this.currentFileUpload.name;
     console.log(this.currentFileUpload.name);
-    this.rest.pushFileToStorages(this.currentFileUpload).subscribe(event => {
+    this.rest.profile(this.currentFileUpload).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
      this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
@@ -94,6 +100,18 @@ progress: { percentage: number } = { percentage: 0 };
     });
     this.selectedFiles = undefined;
   }
+
+  
+  roles(){
+    if(this.rest.getRole()=="USER"){
+      this.dashboard=true;
+    }
+    else{
+      this.admindashboard=true;
+    }
+  }
+
+
   update(){
 
     this.forms.get("Email_address").setValidators(Validators.required);
@@ -124,8 +142,9 @@ progress: { percentage: number } = { percentage: 0 };
           console.log(result);
         }
         else {
-          //this.presentAlert();
-          this.forms.reset();
+          this.presentAlert();
+         
+         this.getuserDetails();
          
         }
       }, (err) => {
@@ -137,6 +156,14 @@ progress: { percentage: number } = { percentage: 0 };
     }
   }
 
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Profile updated',
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   getuserDetails() {
     this.rest.userprofile().subscribe((result) => {
@@ -152,16 +179,11 @@ progress: { percentage: number } = { percentage: 0 };
         this.business_name = this.userid.business_name;
         this.Email_address = this.userid.Email_address;
         this.phone_no = this.userid.phone_no;
-        this.owneraddress = this.userid.owneraddress;
-        console.log(this.userid.owneraddress);
-        this.wallet = this.userid.Wallet;
-        localStorage.setItem("email",this.Email_address);
-        localStorage.setItem("pho",this.phone_no);
-        localStorage.setItem("ownnamw",this.owner_name);
-        localStorage.setItem("ownadd",this.owneraddress);
-        localStorage.setItem("businame",this.business_name);
-        
-        
+        this.photo = this.userid.photo;
+        this.owner_address = this.userid.owneraddress;
+    
+    
+ 
 
       }
     }, (err) => {

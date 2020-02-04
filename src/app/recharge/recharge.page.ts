@@ -46,6 +46,15 @@ export class RechargePage implements OnInit {
     this.getuserDetails();
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.checks = true;
+    this.getuserDetails();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   getuserDetails() {
     this.rest.getwallet(this.id).subscribe((result) => {
       if (result === undefined) {

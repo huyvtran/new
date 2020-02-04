@@ -53,6 +53,17 @@ export class AdmindashboardPage implements OnInit {
     this.totalProducts();
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.totalrevenue();
+    this.totalOrders();
+    this.totalUsers();
+    this.totalProducts();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   totalUsers() {
     this.rest.getTotalUser().subscribe((result) => {
       if (result == undefined) {

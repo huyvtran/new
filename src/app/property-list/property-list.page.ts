@@ -33,4 +33,14 @@ export class PropertyListPage implements OnInit {
       console.log(err);
     });
   }
+
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+  this.retrieval();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 }

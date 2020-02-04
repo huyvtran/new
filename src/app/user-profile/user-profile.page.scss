@@ -5,24 +5,22 @@ ion-toolbar{
 }
 img{
 
-    height: 6em;
-    width: 6em;
-    border-radius: 5em;
+    height: 60px;
+    border-radius: 50%;
+    width: 60px;
     margin: 21px 0px 0px 151px;
     border: 1px solid white;
     margin-top: 2em;
-    padding:7px;
-    background: #f2f1f5;
-    
-  
 }
+
+
 ion-label{
     font-family: Abel,'sans-serif'!important; 
     font-size:17px!important;
     color:black!important;
 }
-ion-icon
-{
+
+ion-icon{
     color:white;
     font-size: 23px;
 }

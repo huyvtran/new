@@ -236,27 +236,6 @@ forgot(data:Forgot): Observable<any>{
     return this.http.request(req);
   }
 
-/* 
-  
-  AddtoOrder(name: string,image:string,price:string,userId:string,quantity:string,total:string,productId:string): Observable<HttpEvent<{}>> {
-    const formdata: FormData = new FormData();
-
-    formdata.append('name', name);
-    formdata.append('price', price);
-    formdata.append('image', image);
-    formdata.append('total', total);
-    formdata.append('userid', userId);
-    formdata.append('quantity', quantity);
-    formdata.append('productId', productId);
-
-    const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/AddtoOrder', formdata, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-
-    return this.http.request(req);
-  } */
-
 
   getFiles(): Observable<any> {
     return this.http.get('http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/all');
@@ -274,6 +253,19 @@ forgot(data:Forgot): Observable<any>{
 
     return this.http.request(req);
   }
+
+profile(file: File): Observable<HttpEvent<{}>> {
+  const formdata: FormData = new FormData();
+
+  formdata.append('file', file);
+
+  const req = new HttpRequest('POST', 'http://localhost:8080/api/file/profile', formdata, {
+    reportProgress: true,
+    responseType: 'text'
+  });
+
+  return this.http.request(req);
+}
 
   property(file: File): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
@@ -295,9 +287,7 @@ forgot(data:Forgot): Observable<any>{
         'x-access-token': this.getToken()
           })
     };
-    //const myheader=new HttpHeaders().set('AUTH_TOKEN', auth);
-   // return this.http.get<any>(this.ADD_CART_API+product.productid,{headers:myheader});
-  
+ 
     return this.http.get<any>(endpoint + 'api/userview', this.httpOptions);
   }
   getCartList(): Observable<any> {

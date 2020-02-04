@@ -64,6 +64,20 @@ export class AppComponent implements OnInit {
 
   }
 
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    this.retrieval();
+    this.getuserDetails();
+    this.getuserprofile();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
+
   navigate() {
     this.route.navigate(['/add-product']);
   }
@@ -161,7 +175,7 @@ export class AppComponent implements OnInit {
       else {
 
         this.categorys = Category.category;
-        console.log(this.categorys);
+        // console.log(this.categorys);
       }
     }, (err) => {
        console.log(err);

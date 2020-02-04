@@ -112,6 +112,17 @@ export class EditproductPage implements OnInit {
     this.retrieval();
   }
 
+  
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+  this.success=false;
+  this.retrieval();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   selectFiles(event) {
     this.selectedFiles = event.target.files;
   }

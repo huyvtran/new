@@ -35,6 +35,16 @@ export class TestoPage implements OnInit {
     this.service = param.service;
   }
 
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.getcartdetails();
+    this.retrieval();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   getcartdetails() {
     this.rest.cartDetails().subscribe((result) => {
       if (result == undefined) {

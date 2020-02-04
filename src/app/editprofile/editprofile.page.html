@@ -1,111 +1,130 @@
-
-
 <ion-header>
   <ion-toolbar>
-    <ion-icon (click)="backClicked()" class="ion-margin-start" slot="start" name="arrow-back"></ion-icon>
-  
+    <ion-title class="ion-text-center">Edit Profile</ion-title>
+    <ion-icon (click)="backClicked()" class="ion-margin-start" name="arrow-back" slot="start"></ion-icon>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content>
-<h4> Edit profile</h4>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
+
   <form [formGroup]="forms">
 
-
-    
-    <div *ngIf="valid">
-      <p class="ion-margin-start " *ngIf="forms.get('owner_name').hasError('required')">Must Required</p>
-      </div>
-
-    <ion-grid>
-      <ion-row>
-     <ion-col class="ion-margin-start">
-     <ion-input  placeholder="owner Name"  formControlName="owner_name" [value]="owner_name" type="text"  class="ion-margin-top ion-margin-start"  ></ion-input>
-       </ion-col>
-      </ion-row>
-    </ion-grid>  
-
-
-    
     <div *ngIf="valid">
       <p class="ion-margin-start " *ngIf="forms.get('photo').hasError('required')">Must Required</p>
-      </div>
-
-
+    </div>
     <ion-grid>
       <ion-row>
-     <ion-col class="ion-margin-start">
-     <ion-input  placeholder="photo" (change)="selectFiles($event)"  type="file" formControlName="photo"  class="ion-margin-top ion-margin-start"  ></ion-input>
+        <ion-col class="ion-margin-start">
+        <ion-avatar>
+            <img src="http://localhost:8080/profile/{{photo?.split('\\')[2]}}"  style="height:70px; width:80px;">
+          </ion-avatar>
+            <ion-input style="--padding-left: 18em; color: transparent; margin-left: 5em;width: 8em;background: transparent;
+            box-shadow: none;"placeholder="photo" [(ngModel)]="photo" (change)="selectFiles($event)" id="photo" type="file" formControlName="photo"
+            class="ion-margin-top ion-margin-start"></ion-input>
        
-   
-    </ion-col>
+        </ion-col>
       </ion-row>
-    </ion-grid>  
+    </ion-grid>
+    <div *ngIf="valid">
+      <p class="ion-margin-start " *ngIf="forms.get('owner_name').hasError('required')">Must Required</p>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <ion-input placeholder="owner Name" formControlName="owner_name" [(ngModel)]="owner_name" type="text"
+            class="ion-margin-top ion-margin-start"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
  
     <div *ngIf="valid">
       <p class="ion-margin-start " *ngIf="forms.get('business_name').hasError('required')">Must Required</p>
-      </div>
-      
+    </div>
     <ion-grid>
       <ion-row>
-     <ion-col class="ion-margin-start">
-     <ion-input  placeholder="business Name"  formControlName="business_name" [value]="business_name" type="text"  class="ion-margin-top ion-margin-start"  ></ion-input>
-       </ion-col>
+        <ion-col class="ion-margin-start">
+          <ion-input placeholder="business Name" [(ngModel)]="business_name" formControlName="business_name"
+            [value]="business_name" type="text" class="ion-margin-top ion-margin-start"></ion-input>
+        </ion-col>
       </ion-row>
-    </ion-grid>  
-
-
+    </ion-grid>
     <div *ngIf="valid">
       <p class="ion-margin-start " *ngIf="forms.get('owner_address').hasError('required')">Must Required</p>
-      </div>
-      
+    </div>
     <ion-grid>
       <ion-row>
-     <ion-col class="ion-margin-start">
-     <ion-textarea  placeholder="owner_address"  formControlName="owner_address" [value]="owneraddress" type="text"  class="ion-margin-top ion-margin-start"  ></ion-textarea>
-       </ion-col>
+        <ion-col class="ion-margin-start">
+          <ion-textarea placeholder="owner_address" [(ngModel)]="owner_address" formControlName="owner_address"
+            [value]="owneraddress" type="text" class="ion-margin-top ion-margin-start"></ion-textarea>
+        </ion-col>
       </ion-row>
-    </ion-grid>  
+    </ion-grid>
+    <div *ngIf="valid">
+      <p class="ion-margin-start " *ngIf="forms.get('Email_address').hasError('required')">Must Required</p>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <ion-input placeholder="Email Address" formControlName="Email_address" [(ngModel)]="Email_address" type="text"
+            class="ion-margin-top ion-margin-start"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div *ngIf="valid">
+      <p class="ion-margin-start " *ngIf="forms.get('phone_no').hasError('required')">Must Required</p>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <ion-input (keypress)="keyPress($event)" minlength=10 maxlength=10 placeholder="Phone No"
+            [(ngModel)]="phone_no" formControlName="phone_no" type="text" class="ion-margin-top ion-margin-start">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <ion-button (click)="update()" class="ion-text-center ion-margin-top ion-margin-start">Update
+          </ion-button>
 
-
-
-         <div *ngIf="valid">
-          <p class="ion-margin-start " *ngIf="forms.get('Email_address').hasError('required')">Must Required</p>
-          </div>
-    
-    
-        <ion-grid>
-          <ion-row>
-         <ion-col class="ion-margin-start">
-         <ion-input  placeholder="Email Address"  formControlName="Email_address" [value]="Email_address" type="text"  class="ion-margin-top ion-margin-start"  ></ion-input>
-           </ion-col>
-          </ion-row>
-        </ion-grid>  
-    
-        <div *ngIf="valid">
-          <p class="ion-margin-start " *ngIf="forms.get('phone_no').hasError('required')">Must Required</p>
-          </div>
-    
-    
-        <ion-grid>
-          <ion-row>
-         <ion-col class="ion-margin-start">
-         <ion-input  (keypress)="keyPress($event)" minlength=10 maxlength=10  placeholder="Phone No" [value]="phone_no" formControlName="phone_no" type="text"  class="ion-margin-top ion-margin-start"  ></ion-input>
-           </ion-col>
-          </ion-row>
-        </ion-grid>  
-    
-    
-    
-    
-        <ion-grid>
-          <ion-row>
-            <ion-col class="ion-margin-start">
-              <ion-button (click)="update()"  class="ion-text-center ion-margin-top ion-margin-start">Reset Password</ion-button>
-            
-            </ion-col>
-          </ion-row>
-           </ion-grid>
-    </form>
-    
-    
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
+
+<ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon *ngIf="admindashboard" id="brief" id="brief" name="home" [routerLink]="['/admindashboard']">
+          </ion-icon>
+          <ion-icon *ngIf="dashboard" id="brief" id="brief" name="home" [routerLink]="['/dashboard']"></ion-icon>
+
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" [routerLink]="['/democart2']" name="cart"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

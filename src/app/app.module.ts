@@ -16,7 +16,6 @@ import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-zoom';
 import { TestoPage } from './testo/testo.page';
 import { TestoPageModule } from './testo/testo.module';
-import { ProductDetailPage } from './product-detail/product-detail.page';
 
 
 @NgModule({

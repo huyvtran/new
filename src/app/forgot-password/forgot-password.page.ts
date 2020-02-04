@@ -40,6 +40,17 @@ export class ForgotPasswordPage implements OnInit {
     this.valid = false;
     this.errmsg = false;
   }
+  
+  
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.valid = false;
+    this.errmsg = false;
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
 
   add() {
     Object.assign(this.data, this.forms.value);

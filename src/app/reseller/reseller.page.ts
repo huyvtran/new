@@ -59,6 +59,15 @@ export class ResellerPage implements OnInit {
    
   }
 
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
   selectFile(event) {
     this.selectedFile = event.target.files;
   }
