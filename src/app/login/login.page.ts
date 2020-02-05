@@ -3,7 +3,7 @@ import { Router, } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RestService } from '../rest.service';
 import { Login } from '../Models/classModels';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +20,16 @@ export class LoginPage implements OnInit {
   valid: boolean = false;
   server: any;
   suu: boolean = true;
-  constructor(private fb: FormBuilder, private myRoute: Router, public rest: RestService,
+  subscribe:any;
+  constructor(public platform:Platform ,private fb: FormBuilder, private myRoute: Router, public rest: RestService,
      private modalCtrl: ModalController,
     private alertCtrl: AlertController) {
     this.modifyFormGroup = this.fb.group({
       Email_address: ["", []],
       password: ["", []]
     });
+
+    // this.subscribe=this.platform.backButton.subscribeWithPriority(6666)
   }
 
   

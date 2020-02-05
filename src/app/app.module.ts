@@ -16,10 +16,11 @@ import { ChartsModule } from 'ng2-charts';
 import 'chartjs-plugin-zoom';
 import { TestoPage } from './testo/testo.page';
 import { TestoPageModule } from './testo/testo.module';
+import { DashboardPage } from './dashboard/dashboard.page';
 
 
 @NgModule({
-  declarations: [AppComponent, ChartPipe],
+  declarations: [AppComponent,ChartPipe],
   entryComponents: [TestoPage,],
   imports: [
     BrowserModule,HttpClientModule,NgxDatatableModule,
@@ -32,6 +33,7 @@ import { TestoPageModule } from './testo/testo.module';
     SplashScreen,ImagePicker,File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule {}

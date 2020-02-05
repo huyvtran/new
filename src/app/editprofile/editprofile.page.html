@@ -30,7 +30,7 @@
       <ion-row>
         <ion-col class="ion-margin-start">
         <ion-avatar>
-            <img src="http://localhost:8080/profile/{{photo?.split('\\')[2]}}"  style="height:70px; width:80px;">
+            <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/profile/{{photo?.split('\\')[2]}}"  style="height:70px; width:80px;">
           </ion-avatar>
             <ion-input style="--padding-left: 18em; color: transparent; margin-left: 5em;width: 8em;background: transparent;
             box-shadow: none;"placeholder="photo" [(ngModel)]="photo" (change)="selectFiles($event)" id="photo" type="file" formControlName="photo"

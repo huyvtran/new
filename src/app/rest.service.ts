@@ -9,8 +9,8 @@ import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot 
 
 
 
-//const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
-  const endpoint = 'http://localhost:8080/'
+const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
+  //  const endpoint = 'http://localhost:8080/'
 const agentid=1;
 
 @Injectable({
@@ -259,7 +259,7 @@ profile(file: File): Observable<HttpEvent<{}>> {
 
   formdata.append('file', file);
 
-  const req = new HttpRequest('POST', 'http://localhost:8080/api/file/profile', formdata, {
+  const req = new HttpRequest('POST', 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/api/file/profile', formdata, {
     reportProgress: true,
     responseType: 'text'
   });

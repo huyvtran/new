@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { IonicModule } from '@ionic/angular';
 
@@ -11,12 +11,12 @@ import { DashboardPage } from './dashboard.page';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule,
     IonicModule,NgxDatatableModule,
     DashboardPageRoutingModule
   ],
 
-  declarations: [DashboardPage]
+  declarations: [DashboardPage],
 
 })
 export class DashboardPageModule {}

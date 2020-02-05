@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material';
 export class AdminPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
-  displayedColumns: string[] = ['id','owner_name','Email_address', 'phone_no', 'options','option'];
+  displayedColumns: string[] = ['id', 'owner_name','Business_name', 'Email_address', 'owneraddress','Gst_no','phone_no',  'options','option'];
   public data: Login = new Login();
   constructor(public rest: RestService) { }
 
