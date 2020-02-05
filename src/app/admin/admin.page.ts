@@ -12,14 +12,34 @@ import { MatTableDataSource } from '@angular/material';
 export class AdminPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
+  userid;
+  photo
   displayedColumns: string[] = ['id', 'owner_name','Business_name', 'Email_address', 'owneraddress','Gst_no','phone_no',  'options','option'];
   public data: Login = new Login();
   constructor(public rest: RestService) { }
 
   ngOnInit() {
     this.retrieval();
+    this.getuserDetails();
   }
 
+  getuserDetails() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   retrieval() {
     this.rest.getuserdashboard().subscribe((result) => {
       if (result === undefined) {

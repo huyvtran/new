@@ -60,7 +60,7 @@ export class EditproductPage implements OnInit {
   images2;
   images3;
   images4;
-
+photo;
   constructor(public loadingCtrl: LoadingController,private test: ProductListPage, private fb: FormBuilder, private route: ActivatedRoute, public navCtrl: NavController, public alertController: AlertController, public imagepicker: ImagePicker, private rest: RestService) {
     this.forms = this.fb.group({
       name: ['', [Validators.required]],
@@ -110,6 +110,7 @@ export class EditproductPage implements OnInit {
   ngOnInit() {
     this.success = false;
     this.retrieval();
+    this.getuserDetails();
   }
 
   
@@ -143,6 +144,23 @@ export class EditproductPage implements OnInit {
   }
 
   
+  getuserDetails() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   retrieval() {
     this.rest.geteditprod(this.id).subscribe((result) => {
       if (result === undefined) {

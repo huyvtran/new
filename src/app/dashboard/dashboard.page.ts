@@ -41,6 +41,7 @@ export class DashboardPage implements OnInit {
   ar;
   role;
   listData;
+  photo;
   showFile = false;
   fileUploads: Observable<string[]>;
   @Input() fileUpload: string;
@@ -76,6 +77,23 @@ export class DashboardPage implements OnInit {
   }
 
   
+  getuserDetails() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   slideOptions = {
     initialSlide: 1,
     speed: 400,
@@ -95,6 +113,7 @@ export class DashboardPage implements OnInit {
     this.retrievals();
     this.getcartdetails();
     this.getuserprofile();
+    this.getuserDetails();
     this.retrieval();
     this.showFiles(true);
   }

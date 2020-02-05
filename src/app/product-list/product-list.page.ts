@@ -11,15 +11,34 @@ import { MatTableDataSource } from '@angular/material';
 export class ProductListPage implements OnInit {
   listData: MatTableDataSource<any>;
   arr;
+  userid;
+  photo;
   displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit'];
 
   constructor(public rest: RestService) { }
 
   ngOnInit() {
-  
+  this.getuserDetails();
     this.retrieval();
   }
 
+  getuserDetails() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   retrieval() {
     this.rest.getdashboardproduct().subscribe((result) => {
       if (result === undefined) {

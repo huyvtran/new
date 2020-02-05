@@ -13,6 +13,9 @@ export class AdmindashboardPage implements OnInit {
   product;
   products;
   order;
+  arr;
+  userid;
+  photo;
   orders;
   amt; amts;
   public barChartOptions: any = {
@@ -39,6 +42,23 @@ export class AdmindashboardPage implements OnInit {
     console.log(e);
   }
 
+  getuserDetails() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   public chartHovered(e: any): void {
     console.log(e);
   }
@@ -51,6 +71,7 @@ export class AdmindashboardPage implements OnInit {
     this.totalOrders();
     this.totalUsers();
     this.totalProducts();
+    this.getuserDetails();
   }
 
   doRefresh(event) {

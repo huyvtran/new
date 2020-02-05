@@ -37,6 +37,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.valid = false;
     this.errmsg = false;
+    this.showMsg=false;
   }
 
   async confirm() {
