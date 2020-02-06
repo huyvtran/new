@@ -45,10 +45,10 @@ export class UserProfilePage implements OnInit {
   doRefresh(event) {
     this.getuserDetails()
     this.roles();
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
 
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

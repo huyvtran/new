@@ -66,13 +66,13 @@ export class AppComponent implements OnInit {
 
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
 
     this.retrieval();
     this.getuserDetails();
     this.getuserprofile();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

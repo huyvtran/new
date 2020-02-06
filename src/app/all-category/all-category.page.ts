@@ -44,11 +44,11 @@ export class AllCategoryPage implements OnInit {
   }
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
 this.getcartdetails();
 this.retrieval();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

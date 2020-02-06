@@ -26,7 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule)
   },
   
-
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
   {
     path: 'all-category',
     loadChildren: () => import('./all-category/all-category.module').then(m => m.AllCategoryPageModule)

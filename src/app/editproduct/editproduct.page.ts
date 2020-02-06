@@ -116,11 +116,11 @@ photo;
   
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
   this.success=false;
   this.retrieval();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

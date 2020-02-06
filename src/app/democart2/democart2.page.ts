@@ -36,11 +36,11 @@ export class Democart2Page implements OnInit {
 
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
   this.getCarList();
   this.getCarLists();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

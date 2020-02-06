@@ -66,11 +66,11 @@ export class RechargePage implements OnInit {
     });
   }
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
     this.checks = true;
     this.getuserDetails();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

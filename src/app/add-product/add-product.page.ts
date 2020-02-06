@@ -106,10 +106,10 @@ export class AddProductPage implements OnInit {
 
 
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
 this.role();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

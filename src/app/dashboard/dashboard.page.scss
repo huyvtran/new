@@ -1,10 +1,10 @@
 ion-toolbar{
     --background:#031646;
-    height:130px;
+    height:72px;
    }
    ion-buttons{
        color:#F37335;
-       margin-top:-53px;
+       margin-top:-3px;
        }
    img{
        border-radius: 7px;
@@ -29,7 +29,7 @@ ion-toolbar{
  #cart-badge {
     position: absolute;
     top: 18px;
-    right: 0px;
+    right: 4px;
     background: red;
     color:white;
     border-radius: 20px;
@@ -111,3 +111,35 @@ ion-toolbar{
        font-family: 'Open Sans', sans-serif;
        padding: 9px 2px 2px 6px;
       }
+
+
+      .autocomplete {
+        width: 100%;
+    
+        ion-searchbar {
+            padding: 1px !important;
+        }
+    
+        ion-list {
+            position: absolute;
+            width: inherit;
+            overflow-y: scroll;
+            max-height: 150%;
+            z-index: 999;
+    
+            ion-item {
+    
+                img {
+                    max-height: 2.5rem;
+                    width: auto;
+                    margin: auto;
+                    display: block;
+                }
+            }
+    
+            ion-item:hover {
+                cursor: pointer;
+                background: #f1f1f1
+            }
+        }
+    }

@@ -5,21 +5,11 @@ import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Product, Category } from '../../app/Models/classModels'
 import { AppComponent } from '../app.component';
-
 import { TestoPage } from '../testo/testo.page';
 import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
 import {Observable, Subject, merge} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
 
-
-const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
 
 @Component({
@@ -28,13 +18,8 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  model: any;
 
-  @ViewChild('instance', {static: true}) instance: NgbTypeahead;
-  focus$ = new Subject<string>();
-  click$ = new Subject<string>();
-
-
+states:any;
 
   userid;
   arr;
@@ -52,28 +37,55 @@ export class DashboardPage implements OnInit {
   admin: boolean;
   student: boolean;
   count: any;
+  isItemAvailable:boolean=false;
+  items;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides
   constructor(private test: AppComponent, private route: Router, private rest: RestService, private toast: ToastController, public navCtrl: NavController, public popoverController: PopoverController) { }
 
-  SlideChanged() {
+   
+  
+  
+
+    getItems(ev: any) {
+      this.items=this.states;
+   
+    const val = ev.target.value.toLowerCase();
+    if (val && val.trim() != ''){
+      this.isItemAvailable=true;
+    this.items= this.states.filter((item => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        }
+        )
+      )
+
+    }
+    else{
+      this.isItemAvailable = false;
+    }
   }
+  getProductName(){
+    this.rest.productname().subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+    this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.states = this.arr[0].value;
+   
+       // console.log(this.states)
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
   ionViewDidLoad() {
     setTimeout(() =>
       this.slides.slideTo(5, 10000), 1000);
   }
   slidesDidLoad(slides: IonSlides) {
     slides.startAutoplay();
-  }
-  search = (text$: Observable<string>) => {
-    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-    const inputFocus$ = this.focus$;
-
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-      map(term => (term === '' ? states
-        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
-    );
   }
 
   
@@ -115,14 +127,14 @@ export class DashboardPage implements OnInit {
     this.getuserprofile();
     this.getuserDetails();
     this.retrieval();
+    this.getProductName();
     this.showFiles(true);
+  
   }
 
 
-
-  
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
     this.test.retrieval();
     this.retrievals();
     this.getcartdetails();
@@ -130,7 +142,7 @@ export class DashboardPage implements OnInit {
     this.retrieval();
     this.showFiles(true);
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }
@@ -165,7 +177,7 @@ export class DashboardPage implements OnInit {
       else {
 
         this.categorys = Category.category;
-        console.log(this.categorys);
+        //console.log(this.categorys);
       }
     }, (err) => {
        console.log(err);

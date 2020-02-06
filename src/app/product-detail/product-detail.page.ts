@@ -41,14 +41,14 @@ export class ProductDetailPage implements OnInit {
 
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
     this.validation();
     this.Quantity = 0;
     this.total = 0;
     this.getProducts();
     this.getcartdetails();
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

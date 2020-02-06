@@ -43,11 +43,11 @@ export class ForgotPasswordPage implements OnInit {
   
   
   doRefresh(event) {
-    console.log('Begin async operation');
+     //console.log('Begin async operation');
     this.valid = false;
     this.errmsg = false;
     setTimeout(() => {
-      console.log('Async operation has ended');
+       //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
   }

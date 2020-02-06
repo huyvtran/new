@@ -4,13 +4,8 @@ import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
 import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot } from '../app/Models/classModels';
 
-
-
-
-
-
-const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
-  //  const endpoint = 'http://localhost:8080/'
+ //const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
+   const endpoint = 'http://localhost:8080/'
 const agentid=1;
 
 @Injectable({
@@ -473,6 +468,17 @@ cartDetails(){
         })          
   };
     return this.http.get<any>(endpoint + 'api/cartCount', this.httpOptions);
+ 
+ }
+
+ productname(): Observable<any>{
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'  ,
+      'x-access-token': this.getToken() 
+        })          
+  };
+    return this.http.get<any>(endpoint + 'api/productName', this.httpOptions);
  
  }
  total(){
