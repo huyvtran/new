@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { PopoverController, NavController, IonSlides, ToastController } from '@ionic/angular';
+import { PopoverController, NavController, IonSlides, ToastController, Platform } from '@ionic/angular';
 import { RestService } from '../rest.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
@@ -39,9 +39,15 @@ states:any;
   count: any;
   isItemAvailable:boolean=false;
   items;
-
+  subscribe:any;
   @ViewChild(IonSlides, { static: false }) slides: IonSlides
-  constructor(private test: AppComponent, private route: Router, private rest: RestService, private toast: ToastController, public navCtrl: NavController, public popoverController: PopoverController) { }
+  constructor(private test: AppComponent,private platform:Platform, private route: Router, private rest: RestService, private toast: ToastController, public navCtrl: NavController, public popoverController: PopoverController) {
+    this.platform.backButton.subscribe(async () => {
+      if (this.route.isActive('/dashboard', true) && this.route.url === '/dashboard') {
+        navigator['app'].exitApp();
+      }
+});
+   }
 
    
   
@@ -88,6 +94,28 @@ states:any;
     slides.startAutoplay();
   }
 
+  getuserDetailss() {
+    this.rest.userprofile().subscribe((result) => {
+      if (result === undefined) {
+        console.log(result);
+       // this.errmsg = true;
+      }
+      else {
+        this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
+        this.userid = this.arr[0].value;
+        console.log(this.userid);
+      
+        this.photo = this.userid.photo;
+       
+    
+    
+ 
+
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
   
   getuserDetails() {
     this.rest.userprofile().subscribe((result) => {
@@ -121,6 +149,7 @@ states:any;
   }
 
   ngOnInit() {
+    this.getuserDetailss();
     this.test.retrieval();
     this.retrievals();
     this.getcartdetails();
@@ -128,7 +157,8 @@ states:any;
     this.getuserDetails();
     this.retrieval();
     this.getProductName();
-    this.showFiles(true);
+        console.log(this.constructor.name);
+        this.showFiles(true);
   
   }
 

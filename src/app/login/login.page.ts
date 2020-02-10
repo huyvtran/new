@@ -5,6 +5,7 @@ import { RestService } from '../rest.service';
 import { Login } from '../Models/classModels';
 import { AlertController, ModalController, Platform } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -22,19 +23,34 @@ export class LoginPage implements OnInit {
   suu: boolean = true;
   subscribe:any;
   constructor(public platform:Platform ,private fb: FormBuilder, private myRoute: Router, public rest: RestService,
+
      private modalCtrl: ModalController,
     private alertCtrl: AlertController) {
     this.modifyFormGroup = this.fb.group({
       Email_address: ["", []],
       password: ["", []]
     });
-
-    // this.subscribe=this.platform.backButton.subscribeWithPriority(6666)
+    this.platform.backButton.subscribe(async () => {
+      if (this.myRoute.isActive('/login', true) && this.myRoute.url === '/login') {
+        navigator['app'].exitApp();
+      }
+});
   }
 
-  
+  navi(){
+    if(this.rest.getRole()=="ADMIN"){
+      this.myRoute.navigate(['/admindashboard']);
+    }
+    else if(this.rest.getRole()=="USER"){
+      this.myRoute.navigate(['/dashboard']);
+    }
+    else{
+      this.myRoute.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
+    this.navi();
     this.valid = false;
     this.errmsg = false;
     this.showMsg=false;

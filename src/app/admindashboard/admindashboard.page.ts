@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-admindashboard',
@@ -64,7 +66,13 @@ export class AdmindashboardPage implements OnInit {
   }
 
 
-  constructor(private rest: RestService, private test: AppComponent) { }
+  constructor(private rest: RestService, private test: AppComponent, private myRoute: Router,private platform:Platform) { 
+    this.platform.backButton.subscribe(async () => {
+      if (this.myRoute.isActive('/admindashboard', true) && this.myRoute.url === '/admindashboard') {
+        navigator['app'].exitApp();
+      }
+});
+  }
 
   ngOnInit() {
     this.totalrevenue();

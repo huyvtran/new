@@ -58,10 +58,24 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     //this.proname();
+    this.navi();
     this.retrieval();
     this.getuserDetails();
     this.getuserprofile();
 
+  }
+
+
+  navi(){
+    if(this.rest.getRole()=="ADMIN"){
+      this.route.navigate(['/admindashboard']);
+    }
+    else if(this.rest.getRole()=="USER"){
+      this.route.navigate(['/dashboard']);
+    }
+    else{
+      this.route.navigate(['/login']);
+    }
   }
 
   

@@ -71,9 +71,9 @@
       <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Permission </th>
       <td mat-cell *matCellDef="let arr">
 
-        <button *ngIf="arr.status == 0 else noResults" [ngClass]="arr.status == 0 ? 'btn-primary':'btn-danger'" (click)="approve(arr.status,arr.id)"> Approve</button>
+        <button *ngIf="arr.status == 1 else noResults" [ngClass]="arr.status == 1 ? 'btn-danger':'btn-primary'" (click)="approve(arr.status,arr.id)"> DisApprove</button>
         <ng-template #noResults>
-            <button [ngClass]="arr.status == 0 ? 'btn-primary':'btn-danger'" (click)="approve(arr.status,arr.id)"> DisApprove</button>
+            <button [ngClass]="arr.status == 1 ? 'btn-danger':'btn-primary'" (click)="approve(arr.status,arr.id)"> Approve</button>
          </ng-template>
       </td>
     </ng-container>

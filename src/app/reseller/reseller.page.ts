@@ -42,6 +42,7 @@ export class ResellerPage implements OnInit {
       complete_address: ['', Validators.required],
       cpass: ['', Validators.required],
       status: '0',
+      Wallet: '0',
       password: ['', Validators.required],
       roles: this.fb.array(['USER']),
     });

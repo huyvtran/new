@@ -6,10 +6,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon [routerLink]="['/democart2']" style="background: transparent;margin-right:0.5em;color: white;font-size: 28px;margin-top: px;"
+    <ion-icon [routerLink]="['/democart2']" style="position: absolute;right: 57px;background: transparent;margin-right:0.5em;color: white;font-size: 28px;margin-top: px;"
       class="ion-margin-end" slot="end" id="cart-icon" name="cart">
 
     </ion-icon>
+    <img
+    src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/profile/{{photo?.split('\\')[2]}}"
+    slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
     <ion-badge id="cart-badge" [routerLink]="['/democart2']">{{count}}</ion-badge>
     <ion-title>
       <img src="assets/images/whitebg.jpg" height="60" width="100">
@@ -51,20 +54,20 @@
       <ion-row>
         <ion-col>
           <i class="material-icons" [routerLink]="['/all-category']">list</i>
-          <span style="font-size: 9px;margin-left:-5px;">All&nbsp;Category </span>
+          <span style="font-size: 9px;margin-left:-5px;">Offer&nbsp;Zone </span>
         </ion-col>
 
-
+        <ion-col>
+          <img id="android_phone" [routerLink]="['/testo/Mobile&Tablets']" style="margin-left: 5px;" src="assets/images/Smartphone_4.jpg">
+          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile&Tablets']">Mobiles&nbsp;&<br> Tablets</span>
+        </ion-col>
 
 
         <ion-col >
           <img id="category"  [routerLink]="['/testo/Electronics']" style="margin-left: 1px;" src="assets/images/monitor.png">
           <span style="font-size: 9px;margin-left:-6px;" [routerLink]="['/testo/Electronics']">Electronics</span>
         </ion-col>
-        <ion-col>
-          <img id="android_phone" [routerLink]="['/testo/Mobile&Tablets']" style="margin-left: 5px;" src="assets/images/Smartphone_4.jpg">
-          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile&Tablets']">Mobiles&nbsp;&<br> Tablets</span>
-        </ion-col>
+      
 
         <ion-col>
           <img id="category" [routerLink]="['/testo/Home_Appliances']" style="margin-left: 1px;" src="assets/images/home_tv.png">

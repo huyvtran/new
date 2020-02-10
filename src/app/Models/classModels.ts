@@ -65,6 +65,7 @@ export class Reseller {
     GST_Certificate: String;
     Pan_card: String;
     Product_category: String;
+    Wallet:String;
     complete_address: String;
 }
 
