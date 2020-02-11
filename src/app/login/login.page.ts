@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.navi();
+    // this.navi();
     this.valid = false;
     this.errmsg = false;
     this.showMsg=false;

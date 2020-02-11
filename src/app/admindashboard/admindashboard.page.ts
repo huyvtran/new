@@ -53,7 +53,7 @@ export class AdmindashboardPage implements OnInit {
       else {
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
-        console.log(this.userid);
+        // console.log(this.userid);
       
         this.photo = this.userid.photo;
       }
@@ -62,7 +62,7 @@ export class AdmindashboardPage implements OnInit {
     });
   }
   public chartHovered(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
 
 
@@ -101,7 +101,7 @@ export class AdmindashboardPage implements OnInit {
       else {
         this.user = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.users = this.user[0].value;
-        console.log(this.users)
+        // console.log(this.users)
       }
     },
       (err) => {
@@ -132,7 +132,7 @@ export class AdmindashboardPage implements OnInit {
         console.log(result);
       }
       else {
-        console.log(result)
+        // console.log(result)
         this.amt = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.amts = this.amt[0].value;
       }

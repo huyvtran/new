@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpRequest,HttpEvent } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
-import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot } from '../app/Models/classModels';
+import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot, Payment } from '../app/Models/classModels';
 
 // const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
   const endpoint = 'http://localhost:8080/'
@@ -164,6 +164,17 @@ forgot(data:Forgot): Observable<any>{
         })
   };
   return this.http.put<any>(endpoint + 'api/updatepass/',data, this.httpOptions);
+}
+
+Payment(data:Payment): Observable<any>{
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+     
+        })
+  };
+  return this.http.post<Payment>(endpoint + 'api/updatepass/',data, this.httpOptions);
 }
 
    addProperty(data: Property): Observable<any> {

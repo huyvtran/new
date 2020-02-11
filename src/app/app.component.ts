@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     //this.proname();
-    this.navi();
+    // this.navi();
     this.retrieval();
     this.getuserDetails();
     this.getuserprofile();

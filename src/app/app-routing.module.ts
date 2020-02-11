@@ -110,6 +110,10 @@ const routes: Routes = [
   {
     path: 'whishlist',
     loadChildren: () => import('./whishlist/whishlist.module').then( m => m.WhishlistPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
 
 

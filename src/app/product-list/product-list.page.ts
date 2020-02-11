@@ -9,18 +9,50 @@ import { MatTableDataSource } from '@angular/material';
 })
 
 export class ProductListPage implements OnInit {
-  listData: MatTableDataSource<any>;
+  listData;
   arr;
   userid;
   photo;
+  listDatas;
+  isItemAvailables:boolean=false;
+  isItemAvailable:boolean=false;
   displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit','delete'];
 
   constructor(public rest: RestService) { }
 
   ngOnInit() {
+    this.isItemAvailable=true;
+    this.isItemAvailables=false;
   this.getuserDetails();
     this.retrieval();
   }
+
+
+  
+
+  getItems(ev: any) {
+    this.listDatas=this.listData;
+
+  const val = ev.target.value.toLowerCase();
+  if (val && val.trim() != ''){
+    this.isItemAvailables = true;
+    this.isItemAvailable = false;
+  this.listDatas= this.listData.filter((item => {
+      return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      }
+      )
+    )
+
+  }
+  else{
+    this.isItemAvailable=true;
+    this.isItemAvailables=false;
+  }
+}
+
+
+
+
 
   getuserDetails() {
     this.rest.userprofile().subscribe((result) => {
@@ -48,7 +80,7 @@ export class ProductListPage implements OnInit {
       
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.listData = this.arr[0].value;
-        this.listData = new MatTableDataSource(this.arr[1].value);
+        // this.listData = new MatTableDataSource(this.arr[1].value);
       }
     }, (err) => {
       console.log(err);

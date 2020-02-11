@@ -3,6 +3,7 @@ import { RestService } from '../rest.service';
 import { AddtoCart, Category } from '../Models/classModels';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-democart2',
@@ -17,7 +18,7 @@ export class Democart2Page implements OnInit {
   carts;
   total: any;
   id:number;
-  constructor(private rest: RestService, private fb: FormBuilder, private _location: Location) {
+  constructor(private rest: RestService,private router:Router, private fb: FormBuilder, private _location: Location) {
 
   }
 
@@ -88,7 +89,7 @@ export class Democart2Page implements OnInit {
           console.log(result);
         }
         else {
-
+this.router.navigate(['/payment']);
           //this.delete();
           console.log(result);
 

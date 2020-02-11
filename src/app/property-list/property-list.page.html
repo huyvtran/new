@@ -27,9 +27,56 @@
       refreshingText="Refreshing...">
   
 </ion-refresher-content>
-   
-
 </ion-refresher>
+
+<div class="autocomplete">
+  <ion-searchbar placeholder="Find the Product" type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
+</div>
+
+
+<div *ngIf="isItemAvailables">
+  <h3 style="text-align: center;"> Property List</h3>
+  <table mat-table [dataSource]="listDatas" class="table">
+
+
+    <ng-container matColumnDef="propertyname">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Property Name </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.propertyname}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="propertyprice">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.propertyprice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="propertyimage">
+      <th style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let arr">  <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/property/{{arr.propertyimage?.split('\\')[2]}}" style="height:58px; width:109px;margin:-11px 2px 2px 2px;"> </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="userId">
+      <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> UserId </th>
+      <td mat-cell *matCellDef="let arr"> {{arr.userId}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="delete">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Action
+        <td mat-cell *matCellDef="let arr"><button class="btn btn-danger" (click)="delete(arr.id)">Delete</button> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="options">
+      <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Option </th>
+      <td mat-cell *matCellDef="let arr"><button class="btn btn-primary" [routerLink]="['/recharge',arr.userId]">send Money</button> </td>
+    </ng-container>
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+
+<div *ngIf="isItemAvailable">
   <h3 style="text-align: center;"> Property List</h3>
   <table mat-table [dataSource]="listData" class="table">
 
@@ -69,6 +116,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  </div>
+
+
 </ion-content>
 
 

@@ -50,7 +50,20 @@ export class Property {
     propertyprice: String;
     propertyimage: String;
 }
-
+export class Payment{
+    firstname:string;
+    lastname:string;
+    price:Number;
+    ccv:Number;
+    MM:Number;
+    YY:Number;
+    postal_code:Number;
+    line1:string;
+    city:string;
+    state:string;
+    card_no:Number;
+    userId:Number;
+}
 
 export class Reseller {
     Business_name: String;

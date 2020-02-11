@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:darkorange"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/images/whitebg.jpg" height="60" width="100">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4 style="text-align:center;background: blanchedalmond;">Proceed your Payment</h4>
+
+  <div *ngIf="show">
+    <p style="text-align:center;" class="ion-margin-start ">Successfull</p>
+  </div>
+  <form [formGroup]="modifyGroup">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('price').hasError('required')">Price Must Required</p>
+          </div>
+          <ion-input type="text" (keypress)="keyPress($event)" placeholder="Enter the Amount" class="ion-margin-top ion-margin-start"
+            formControlName="price"></ion-input>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('firstname').hasError('required')">First Name Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="First Name" class="ion-margin-top ion-margin-start"
+            formControlName="firstname"></ion-input>
+        </ion-col>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('lastname').hasError('required')"> Last Name Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="Last Name" class="ion-margin-top ion-margin-start"
+            formControlName="lastname"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('card_no').hasError('required')">Card No Must Required</p>
+          </div>
+
+          <ion-input type="text"  (keypress)="keyPress($event)" minlength=12 maxlength=12  placeholder="Card Number" class="ion-margin-top ion-margin-start"
+            formControlName="card_no"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('month').hasError('required')">Month Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="MM"  (keypress)="keyPress($event)" minlength=2 maxlength=2  class="ion-margin-top ion-margin-start" formControlName="month">
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('year').hasError('required')"> Year Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="YY"  (keypress)="keyPress($event)" minlength=2 maxlength=2 class="ion-margin-top ion-margin-start" formControlName="year">
+          </ion-input>
+        </ion-col>
+        <ion-col>
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('ccv').hasError('required')">CCV  Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="ccv"  (keypress)="keyPress($event)" minlength=3 maxlength=3  class="ion-margin-top ion-margin-start" formControlName="ccv">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('line1').hasError('required')">Line1 Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="Line1" class="ion-margin-top ion-margin-start" formControlName="line1">
+          </ion-input>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('city').hasError('required')">City Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="City" class="ion-margin-top ion-margin-start" formControlName="city">
+          </ion-input>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('state').hasError('required')">State Must Required</p>
+          </div>
+          <ion-input type="text" placeholder="State" class="ion-margin-top ion-margin-start" formControlName="state">
+          </ion-input>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <div *ngIf="valid">
+            <p class="ion-margin-start " *ngIf="modifyGroup.get('postal_code').hasError('required')">Postal Code Must Required</p>
+          </div>
+      
+          <ion-input type="text"  (keypress)="keyPress($event)" minlength=10 maxlength=10 placeholder="Postal code" class="ion-margin-top ion-margin-start"
+            formControlName="postal_code"></ion-input>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-margin-start">
+          <ion-button (click)="add()"> Pay now</ion-button>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

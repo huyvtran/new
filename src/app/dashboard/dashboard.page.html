@@ -34,13 +34,9 @@
 
 
   </ion-refresher>
-
-
-
   <div class="autocomplete">
     <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
-
-
+  </div>
     <ion-grid *ngIf="isItemAvailable">
       <ion-row *ngFor="let item of items" [routerLink]="['/product-detail',item.id]">
         <ion-col col-5>
@@ -67,14 +63,15 @@
       </ion-row>
     </ion-grid>
     <ion-item-divider></ion-item-divider>
-  </div>
+
 
   <div *ngIf="isItemAvailables">
     <div id="head" class="bar bar-header bar-positive">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <i class="material-icons" [routerLink]="['/all-category']">list</i>
+            <img id="offer"  style="margin-left: 5px;"
+            src="assets/images/offer.jpg">
             <span style="font-size: 9px;margin-left:-5px;">Offer&nbsp;Zone </span>
           </ion-col>
 
