@@ -13,7 +13,7 @@ export class PropertyListPage implements OnInit {
   arr;
   userid;
 photo;
-  displayedColumns: string[] = ['propertyname', 'propertyprice', 'propertyimage', 'userId', 'options'];
+  displayedColumns: string[] = ['propertyname', 'propertyprice', 'propertyimage', 'userId', 'options','delete'];
 
   constructor(public rest: RestService) { }
 
@@ -62,5 +62,24 @@ photo;
        //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
+  }
+
+
+  
+
+  
+  delete(id) {
+    this.rest.deleteProperty(id).subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      this.getuserDetails();
+      this.retrieval();
+        //console.log(result);
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

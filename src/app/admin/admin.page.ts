@@ -14,7 +14,7 @@ export class AdminPage implements OnInit {
   arr;
   userid;
   photo
-  displayedColumns: string[] = ['id', 'owner_name','Business_name', 'Email_address', 'owneraddress','Gst_no','phone_no',  'options','option'];
+  displayedColumns: string[] = ['id', 'owner_name','Business_name', 'Email_address', 'owneraddress','Gst_no','phone_no',  'options','option','delete'];
   public data: Login = new Login();
   constructor(public rest: RestService) { }
 
@@ -76,5 +76,21 @@ this.retrieval();
        //console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
+  }
+
+  
+  delete(id) {
+    this.rest.deleteuser(id).subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      this.getuserDetails();
+      this.retrieval();
+        //console.log(result);
+      }
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

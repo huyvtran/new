@@ -92,7 +92,7 @@ photo;
   
     setTimeout(() => {
       loading.dismiss();
-    }, 5000);
+    }, 500);
   }
 
 
@@ -153,7 +153,7 @@ photo;
       else {
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
-        console.log(this.userid);
+      //  console.log(this.userid);
       
         this.photo = this.userid.photo;
       }

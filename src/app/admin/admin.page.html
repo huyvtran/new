@@ -67,6 +67,10 @@
       <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Id
       <td mat-cell *matCellDef="let arr"> {{arr.id}} </td>
     </ng-container>
+    <ng-container matColumnDef="delete">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Action
+        <td mat-cell *matCellDef="let arr"><button class="btn btn-danger" (click)="delete(arr.id)">Delete</button> </td>
+    </ng-container>
     <ng-container matColumnDef="options">
       <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Permission </th>
       <td mat-cell *matCellDef="let arr">
@@ -80,6 +84,8 @@
     <ng-container matColumnDef="option">
       <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Option </th>
       <td mat-cell *matCellDef="let arr"><button class="btn btn-primary" [routerLink]="['/recharge',arr.id]">send Money</button> </td>
+
+  
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,13 +1,3 @@
-
-
-
-
-
-
-<ion-content>
- 
-
-
   <ion-header>
     <ion-toolbar>
       <ion-icon [routerLink]="['/dashboard']" class="ion-margin-start" slot="start" name="arrow-back"></ion-icon>
@@ -20,116 +10,6 @@
   
     </ion-toolbar>
   </ion-header>
-  
-  <!-- <ion-content fullscreen>
-  
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12 >
-  <div class="ion-text-center">
-    <img id="valued_image" src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{image?.split('\\')[2]}}">
-  </div>
-  </ion-col>
-    </ion-row>
-  </ion-grid>
-  
-
-  <form [formGroup]="modifyFormGroup">
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div class="ion-text-center">
-          
-          <span>Rs. {{price}}</span>
-          <p>{{desc}}</p>
-        </div >
-        </ion-col>
-  
-    </ion-row>  
-  </ion-grid>
-  
-  
-  
-  <ion-grid>
-    <ion-row center>
-    
-      <ion-col size="2">
-      
-          <ion-button (click)="minus()" >-</ion-button>
-    
-      </ion-col>  
-      <ion-col size="2">
-              <ion-input formControlName="quantity" [(ngModel)]= "Quantity"></ion-input>
-      </ion-col>
-      <ion-col col-2>
-        <ion-button (click)="plus()">+</ion-button>
-      </ion-col>
-      <ion-col >
-        <ion-label class="ion-margin-top">Total</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input  formControlName="total"[(ngModel)]= "total"></ion-input>
-      </ion-col>
-    </ion-row >
-  </ion-grid>
-
-
-  <div class="bar bar-header bar-positive" id="banner">
-    <ion-grid>
-      <ion-row>
-        <ion-col offset="1">
-         <img src="../../assets/images/cycle.png">
-        </ion-col>
-  
-        <ion-col>
-          <img src="../../assets/images/money-back.png">
-         </ion-col>
-  
-         <ion-col>
-          <img src="../../assets/images/truck.png">
-         </ion-col>
-  
-         <ion-col>
-          <img src="../../assets/images/offer.png">
-         </ion-col>
-  
-       
-  
-         <ion-col>
-          <img src="../../assets/images/set.png">
-         </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-  
-        <ion-button expand="block" (click)="cart()">Add to Cart</ion-button> <br>
-        <ion-button expand="block" (click)="order()">Place Order</ion-button>
-      </ion-col>
-    </ion-row>
-  
-    <ion-col>
-      
-    </ion-col>
-  </ion-grid>
-</form>
-  
-  
-    
-  
-</ion-content> -->
-
-
-
-
-
-
-
-
-
 
 
  <ion-content fullscreen>
@@ -142,25 +22,33 @@
       refreshingText="Refreshing...">
   
 </ion-refresher-content>
-   
-
 </ion-refresher>
+
+
   <ion-grid>
     <ion-row>
-      <ion-col col-12 >
-  <div class="ion-text-center">
+      <ion-col col-8 >
+  <div class="ion-text-right">
     <img id="valued_image" src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{image?.split('\\')[2]}}">
-  </div>
+  
+    </div>
   </ion-col>
+  <ion-col col-4 >
+    <div class="ion-text-right">
+   <ion-button  (click)="wish()" id="wish" color="tertiary">Add to WhishList</ion-button>
+    </div>
+    </ion-col>
     </ion-row>
   </ion-grid>
+  
   <form [formGroup]="modifyFormGroup">
   <ion-grid>
     <ion-row>
       <ion-col>
+       
         <div class="ion-text-center">
-    
-          <span> &#8377;. {{price}}</span>
+          <span>  {{name}}</span> <br>
+          <span>Rs.{{price}}</span>
         </div >
         </ion-col>
   
@@ -173,6 +61,7 @@
       <ion-col>
       
           <ion-label position="stacked">Product Description</ion-label>
+         
           <ion-textarea disabled readonly maxLength="500"
             value="{{desc}}">
           </ion-textarea>
@@ -221,9 +110,6 @@
                <ion-col>
                 <img src="../../assets/images/offer.png">
                </ion-col>
-        
-             
-        
                <ion-col>
                 <img src="../../assets/images/set.png">
                </ion-col>
@@ -233,28 +119,20 @@
         <ion-button style="margin-top:1em;"  (click)="order()" expand="block">Order Now</ion-button>
       </ion-col>
     </ion-row>
-  
     <ion-col>
-      
     </ion-col>
   </ion-grid>
 </form>
-  
-  
-    
-  
 </ion-content>
-
 <ion-footer style="text-align: center;">
   <ion-toolbar id="footer">
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <ion-icon  id="brief" id="brief" name="home" [routerLink]="['/dashboard']"></ion-icon>
-
+          <ion-icon id="brief" [routerLink]="['/dashboard']" name="home"></ion-icon>
         </ion-col>
         <ion-col size="4">
-          <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>
+          <ion-icon id="brief" [routerLink]="['/democart2']" name="cart"></ion-icon>
         </ion-col>
         <ion-col size="4">
           <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>

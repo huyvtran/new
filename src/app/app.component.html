@@ -171,9 +171,9 @@
           
   <ion-list  lines="none">
       <ion-menu-toggle auto-hide="true">
-        <ion-item >
+        <ion-item [routerLink]="['/whishlist']">
           <ion-icon name="heart" slot="start"></ion-icon>
-          <ion-label>My Wishlist</ion-label>
+          <ion-label [routerLink]="['/whishlist']">My Wishlist</ion-label>
         </ion-item>
       </ion-menu-toggle>
     </ion-list>

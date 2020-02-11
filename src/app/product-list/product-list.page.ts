@@ -13,7 +13,7 @@ export class ProductListPage implements OnInit {
   arr;
   userid;
   photo;
-  displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit'];
+  displayedColumns: string[] = ['name', 'price', 'discount', 'desc', 'category', 'userId', 'permission', 'edit','delete'];
 
   constructor(public rest: RestService) { }
 
@@ -74,6 +74,23 @@ export class ProductListPage implements OnInit {
       }
       else {
         this.retrieval();
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+
+  
+  delete(id) {
+    this.rest.deleteProduct(id).subscribe((result) => {
+      if (result == undefined) {
+        console.log(result);
+      }
+      else {
+      this.getuserDetails();
+      this.retrieval();
+        //console.log(result);
       }
     }, (err) => {
       console.log(err);

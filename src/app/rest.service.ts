@@ -4,8 +4,8 @@ import { Observable} from 'rxjs';
 import {  Router } from '@angular/router';
 import { Register,Property, Login, Product, Reseller, Wallet, AddtoCart, Forgot } from '../app/Models/classModels';
 
-const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
-  //  const endpoint = 'http://localhost:8080/'
+// const endpoint = 'http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/';
+  const endpoint = 'http://localhost:8080/'
 const agentid=1;
 
 @Injectable({
@@ -91,6 +91,15 @@ export class RestService {
       return this.http.post<AddtoCart>(endpoint + 'api/order' , data,this.httpOptions);
    }
  
+   wish(data:AddtoCart): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'   ,
+        'x-access-token': this.getToken()  
+          })          
+    };
+      return this.http.post<any>(endpoint + 'api/wish' , data,this.httpOptions);
+   }
    AddtoOrder(data:AddtoCart ): Observable<any> {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -324,6 +333,16 @@ getproduct(): Observable<any> {
   return this.http.get<any>(endpoint + 'api/dashproductList', this.httpOptions);
 }
 
+getwish(): Observable<any>{
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+     'x-access-token': this.getToken()
+        })          
+  };
+    return this.http.get<any>(endpoint + 'api/getwish' , this.httpOptions); 
+ }
+
 getCategory(): Observable<any> {
   this.httpOptions = {
     headers: new HttpHeaders({
@@ -414,6 +433,51 @@ delete(id){
   };
   return this.http.delete<AddtoCart>(endpoint + 'api/destroyOne/'+id, this.httpOptions);
 }
+
+
+deletewish(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.delete<any>(endpoint + 'api/destroywish/'+id, this.httpOptions);
+}
+
+deleteuser(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.delete<Register>(endpoint + 'api/destroyUser/'+id, this.httpOptions);
+}
+
+
+
+deleteProperty(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.delete<Property>(endpoint + 'api/destroyProperty/'+id, this.httpOptions);
+}
+
+deleteProduct(id){
+  this.httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-access-token': this.getToken()
+        })
+  };
+  return this.http.delete<Product>(endpoint + 'api/destroyProduct/'+id, this.httpOptions);
+}
+
+
 updateproductStatus(num,id){
   this.httpOptions = {
     headers: new HttpHeaders({

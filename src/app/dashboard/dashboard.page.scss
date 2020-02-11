@@ -25,7 +25,11 @@ ion-toolbar{
    
    }
    
-   
+   ion-item-divider{
+    width: 77%;
+    margin-left: 3em;
+    margin-top:-2em;
+}
  #cart-badge {
     position: absolute;
     top: 14px;

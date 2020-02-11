@@ -1,6 +1,7 @@
 
 
 
+
 ion-content{
     font-family: 'Noto Sans KR', sans-serif!important;
     font-weight: 600;
@@ -48,10 +49,17 @@ img{
     background: #bfbdbd3d!important;
    
 }
-
+#wish{
+    font-size: 9px;
+    position: absolute;
+    font-weight: normal;
+    left: 36%;
+    top: 18em;
+}
 #valued_image{
     height:10em!important;
     width: 10em!important;
+    margin-left: 76px;
 }
 
  

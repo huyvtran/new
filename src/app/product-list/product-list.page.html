@@ -76,10 +76,13 @@
          </ng-template>
       </td>
     </ng-container>
-
+    <ng-container matColumnDef="delete">
+      <th style="color: white;font-size: 16px;background: #031646;" mat-header-cell *matHeaderCellDef> Action
+        <td mat-cell *matCellDef="let arr"><button class="btn btn-danger" (click)="delete(arr.id)">Delete</button> </td>
+    </ng-container>
     <ng-container matColumnDef="edit">
       <th  style="color: white;background: #031646;" mat-header-cell *matHeaderCellDef> Edit </th>
-      <td mat-cell *matCellDef="let arr"><ion-button [routerLink]="['/editproduct',arr.id]">Edit</ion-button> </td>
+      <td mat-cell *matCellDef="let arr"><button class="btn btn-warning"  [routerLink]="['/editproduct',arr.id]">Edit</button> </td>
       
     </ng-container>
   <!--   <ng-container matColumnDef="options">

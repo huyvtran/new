@@ -38,6 +38,7 @@ states:any;
   student: boolean;
   count: any;
   isItemAvailable:boolean=false;
+  isItemAvailables:boolean=false;
   items;
   subscribe:any;
   @ViewChild(IonSlides, { static: false }) slides: IonSlides
@@ -59,6 +60,7 @@ states:any;
     const val = ev.target.value.toLowerCase();
     if (val && val.trim() != ''){
       this.isItemAvailable=true;
+      this.isItemAvailables=false;
     this.items= this.states.filter((item => {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
         }
@@ -67,6 +69,7 @@ states:any;
 
     }
     else{
+      this.isItemAvailables = true;
       this.isItemAvailable = false;
     }
   }
@@ -103,7 +106,7 @@ states:any;
       else {
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
-        console.log(this.userid);
+        // console.log(this.userid);
       
         this.photo = this.userid.photo;
        
@@ -126,7 +129,7 @@ states:any;
       else {
         this.arr = Object.entries(result).map(([type, value]) => ({ type, value }));
         this.userid = this.arr[0].value;
-        console.log(this.userid);
+      //  console.log(this.userid);
       
         this.photo = this.userid.photo;
       }
@@ -149,6 +152,7 @@ states:any;
   }
 
   ngOnInit() {
+    this.isItemAvailables=true
     this.getuserDetailss();
     this.test.retrieval();
     this.retrievals();
@@ -157,7 +161,7 @@ states:any;
     this.getuserDetails();
     this.retrieval();
     this.getProductName();
-        console.log(this.constructor.name);
+       
         this.showFiles(true);
   
   }

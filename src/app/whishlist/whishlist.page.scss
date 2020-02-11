@@ -1,0 +1,69 @@
+ion-content{
+    font-family: 'Noto Sans KR', sans-serif!important;
+    font-weight: 600;
+}
+img{
+    height: 4em;
+    width: 5em;
+}
+
+ion-toolbar{
+    --background:#031646;
+}
+
+#cart-icon{
+    background: transparent;
+    color: white;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 2px 2px 2px 2px;
+}
+ #search_line{
+     border-bottom: 1px solid deeppink;
+//    width: 10em;
+  }
+ion-button{
+    --background:#2b3e86f2!important;
+}
+#addtocart{
+    font-size: 29px;
+    color: #2b3e86f2;
+}
+ion-item-divider{
+    width: 77%;
+    margin-left: 3em;
+    margin-top:-2em;
+}
+ion-icon{
+    font-size:27px;
+    color:white;
+}
+
+#brief{
+    margin-right: 1em;
+    color:navy;
+    font-size:21px; 
+    margin-top: -5px;
+    border-radius:15px;
+    background:white;
+
+}
+
+span,ion-label{
+    font-size:12px;
+}
+
+ 
+#cart-badge {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    background: red;
+    color:white;
+    border-radius: 20px;
+ }
+ p{
+    color: deeppink;
+    font-size: 11px;
+    text-decoration: underline;
+ }

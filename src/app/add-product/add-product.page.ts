@@ -65,6 +65,7 @@ export class AddProductPage implements OnInit {
       image2: [''],
       image3: [''],
       image4: [''],
+      status: '0',
       userId: this.rest.getId()
     });
 
@@ -78,6 +79,7 @@ export class AddProductPage implements OnInit {
       propertyimage2: [''],
       propertyimage3: [''],
       propertyimage4: [''],
+      status: '0',
       userId: this.rest.getId()
     });
   }
@@ -206,6 +208,7 @@ this.role();
             propertyimage2: [''],
             propertyimage3: [''],
             propertyimage4: [''],
+            status: '0',
             userId: this.rest.getId()
           });
         }
@@ -262,6 +265,7 @@ this.role();
             image2: [''],
             image3: [''],
             image4: [''],
+            status: '0',
             userId: this.rest.getId()
           });
         }

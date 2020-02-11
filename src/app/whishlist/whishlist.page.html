@@ -1,0 +1,99 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: darkorange;"></ion-menu-button>
+    </ion-buttons>
+
+    <img
+      src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/profile/{{photo?.split('\\')[2]}}"
+      slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
+    <ion-title>
+      <img src="assets/images/whitebg.jpg" height="60" width="100">
+
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  
+</ion-refresher-content>
+   
+
+</ion-refresher>
+<div *ngFor="let item of wish"> 
+
+
+<ion-grid>
+  <ion-row>
+    
+    <ion-col col-5   >
+      <div class="ion-margin-top ion-margin-start">
+        <img [routerLink]="['/product-detail',item.productId]" src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{item.image?.split('\\')[2]}}">
+    </div>
+    </ion-col>
+   
+    <ion-col col-2 offset="3" >
+      <div class="ion-margin-top">
+      <ion-label>Name:</ion-label><br> 
+      <ion-label>Price:</ion-label><br>
+    
+    </div>
+    </ion-col>
+      
+    <ion-col col-4>
+      <div class="ion-margin-top">
+      <ion-label>{{item.name}}</ion-label><br> 
+      <ion-label>{{item.price}}</ion-label><br>
+   
+    </div>
+    </ion-col>  
+   
+      
+
+</ion-row>
+</ion-grid>
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <p  (click)="delete(item.id)"  class="ion-float-right ion-margin-end">Remove from list</p>
+   <p [routerLink]="['/product-detail',item.productId]"  class="ion-float-right ion-margin-end">View More</p>&nbsp;
+   
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-item-divider></ion-item-divider>
+</div>
+
+
+  
+
+</ion-content>
+
+<ion-footer style="text-align: center;">
+  <ion-toolbar id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon  id="brief" id="brief" name="home" [routerLink]="['/dashboard']"></ion-icon>
+
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+          <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

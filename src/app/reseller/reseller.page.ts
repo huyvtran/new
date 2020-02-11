@@ -164,12 +164,13 @@ export class ResellerPage implements OnInit {
           Registration_certificate: ['', Validators.required],
           GST_Certificate: [''],
           Pan_card: [''],
-          cpass: ['', Validators.required],
-          status: '0',
-          password: ['', Validators.required],
           Product_category: ['', Validators.required],
           complete_address: ['', Validators.required],
-          roles: this.fb.array(['USER'])
+          cpass: ['', Validators.required],
+          status: '0',
+          Wallet: '0',
+          password: ['', Validators.required],
+          roles: this.fb.array(['USER']),
         });
       });
     }

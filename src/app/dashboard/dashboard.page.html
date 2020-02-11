@@ -6,199 +6,228 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-icon [routerLink]="['/democart2']" style="position: absolute;right: 57px;background: transparent;margin-right:0.5em;color: white;font-size: 28px;margin-top: px;"
+    <ion-icon [routerLink]="['/democart2']"
+      style="position: absolute;right: 57px;background: transparent;margin-right:0.5em;color: white;font-size: 28px;margin-top: px;"
       class="ion-margin-end" slot="end" id="cart-icon" name="cart">
 
     </ion-icon>
-    <img
-    src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/profile/{{photo?.split('\\')[2]}}"
-    slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
+    <img src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/profile/{{photo?.split('\\')[2]}}"
+      slot="end" style="height: 39px;border-radius: 25px;margin: 10px;">
     <ion-badge id="cart-badge" [routerLink]="['/democart2']">{{count}}</ion-badge>
     <ion-title>
       <img src="assets/images/whitebg.jpg" height="60" width="100">
 
     </ion-title>
-     <!-- <ion-searchbar placeholder="Search for Products,Brand and More"id="home-search" ></ion-searchbar> -->
+    <!-- <ion-searchbar placeholder="Search for Products,Brand and More"id="home-search" ></ion-searchbar> -->
 
-   
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
-      refreshingSpinner="circles"
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
-  
-</ion-refresher-content>
-   
 
-</ion-refresher>
+    </ion-refresher-content>
 
 
-
-<div class="autocomplete">
-  <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
-
-  <ion-list *ngIf="isItemAvailable">
-      <ion-item *ngFor="let item of items" [routerLink]="['/product-detail',item.id]"> <p [routerLink]="['/product-detail',item.id]">{{ item.name }} </p></ion-item>
-  </ion-list>
-</div>
+  </ion-refresher>
 
 
-  <div id="head" class="bar bar-header bar-positive">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <i class="material-icons" [routerLink]="['/all-category']">list</i>
-          <span style="font-size: 9px;margin-left:-5px;">Offer&nbsp;Zone </span>
+
+  <div class="autocomplete">
+    <ion-searchbar type="text" debounce="500" (ionInput)="getItems($event)"></ion-searchbar>
+
+
+    <ion-grid *ngIf="isItemAvailable">
+      <ion-row *ngFor="let item of items" [routerLink]="['/product-detail',item.id]">
+        <ion-col col-5>
+          <div class="ion-margin-top ion-margin-start">
+            <img [routerLink]="['/product-detail',item.id]"
+              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{item.image?.split('\\')[2]}}">
+          </div>
         </ion-col>
-
-        <ion-col>
-          <img id="android_phone" [routerLink]="['/testo/Mobile&Tablets']" style="margin-left: 5px;" src="assets/images/Smartphone_4.jpg">
-          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile&Tablets']">Mobiles&nbsp;&<br> Tablets</span>
+        <ion-col col-2 offset="3">
+          <div class="ion-margin-top">
+            <ion-label>Name:</ion-label><br>
+            <ion-label>Price:</ion-label><br>
+            <ion-label>Description:</ion-label>
+          </div>
         </ion-col>
-
-
-        <ion-col >
-          <img id="category"  [routerLink]="['/testo/Electronics']" style="margin-left: 1px;" src="assets/images/monitor.png">
-          <span style="font-size: 9px;margin-left:-6px;" [routerLink]="['/testo/Electronics']">Electronics</span>
-        </ion-col>
-      
-
-        <ion-col>
-          <img id="category" [routerLink]="['/testo/Home_Appliances']" style="margin-left: 1px;" src="assets/images/home_tv.png">
-          <span style="font-size: 9px;" [routerLink]="['/testo/Home_Appliances']" >Home&nbsp;&<br> Appliances</span>
-        </ion-col>
-
-        <ion-col>
-          <img id="category" [routerLink]="['/testo/Mobile_Accessory']" style="margin-left: -3px;" src="assets/images/Headphones.png">
-          <span style="font-size: 9px;" [routerLink]="['/testo/Mobile_Accessory']">Mobiles&nbsp;&<br> Accessories</span>
+        <ion-col col-4 [routerLink]="['/product-detail',item.id]">
+          <div  [routerLink]="['/product-detail',item.id]" class="ion-margin-top">
+            <ion-label>{{item.name}}</ion-label><br>
+            <ion-label>{{item.price}}</ion-label><br>
+            <ion-label>{{item.desc}}</ion-label>
+            <p  [routerLink]="['/product-detail',item.id]" class="ion-float-right ion-margin-end">View More</p>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <ion-item-divider></ion-item-divider>
   </div>
 
-  <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+  <div *ngIf="isItemAvailables">
+    <div id="head" class="bar bar-header bar-positive">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <i class="material-icons" [routerLink]="['/all-category']">list</i>
+            <span style="font-size: 9px;margin-left:-5px;">Offer&nbsp;Zone </span>
+          </ion-col>
+
+          <ion-col>
+            <img id="android_phone" [routerLink]="['/testo/Mobile&Tablets']" style="margin-left: 5px;"
+              src="assets/images/Smartphone_4.jpg">
+            <span style="font-size: 9px;" [routerLink]="['/testo/Mobile&Tablets']">Mobiles&nbsp;&<br> Tablets</span>
+          </ion-col>
 
 
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrldRGK67aQWU8lg6xeeD2EnfcDmKc_bOjBQWUUc1go866Cy6f&s"
-        alt="change" srcset="">
-    </ion-slide>
+          <ion-col>
+            <img id="category" [routerLink]="['/testo/Electronics']" style="margin-left: 1px;"
+              src="assets/images/monitor.png">
+            <span style="font-size: 9px;margin-left:-6px;" [routerLink]="['/testo/Electronics']">Electronics</span>
+          </ion-col>
 
 
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStx0OPhhY_uRw1AQ8FmfRQL0RU5ukoLj-wjkH80yx9jJ7T6z4cXQ&s"
-        alt="gossip" srcset="">
-    </ion-slide>
+          <ion-col>
+            <img id="category" [routerLink]="['/testo/Home_Appliances']" style="margin-left: 1px;"
+              src="assets/images/home_tv.png">
+            <span style="font-size: 9px;" [routerLink]="['/testo/Home_Appliances']">Home&nbsp;&<br> Appliances</span>
+          </ion-col>
 
-
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm2Ed-9_k3F0eH3tixqEnSROIwKcJWZ6zDTqJq_w0Qp60REWNiag&s"
-        alt="change" srcset="">
-    </ion-slide>
-
-
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX9TmxLGq3rTH238nEaTIo3GFEIeOlaA6x1W_o63j0bT1AhvZ1Vg&s"
-        alt="change" srcset="">
-    </ion-slide>
-
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStx0OPhhY_uRw1AQ8FmfRQL0RU5ukoLj-wjkH80yx9jJ7T6z4cXQ&s"
-        alt="gossip" srcset="">
-    </ion-slide>
-
-
-    <ion-slide>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm2Ed-9_k3F0eH3tixqEnSROIwKcJWZ6zDTqJq_w0Qp60REWNiag&s"
-        alt="gossip" srcset="">
-    </ion-slide>
-  </ion-slides>
-
-  <ion-title style="padding:8px 2px 12px 2px;" class="deal" text-center>Deal of the Day</ion-title>
-  <ion-row>
-    <div *ngFor="let product of products ">
-      <ion-col *ngIf="product.category !== 'Property' && product.sub =='deal'">
-
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{product.name}}</ion-card-title>
-            <hr>
-          </ion-card-header>
-
-          <ion-card-content>
-            <img [routerLink]="['/product-detail',product.id]" 
-              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
-              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
-            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+          <ion-col>
+            <img id="category" [routerLink]="['/testo/Mobile_Accessory']" style="margin-left: -3px;"
+              src="assets/images/Headphones.png">
+            <span style="font-size: 9px;" [routerLink]="['/testo/Mobile_Accessory']">Mobiles&nbsp;&<br>
+              Accessories</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-  </ion-row>
+
+    <ion-slides [options]="slideOptions" pager="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)">
+
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrldRGK67aQWU8lg6xeeD2EnfcDmKc_bOjBQWUUc1go866Cy6f&s"
+          alt="change" srcset="">
+      </ion-slide>
+
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStx0OPhhY_uRw1AQ8FmfRQL0RU5ukoLj-wjkH80yx9jJ7T6z4cXQ&s"
+          alt="gossip" srcset="">
+      </ion-slide>
+
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm2Ed-9_k3F0eH3tixqEnSROIwKcJWZ6zDTqJq_w0Qp60REWNiag&s"
+          alt="change" srcset="">
+      </ion-slide>
+
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX9TmxLGq3rTH238nEaTIo3GFEIeOlaA6x1W_o63j0bT1AhvZ1Vg&s"
+          alt="change" srcset="">
+      </ion-slide>
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStx0OPhhY_uRw1AQ8FmfRQL0RU5ukoLj-wjkH80yx9jJ7T6z4cXQ&s"
+          alt="gossip" srcset="">
+      </ion-slide>
+
+
+      <ion-slide>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm2Ed-9_k3F0eH3tixqEnSROIwKcJWZ6zDTqJq_w0Qp60REWNiag&s"
+          alt="gossip" srcset="">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-title style="padding:8px 2px 12px 2px;" class="deal" text-center>Deal of the Day</ion-title>
+    <ion-row>
+
+      <div *ngFor="let product of products ">
+        <ion-col *ngIf="product.category !== 'Property' && product.sub =='deal'">
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{product.name}}</ion-card-title>
+              <hr>
+            </ion-card-header>
+
+            <ion-card-content>
+              <img [routerLink]="['/product-detail',product.id]"
+                src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
+                style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+              <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </div>
+
+    </ion-row>
 
 
 
-  <!------------------New Arrivals----------------->
-  <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
+    <!------------------New Arrivals----------------->
+    <ion-title style="padding:8px 2px 12px 2px;" class="deal2" text-center>New Arrivals</ion-title>
 
 
-  <ion-row>
-    <div *ngFor="let product of products ">
-      <ion-col *ngIf="product.category !== 'Property' && product.sub =='new'">
+    <ion-row>
+      <div *ngFor="let product of products ">
+        <ion-col *ngIf="product.category !== 'Property' && product.sub =='new'">
 
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{product.name}} </ion-card-title>
-            <hr>
-          </ion-card-header>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{product.name}} </ion-card-title>
+              <hr>
+            </ion-card-header>
 
-          <ion-card-content>
-            <img [routerLink]="['/product-detail',product.id]"
-              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
-              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
-            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+            <ion-card-content>
+              <img [routerLink]="['/product-detail',product.id]"
+                src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
+                style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+              <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
 
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </div>
-  </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </div>
+    </ion-row>
 
-  <!------------------------------Trending Products-------------------------------->
-  <ion-title style="padding:8px 2px 12px 2px;" class="deal3" text-center>Trending Products </ion-title>
+    <!------------------------------Trending Products-------------------------------->
+    <ion-title style="padding:8px 2px 12px 2px;" class="deal3" text-center>Trending Products </ion-title>
 
-  <ion-row>
-    <div *ngFor="let product of products ">
-      <ion-col *ngIf="product.category !== 'Property' && product.sub =='trending'">
+    <ion-row>
+      <div *ngFor="let product of products ">
+        <ion-col *ngIf="product.category !== 'Property' && product.sub =='trending'">
 
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{product.name}}</ion-card-title>
-            <hr>
-          </ion-card-header>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{product.name}}</ion-card-title>
+              <hr>
+            </ion-card-header>
 
-          <ion-card-content>
-            <img [routerLink]="['/product-detail',product.id]"
-              src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
-              style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
-            <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </div>
-  </ion-row>
+            <ion-card-content>
+              <img [routerLink]="['/product-detail',product.id]"
+                src="http://ec2-18-188-252-77.us-east-2.compute.amazonaws.com:8080/products/{{product.image?.split('\\')[2]}}"
+                style="height:70px; width:80px;margin:-20px 2px 2px 2px;">
+              <p style=" padding: 1px 2px 2px 18px;">{{product.price}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </div>
+    </ion-row>
+  </div>
 </ion-content>
 
 
@@ -208,10 +237,10 @@
     <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <ion-icon id="brief"  [routerLink]="['/dashboard']"name="home"></ion-icon>
+          <ion-icon id="brief" [routerLink]="['/dashboard']" name="home"></ion-icon>
         </ion-col>
         <ion-col size="4">
-          <ion-icon id="brief"   [routerLink]="['/democart2']" name="cart"></ion-icon>
+          <ion-icon id="brief" [routerLink]="['/democart2']" name="cart"></ion-icon>
         </ion-col>
         <ion-col size="4">
           <ion-icon id="brief" [routerLink]="['/user-profile']" name="person"></ion-icon>

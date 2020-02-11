@@ -128,6 +128,29 @@ export class ProductDetailPage implements OnInit {
     }
   }
 
+
+  
+  wish() {
+
+    Object.assign(this.data, this.modifyFormGroup.value);
+    console.log(this.data);
+        this.rest.wish(this.data).subscribe((result) => {
+          if (result == undefined) {
+            console.log(result);
+          }
+          else {
+            alert('added to WishList');
+            this.getcartdetails();
+            // this.rest.cartDetails();
+          }
+        }, (err) => {
+          console.log(err);
+        });
+  }
+
+
+
+
   getcartdetails() {
     Object.assign(this.data, this.modifyFormGroup.value);
     this.rest.cartDetails().subscribe((result) => {
